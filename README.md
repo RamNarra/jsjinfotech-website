@@ -66,6 +66,16 @@ CONTACT_FROM_EMAIL=JSJ Website <inquiries@jsjinfotech.co.in>
 
 ---
 
+### Go-live checklist (production)
+
+1. **Vercel project** `jsjinfotech` (team `thecampushelper`): Root Directory `web`, connected to this repo; pushes to `main` deploy to production.
+2. **Domain cutover** (needs DNS access at the domain's DNS host): point `www.jsjinfotech.co.in` (CNAME `cname.vercel-dns.com`) and `jsjinfotech.co.in` (A `76.76.21.21`) at Vercel, attach both to the `jsjinfotech` project (they are currently attached to a different project), make `www` primary and redirect the apex to it. Then set `NEXT_PUBLIC_SITE_URL=https://www.jsjinfotech.co.in` and redeploy so canonicals, sitemap and robots follow.
+3. **Turnstile**: create a widget allowing exactly `jsjinfotech.vercel.app`, `www.jsjinfotech.co.in`, `jsjinfotech.co.in` (no localhost). Set `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `CLOUDFLARE_TURNSTILE_SECRET_KEY`. The server checks `success`, `hostname` and `action=contact` on every submission. Override the hostname list with `TURNSTILE_ALLOWED_HOSTNAMES` if needed.
+4. **Resend**: verify the sending domain in Resend (DKIM TXT, SPF/return-path records and ideally DMARC at the DNS host), then set `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` (an address on that verified domain; consumer mailboxes are rejected) and `CONTACT_NOTIFICATION_EMAIL` (comma-separated).
+5. Redeploy (the Turnstile site key is baked in at build time).
+
+Until steps 3 and 4 are done the form is disabled and shows the phone and email instead. Rate limiting is per server instance (3 per client per 10 minutes, 40 per hour overall); add a Vercel WAF rate-limit rule for a hard global cap.
+
 ## 4. Local Development & Production Build
 
 ```bash
