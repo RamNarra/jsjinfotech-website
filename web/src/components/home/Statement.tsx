@@ -23,7 +23,7 @@ export function Statement() {
         <dl className="mt-16 grid gap-10 border-t border-line pt-8 md:grid-cols-3">
           {facts.map((f, i) => (
             <Reveal key={f.k} delay={i * 0.08}>
-              <dt className="text-[0.9375rem] font-semibold">{f.k}</dt>
+              <dt className="text-[1.0625rem] font-semibold">{f.k}</dt>
               <dd className="t-small mt-2 max-w-xs">{f.v}</dd>
             </Reveal>
           ))}

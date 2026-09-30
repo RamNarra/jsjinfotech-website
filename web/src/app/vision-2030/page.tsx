@@ -48,7 +48,7 @@ export default function VisionPage() {
                   {p.items.map((it) => (
                     <li key={it.vertical} className="border-t border-line py-3">
                       <span className="t-num block">{it.vertical}</span>
-                      <span className="mt-0.5 block text-[0.9375rem] leading-snug">{it.milestone}</span>
+                      <span className="mt-0.5 block text-[1.0625rem] leading-snug">{it.milestone}</span>
                     </li>
                   ))}
                 </ul>

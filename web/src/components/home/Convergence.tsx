@@ -1,4 +1,7 @@
+import { Cpu, Building2, BrainCircuit } from 'lucide-react';
 import { CORE_LAYERS } from '@/shared';
+
+const LAYER_ICONS = [Cpu, Building2, BrainCircuit];
 import { Reveal } from '@/components/ui/Reveal';
 
 export function Convergence() {
@@ -19,14 +22,22 @@ export function Convergence() {
           <ol className="grid gap-px overflow-hidden rounded-[var(--radius-lg)] border border-line bg-line md:grid-cols-3">
             {CORE_LAYERS.map((layer, i) => (
               <li key={layer.id} className="bg-white p-7 sm:p-9">
-                <p className="t-num">0{i + 1}</p>
-                <h3 className="t-h3 mt-3">{layer.name}</h3>
+                <div className="flex items-center justify-between">
+                  <span className="grid size-12 place-items-center rounded-2xl bg-brand-50 text-brand-text">
+                    {(() => {
+                      const Icon = LAYER_ICONS[i];
+                      return <Icon aria-hidden className="size-6" />;
+                    })()}
+                  </span>
+                  <span className="t-num">0{i + 1}</span>
+                </div>
+                <h3 className="t-h3 mt-6">{layer.name}</h3>
                 <p className="t-small mt-2">{layer.detail}</p>
                 <ul className="mt-6 flex flex-wrap gap-2">
                   {layer.nodes.map((n) => (
                     <li
                       key={n}
-                      className="rounded-full border border-line px-3 py-1 text-[0.875rem] text-ink-2"
+                      className="rounded-full border border-line bg-soft px-3.5 py-1.5 text-[1rem] text-ink"
                     >
                       {n}
                     </li>

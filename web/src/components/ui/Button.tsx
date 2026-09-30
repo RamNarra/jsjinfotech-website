@@ -10,10 +10,10 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    'h-12 rounded-[var(--radius-sm)] px-6 text-[0.9375rem] bg-brand text-white hover:bg-brand-hover',
+    'h-[3.4rem] rounded-[var(--radius-sm)] px-7 text-[1.0625rem] bg-brand text-white shadow-[0_1px_0_rgb(255_255_255/0.25)_inset,0_8px_20px_-8px_rgb(0_112_242/0.55)] hover:bg-brand-hover',
   secondary:
-    'h-12 rounded-[var(--radius-sm)] px-6 text-[0.9375rem] bg-white text-brand-text border border-brand hover:bg-brand-50',
-  text: 'text-[0.9375rem] text-brand-text hover:text-brand-hover',
+    'h-[3.4rem] rounded-[var(--radius-sm)] px-7 text-[1.0625rem] bg-white text-brand-text border border-brand hover:bg-brand-50',
+  text: 'text-[1.0625rem] text-brand-text hover:text-brand-hover',
 };
 
 interface CommonProps {

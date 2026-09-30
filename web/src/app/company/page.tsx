@@ -7,6 +7,14 @@ import { ClosingCta } from '@/components/ui/ClosingCta';
 import { Reveal } from '@/components/ui/Reveal';
 import { DeliverySection } from '@/components/home/DeliverySection';
 import { Ecosystem } from '@/components/home/Ecosystem';
+import { MapPin, Layers, Users, Route } from 'lucide-react';
+
+const GLANCE = [
+  { icon: MapPin, k: 'Headquarters', v: 'Jubilee Hills, Hyderabad' },
+  { icon: Layers, k: 'Solutions', v: 'Nine, across IT, SAP, AI, software, drones and government' },
+  { icon: Users, k: 'Serves', v: 'Enterprises, government organisations, institutions, partners' },
+  { icon: Route, k: 'Delivery', v: 'One six-stage lifecycle, from requirement to support' },
+] as const;
 
 export const metadata: Metadata = pageMetadata({
   title: 'Company',
@@ -23,6 +31,20 @@ export default function CompanyPage() {
         title="A practical, scalable and secure project execution partner."
         lead="JSJ INFOTECH helps organisations adopt, implement and enhance modern digital technologies — focusing on practical implementation and measurable project outcomes rather than advisory alone."
       />
+
+      <section className="container-x pb-16">
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {GLANCE.map((g) => (
+            <li key={g.k} className="art-panel rounded-[var(--radius-lg)] border border-line p-6">
+              <span className="grid size-11 place-items-center rounded-xl bg-white text-brand-text shadow-card">
+                <g.icon aria-hidden className="size-5" />
+              </span>
+              <p className="t-num mt-5">{g.k}</p>
+              <p className="mt-1 text-[1.1875rem] font-semibold leading-snug tracking-[-0.01em]">{g.v}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section className="container-x pb-24">
         <div className="grid gap-12 border-t border-line pt-14 lg:grid-cols-12">
@@ -95,7 +117,7 @@ export default function CompanyPage() {
               </li>
             ))}
           </ul>
-          <Link href="/solutions" className="mt-10 inline-block text-[0.9375rem] font-medium text-brand-text hover:text-brand-hover">
+          <Link href="/solutions" className="mt-10 inline-block text-[1.0625rem] font-medium text-brand-text hover:text-brand-hover">
             See all solutions →
           </Link>
         </div>
@@ -119,7 +141,7 @@ export default function CompanyPage() {
               capability with national and international technology partnerships — turning technology
               opportunities into practical, measurable and sustainable project outcomes.
             </p>
-            <Link href="/vision-2030" className="mt-6 inline-block text-[0.9375rem] font-medium text-brand-text hover:text-brand-hover">
+            <Link href="/vision-2030" className="mt-6 inline-block text-[1.0625rem] font-medium text-brand-text hover:text-brand-hover">
               Read the 2030 vision →
             </Link>
           </Reveal>

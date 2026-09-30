@@ -45,7 +45,7 @@ export function AutonomousCore({ className }: { className?: string }) {
   return (
     <div className={className}>
       <svg
-        viewBox="0 0 600 600"
+        viewBox="-40 -10 680 620"
         role="img"
         aria-label="Diagram: the physical layer (HVAC, drones, IoT), the enterprise layer (SAP, ERP, IT, software) and the intelligence layer (AI, analytics, computer vision, digital twins) converge on the JSJ core."
         className="mx-auto block h-auto w-full max-w-[600px] overflow-visible"
@@ -108,8 +108,8 @@ export function AutonomousCore({ className }: { className?: string }) {
           const on = active === n.key;
           const dx = n.x - C;
           const anchor = Math.abs(dx) < 18 ? 'middle' : dx > 0 ? 'start' : 'end';
-          const lx = anchor === 'middle' ? n.x : n.x + (dx > 0 ? 14 : -14);
-          const ly = anchor === 'middle' ? n.y + (n.y < C ? -14 : 24) : n.y + 4.5;
+          const lx = anchor === 'middle' ? n.x : n.x + (dx > 0 ? 18 : -18);
+          const ly = anchor === 'middle' ? n.y + (n.y < C ? -16 : 30) : n.y + 6.5;
           return (
             <g
               key={n.key}
@@ -121,7 +121,7 @@ export function AutonomousCore({ className }: { className?: string }) {
               <circle
                 cx={n.x}
                 cy={n.y}
-                r={on ? 8 : 6}
+                r={on ? 10 : 8}
                 fill={on ? 'var(--color-brand)' : '#fff'}
                 stroke={on ? 'var(--color-brand)' : 'var(--color-ink-3)'}
                 strokeWidth={1.5}
@@ -132,10 +132,10 @@ export function AutonomousCore({ className }: { className?: string }) {
                 y={ly}
                 textAnchor={anchor}
                 className="max-sm:hidden"
-                fontSize={15}
+                fontSize={20}
                 fontWeight={on ? 600 : 500}
                 fill={on ? 'var(--color-brand)' : 'var(--color-ink-2)'}
-                style={{ paintOrder: 'stroke', stroke: '#fff', strokeWidth: 5, strokeLinejoin: 'round' }}
+                style={{ paintOrder: 'stroke', stroke: '#fff', strokeWidth: 6, strokeLinejoin: 'round' }}
               >
                 {n.label}
               </text>
@@ -144,14 +144,14 @@ export function AutonomousCore({ className }: { className?: string }) {
         })}
 
         {/* Core */}
-        <circle cx={C} cy={C} r={50} fill="#fff" stroke="var(--color-brand)" strokeWidth={1.5} />
-        <circle cx={C} cy={C} r={58} fill="none" stroke="var(--color-brand-tint)" strokeWidth={6} />
+        <circle cx={C} cy={C} r={56} fill="#fff" stroke="var(--color-brand)" strokeWidth={1.5} />
+        <circle cx={C} cy={C} r={66} fill="none" stroke="var(--color-brand-tint)" strokeWidth={8} />
         <text
           x={C}
           y={C + 6}
           textAnchor="middle"
-          fontSize={22}
-          fontWeight={600}
+          fontSize={28}
+          fontWeight={700}
           letterSpacing="-0.02em"
           fill="var(--color-ink)"
         >
@@ -183,7 +183,7 @@ export function AutonomousCore({ className }: { className?: string }) {
                       onFocus={() => setActive(key)}
                       onBlur={() => setActive(null)}
                       className={clsx(
-                        'py-1 text-[0.875rem] transition-colors',
+                        'py-1.5 text-[1.0625rem] transition-colors',
                         active === key ? 'text-brand-text' : 'text-ink-2 hover:text-ink',
                       )}
                     >

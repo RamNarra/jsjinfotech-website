@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { LazyMotion, domAnimation, m, useReducedMotion } from 'motion/react';
 import { clsx } from 'clsx';
+import { Compass, HeartHandshake, Hammer, ClipboardCheck, Search, CalendarRange, type LucideIcon } from 'lucide-react';
+
+const ICONS: LucideIcon[] = [Search, Compass, CalendarRange, Hammer, ClipboardCheck, HeartHandshake];
 import { PROJECT_DELIVERY_STAGES } from '@/shared';
 
 /**
@@ -52,11 +55,22 @@ export function Lifecycle() {
                       on ? 'bg-brand ring-4 ring-brand-tint' : 'bg-white',
                     )}
                   />
-                  <span className="lg:mt-8 lg:block">
-                    <span className={clsx('t-num block transition-colors', on && '!text-brand-text')}>
+                  <span className="lg:mt-9 lg:block">
+                    <span
+                      className={clsx(
+                        'grid size-12 place-items-center rounded-2xl border transition-colors duration-[var(--duration-fast)]',
+                        on ? 'border-brand bg-brand text-white' : 'border-line bg-white text-brand-text',
+                      )}
+                    >
+                      {(() => {
+                        const Icon = ICONS[i];
+                        return <Icon aria-hidden className="size-6" />;
+                      })()}
+                    </span>
+                    <span className={clsx('t-num mt-4 block transition-colors', on && '!text-brand-text')}>
                       {stage.stepNumber}
                     </span>
-                    <span className="t-h3 mt-2 block !text-[1.125rem]">{stage.title}</span>
+                    <span className="t-h3 mt-2 block !text-[1.375rem]">{stage.title}</span>
                     <span className="t-small mt-2 block">{stage.description}</span>
                   </span>
                 </button>

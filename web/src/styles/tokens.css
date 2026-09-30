@@ -23,8 +23,8 @@
 
   /* Text */
   --color-ink: #12171c;
-  --color-ink-2: #475e75;
-  --color-ink-3: #5b738b;
+  --color-ink-2: #3b5169;
+  --color-ink-3: #50677e;
 
   /* Feedback */
   --color-danger: #b42318;
@@ -39,6 +39,7 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
+  --gradient-deep: linear-gradient(135deg, #0040b0 0%, #0057d2 55%, #0070f2 100%);
   --shadow-hairline: 0 1px 0 rgb(18 23 28 / 0.04);
   --shadow-card: 0 1px 2px rgb(18 23 28 / 0.04), 0 8px 24px -12px rgb(18 23 28 / 0.08);
   --shadow-lift: 0 2px 4px rgb(18 23 28 / 0.04), 0 18px 40px -16px rgb(0 64 176 / 0.22);
@@ -50,7 +51,7 @@
   --duration-slow: 700ms;
 
   /* Layout */
-  --container: 1200px;
+  --container: 1280px;
   --container-narrow: 760px;
-  --header-h: 60px;
+  --header-h: 68px;
 }

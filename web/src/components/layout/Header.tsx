@@ -10,7 +10,7 @@ import { LinkButton } from '@/components/ui/Button';
 
 function Wordmark() {
   return (
-    <Link href="/" className="text-[1.0625rem] font-semibold tracking-[-0.02em] text-ink">
+    <Link href="/" className="text-[1.1875rem] font-semibold tracking-[-0.02em] text-ink">
       {BRAND.name}
     </Link>
   );
@@ -49,20 +49,20 @@ export function Header() {
               href={item.href}
               aria-current={isActive(item.href) ? 'page' : undefined}
               className={clsx(
-                'relative rounded-md px-3.5 py-2 text-[0.9375rem] transition-colors duration-[var(--duration-fast)]',
+                'relative rounded-md px-3.5 py-2 text-[1.0625rem] transition-colors duration-[var(--duration-fast)]',
                 isActive(item.href) ? 'text-brand-text' : 'text-ink-2 hover:text-ink',
               )}
             >
               {item.title}
               {isActive(item.href) ? (
-                <span aria-hidden className="absolute inset-x-3.5 -bottom-[13px] h-[2px] bg-brand" />
+                <span aria-hidden className="absolute inset-x-3.5 -bottom-[19px] h-[2px] bg-brand" />
               ) : null}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
-          <LinkButton href="/contact" className="!h-10 !px-5">
+          <LinkButton href="/contact" className="!h-11 !px-5">
             Contact
           </LinkButton>
           <button

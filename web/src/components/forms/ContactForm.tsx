@@ -28,12 +28,12 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block text-[0.875rem] font-medium">
+      <label htmlFor={id} className="mb-1.5 block text-[1rem] font-medium">
         {label}
       </label>
       {children}
       {error ? (
-        <p id={`${id}-error`} className="mt-1.5 text-[0.8125rem] text-danger">
+        <p id={`${id}-error`} className="mt-1.5 text-[0.9375rem] text-danger">
           {error}
         </p>
       ) : null}
@@ -89,7 +89,7 @@ export function ContactForm({ defaultInterest = '' }: { defaultInterest?: string
       onPointerEnter={() => setArmed(true)}
     >
       {res && !res.success ? (
-        <div role="alert" className="flex gap-3 rounded-[var(--radius-sm)] border border-danger/30 bg-danger-wash p-4 text-[0.9375rem] text-danger">
+        <div role="alert" className="flex gap-3 rounded-[var(--radius-sm)] border border-danger/30 bg-danger-wash p-4 text-[1.0625rem] text-danger">
           <AlertCircle aria-hidden className="mt-0.5 size-4 shrink-0" />
           {res.message}
         </div>
@@ -150,7 +150,7 @@ export function ContactForm({ defaultInterest = '' }: { defaultInterest?: string
           </span>
         </label>
         {err('dpdpConsent') ? (
-          <p className="mt-1.5 text-[0.8125rem] text-danger">{err('dpdpConsent')}</p>
+          <p className="mt-1.5 text-[0.9375rem] text-danger">{err('dpdpConsent')}</p>
         ) : null}
       </div>
 
@@ -164,7 +164,7 @@ export function ContactForm({ defaultInterest = '' }: { defaultInterest?: string
           ) : null}
         </div>
       ) : (
-        <p role="alert" className="text-[0.875rem] text-danger">
+        <p role="alert" className="text-[1rem] text-danger">
           The contact form is temporarily unavailable. Please email support@jsjinfotech.co.in or call +91 89430 32965.
         </p>
       )}

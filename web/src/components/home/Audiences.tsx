@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { INDUSTRIES_DATA, INDUSTRY_ORDER } from '@/shared';
 import { Reveal } from '@/components/ui/Reveal';
+import { SolutionDiagram } from '@/components/solutions/SolutionDiagram';
 
 const tone = {
   government: 'bg-soft border-line',
@@ -23,8 +24,14 @@ export function Audiences() {
               <Reveal key={slug} delay={i * 0.08}>
                 <Link
                   href={`/industries/${slug}`}
-                  className={`group flex h-full flex-col rounded-[var(--radius-lg)] border p-8 transition-[border-color,box-shadow] duration-[var(--duration-base)] hover:border-brand/40 hover:shadow-lift sm:p-10 ${tone[slug]}`}
+                  className={`group flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border p-8 transition-[border-color,box-shadow] duration-[var(--duration-base)] hover:border-brand/40 hover:shadow-lift sm:p-10 ${tone[slug]}`}
                 >
+                  <div className="art-panel -mx-8 -mt-8 mb-8 rounded-t-[var(--radius-lg)] border-b border-line-soft px-8 pt-8 sm:-mx-10 sm:-mt-10 sm:px-10 sm:pt-10">
+                    <SolutionDiagram
+                      slug={slug === 'government' ? 'government-technology' : 'sap-erp'}
+                      className="mx-auto w-full max-w-[26rem]"
+                    />
+                  </div>
                   <p className="t-eyebrow">{ind.title}</p>
                   <h3 className="t-h3 mt-3 max-w-md">{ind.headline}</h3>
                   <ul className="mt-8 grid gap-3">
@@ -35,7 +42,7 @@ export function Audiences() {
                       </li>
                     ))}
                   </ul>
-                  <span className="mt-auto inline-flex items-center gap-2 pt-10 text-[0.9375rem] font-medium text-brand-text">
+                  <span className="mt-auto inline-flex items-center gap-2 pt-10 text-[1.0625rem] font-medium text-brand-text">
                     {ind.title} solutions
                     <ArrowRight
                       aria-hidden

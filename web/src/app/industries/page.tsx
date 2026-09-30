@@ -34,7 +34,7 @@ export default function IndustriesPage() {
                 <p className="t-eyebrow">{i.title}</p>
                 <h2 className="t-h3 mt-3">{i.headline}</h2>
                 <p className="t-small mt-3">{i.summary}</p>
-                <span className="mt-8 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-brand-text">
+                <span className="mt-8 inline-flex items-center gap-2 text-[1.0625rem] font-medium text-brand-text">
                   Explore {i.title.toLowerCase()}
                   <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </span>

@@ -19,7 +19,7 @@ export function Footer() {
     <footer className="border-t border-line bg-soft">
       <div className="container-x grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
-          <p className="text-[1.0625rem] font-semibold tracking-[-0.01em]">JSJ INFOTECH</p>
+          <p className="text-[1.1875rem] font-semibold tracking-[-0.01em]">JSJ INFOTECH</p>
           <p className="t-small mt-2 max-w-xs">{BRAND.tagline}</p>
           <address className="t-small mt-6 not-italic">
             {BRAND.address.street}
@@ -39,7 +39,7 @@ export function Footer() {
         </div>
 
         <nav aria-label="Solutions" className="md:col-span-4">
-          <p className="text-[0.9375rem] font-semibold">Solutions</p>
+          <p className="text-[1.0625rem] font-semibold">Solutions</p>
           <ul className="mt-4 grid gap-2.5">
             {SOLUTION_ORDER.map((slug) => (
               <li key={slug}>
@@ -52,7 +52,7 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Industries" className="md:col-span-2">
-          <p className="text-[0.9375rem] font-semibold">Industries</p>
+          <p className="text-[1.0625rem] font-semibold">Industries</p>
           <ul className="mt-4 grid gap-2.5">
             {industries.map((i) => (
               <li key={i.href}>
@@ -65,7 +65,7 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Company" className="md:col-span-2">
-          <p className="text-[0.9375rem] font-semibold">Company</p>
+          <p className="text-[1.0625rem] font-semibold">Company</p>
           <ul className="mt-4 grid gap-2.5">
             {company.map((i) => (
               <li key={i.href}>
@@ -78,7 +78,7 @@ export function Footer() {
         </nav>
       </div>
       <div className="border-t border-line">
-        <div className="container-x flex flex-col gap-2 py-6 text-[0.8125rem] text-ink-3 sm:flex-row sm:justify-between">
+        <div className="container-x flex flex-col gap-2 py-6 text-[0.9375rem] text-ink-3 sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} JSJ INFOTECH. All rights reserved.</p>
         </div>
       </div>

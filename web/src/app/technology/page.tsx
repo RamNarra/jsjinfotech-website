@@ -5,6 +5,7 @@ import { PageHero } from '@/components/ui/PageHero';
 import { ClosingCta } from '@/components/ui/ClosingCta';
 import { Reveal } from '@/components/ui/Reveal';
 import { AutonomousCore } from '@/components/home/AutonomousCore';
+import { LayerStack } from '@/components/solutions/LayerStack';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Technology',
@@ -64,7 +65,13 @@ export default function TechnologyPage() {
         lead="JSJ is organised around how technology is actually assembled — from the physical systems where data begins to the experiences where decisions are made."
       />
 
-      <section className="container-x pb-24">
+      <section className="container-x pb-8">
+        <div className="art-panel rounded-[28px] border border-line p-6 shadow-card sm:p-12">
+          <LayerStack className="mx-auto h-auto w-full max-w-3xl" />
+        </div>
+      </section>
+
+      <section className="container-x pb-24 pt-16">
         <ol className="border-t border-line">
           {stack.map((l, i) => (
             <li key={l.name} className="grid gap-x-10 gap-y-4 border-b border-line py-9 md:grid-cols-12">
@@ -73,7 +80,7 @@ export default function TechnologyPage() {
                 <h2 className="t-h3 mt-2">{l.name}</h2>
               </Reveal>
               <Reveal className="md:col-span-5" delay={0.05}>
-                <p className="t-lead !text-[1.125rem]">{l.text}</p>
+                <p className="t-lead !text-[1.3125rem]">{l.text}</p>
               </Reveal>
               <ul className="flex flex-wrap content-start gap-x-5 gap-y-1 md:col-span-3">
                 {l.links.map(([label, href]) => (

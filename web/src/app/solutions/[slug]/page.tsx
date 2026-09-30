@@ -10,6 +10,8 @@ import { ClosingCta } from '@/components/ui/ClosingCta';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { Reveal } from '@/components/ui/Reveal';
 import { SolutionDiagram } from '@/components/solutions/SolutionDiagram';
+import { LayerMap } from '@/components/solutions/LayerMap';
+import { SOLUTION_ICONS } from '@/components/solutions/icons';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -45,7 +47,9 @@ export default async function SolutionPage({ params }: Props) {
       <JsonLd data={ld} />
 
       {/* Hero */}
-      <section className="container-x pb-20 pt-8 lg:pb-28">
+      <section className="relative">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(55%_60%_at_85%_0%,rgb(0_112_242/0.1),transparent_70%)]" />
+        <div className="container-x relative pb-20 pt-8 lg:pb-28">
         <Breadcrumbs trail={[{ name: 'Solutions', href: '/solutions' }, { name: s.shortTitle }]} />
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-12">
           <div className={`lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
@@ -58,10 +62,11 @@ export default async function SolutionPage({ params }: Props) {
             </p>
           </div>
           <div className={`lg:col-span-5 ${flip ? 'lg:order-1' : ''}`}>
-            <div className="rise rounded-[var(--radius-lg)] border border-line bg-soft p-6 sm:p-10" style={{ ['--i' as string]: 2 }}>
-              <SolutionDiagram slug={s.slug} className="mx-auto h-auto w-full max-w-sm" />
+            <div className="rise art-panel rounded-[28px] border border-line p-6 shadow-card sm:p-10" style={{ ['--i' as string]: 2 }}>
+              <SolutionDiagram slug={s.slug} className="mx-auto h-auto w-full max-w-md" />
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -81,7 +86,7 @@ export default async function SolutionPage({ params }: Props) {
                   className="grid grid-cols-[2.5rem_1fr] items-baseline gap-x-3 border-t border-line py-5 last:border-b sm:[&:nth-last-child(2):nth-child(odd)]:border-b"
                 >
                   <span className="t-num">{String(i + 1).padStart(2, '0')}</span>
-                  <span className={dense ? 'text-[1.0625rem] font-medium' : 't-h3 !font-medium'}>{c}</span>
+                  <span className={dense ? 'text-[1.1875rem] font-medium' : 't-h3 !font-medium'}>{c}</span>
                 </li>
               ))}
             </ol>
@@ -126,7 +131,7 @@ export default async function SolutionPage({ params }: Props) {
             {PROJECT_DELIVERY_STAGES.map((st) => (
               <li key={st.stepNumber} className="bg-white p-5">
                 <span className="t-num">{st.stepNumber}</span>
-                <p className="mt-2 text-[0.9375rem] font-semibold leading-snug">{st.title}</p>
+                <p className="mt-2 text-[1.0625rem] font-semibold leading-snug">{st.title}</p>
               </li>
             ))}
           </ol>
@@ -140,10 +145,12 @@ export default async function SolutionPage({ params }: Props) {
             <p className="t-eyebrow">Where it connects</p>
             <h2 className="t-h2 mt-3">Its role in the JSJ model.</h2>
             <p className="t-lead mt-5">{s.coreRole}</p>
-            <p className="t-num mt-6">Layer · {s.layer}</p>
+            <div className="mt-10">
+              <LayerMap layer={s.layer} />
+            </div>
           </Reveal>
           <div className="lg:col-span-6 lg:col-start-7">
-            <p className="text-[0.9375rem] font-semibold">Related solutions</p>
+            <p className="text-[1.0625rem] font-semibold">Related solutions</p>
             <ul className="mt-4">
               {s.related.map((slug: SolutionSlug) => (
                 <li key={slug}>
@@ -151,11 +158,19 @@ export default async function SolutionPage({ params }: Props) {
                     href={`/solutions/${slug}`}
                     className="group flex items-center justify-between gap-6 border-t border-line py-5 last:border-b"
                   >
-                    <span>
-                      <span className="block text-[1.125rem] font-semibold tracking-[-0.01em] group-hover:text-brand-text">
+                    <span className="flex items-center gap-4">
+                      <span className="hidden size-12 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-text sm:grid">
+                        {(() => {
+                          const Icon = SOLUTION_ICONS[slug];
+                          return <Icon aria-hidden className="size-6" />;
+                        })()}
+                      </span>
+                      <span>
+                      <span className="block text-[1.3125rem] font-semibold tracking-[-0.01em] group-hover:text-brand-text">
                         {SOLUTIONS_DATA[slug].title}
                       </span>
                       <span className="t-small mt-1 block">{SOLUTIONS_DATA[slug].summary}</span>
+                      </span>
                     </span>
                     <ArrowUpRight aria-hidden className="size-5 shrink-0 text-ink-3 group-hover:text-brand-text" />
                   </Link>

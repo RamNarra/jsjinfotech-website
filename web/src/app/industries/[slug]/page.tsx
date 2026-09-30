@@ -8,6 +8,7 @@ import { PROJECT_DELIVERY_STAGES, SOLUTIONS_DATA } from '@/shared';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ClosingCta } from '@/components/ui/ClosingCta';
 import { Reveal } from '@/components/ui/Reveal';
+import { SolutionDiagram } from '@/components/solutions/SolutionDiagram';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -28,16 +29,22 @@ export default async function IndustryPage({ params }: Props) {
 
   return (
     <>
-      <section className="container-x pb-20 pt-8 lg:pb-28">
-        <Breadcrumbs trail={[{ name: 'Industries', href: '/industries' }, { name: i.title }]} />
-        <div className="mt-14 max-w-4xl">
-          <p className="t-eyebrow rise">{i.eyebrow}</p>
-          <h1 className="t-h1 mt-4">
-            {i.headline}
-          </h1>
-          <p className="t-lead mt-7 max-w-2xl">
-            {i.lead}
-          </p>
+      <section className="relative">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(55%_60%_at_85%_0%,rgb(0_112_242/0.1),transparent_70%)]" />
+        <div className="container-x relative pb-20 pt-8 lg:pb-28">
+          <Breadcrumbs trail={[{ name: 'Industries', href: '/industries' }, { name: i.title }]} />
+          <div className="mt-14 grid items-center gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="t-eyebrow rise">{i.eyebrow}</p>
+              <h1 className="t-h1 mt-4">{i.headline}</h1>
+              <p className="t-lead mt-7 max-w-2xl">{i.lead}</p>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="rise art-panel rounded-[28px] border border-line p-6 shadow-card sm:p-10" style={{ ['--i' as string]: 2 }}>
+                <SolutionDiagram slug={gov ? 'government-technology' : 'sap-erp'} className="mx-auto h-auto w-full max-w-md" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -89,7 +96,7 @@ export default async function IndustryPage({ params }: Props) {
             {PROJECT_DELIVERY_STAGES.map((st) => (
               <li key={st.stepNumber} className="bg-white p-5">
                 <span className="t-num">{st.stepNumber}</span>
-                <p className="mt-2 text-[0.9375rem] font-semibold leading-snug">{st.title}</p>
+                <p className="mt-2 text-[1.0625rem] font-semibold leading-snug">{st.title}</p>
               </li>
             ))}
           </ol>
