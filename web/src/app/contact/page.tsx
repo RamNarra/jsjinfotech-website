@@ -92,13 +92,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-[11px] font-mono uppercase text-slate-400 font-bold block">
-                      Operations Footprint
+                      Registered Office
                     </span>
                     <span className="text-sm font-bold text-[#07112D] block">
-                      Pan-India Service Coverage
+                      {BRAND.address.street}, {BRAND.address.area}
                     </span>
-                    <span className="text-xs text-slate-500 block mt-0.5">
-                      On-site facility engineering & remote cloud deployments
+                    <span className="text-xs text-slate-600 block mt-0.5">
+                      {BRAND.address.city}, {BRAND.address.state}, {BRAND.address.country}
                     </span>
                   </div>
                 </div>

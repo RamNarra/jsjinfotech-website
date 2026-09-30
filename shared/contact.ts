@@ -1,15 +1,15 @@
 import { z } from 'zod';
 
 export const ServiceInterestEnum = z.enum([
+  'digital-it',
   'sap-erp',
   'artificial-intelligence',
   'cybersecurity',
   'software-development',
-  'digital-it',
   'digital-content',
   'drone-technology',
-  'smart-infrastructure',
-  'innovation-rnd',
+  'project-management',
+  'government-technology',
   'other',
 ]);
 

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, Menu, X, ArrowUpRight, ShieldCheck, Cpu, Database, Server, Compass, Building2, Code2, Sparkles, FileText } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowUpRight, ShieldCheck, Cpu, Database, Server, Compass, Building2, Code2, Sparkles, FileText, Milestone, Landmark } from 'lucide-react';
 import { BRAND, SOLUTIONS_LIST, INDUSTRIES_LIST } from '@/shared';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -16,6 +16,8 @@ const iconMap: Record<string, React.ReactNode> = {
   Building2: <Building2 className="w-4 h-4 text-cyan-400" />,
   FileSpreadsheet: <FileText className="w-4 h-4 text-cyan-400" />,
   Sparkles: <Sparkles className="w-4 h-4 text-cyan-400" />,
+  Milestone: <Milestone className="w-4 h-4 text-cyan-400" />,
+  Landmark: <Landmark className="w-4 h-4 text-cyan-400" />,
 };
 
 export function Header() {

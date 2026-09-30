@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Cpu, Database, ShieldCheck, Code2, Compass, Server, Building2, Sparkles, FileText } from 'lucide-react';
+import { ArrowUpRight, Cpu, Database, ShieldCheck, Code2, Compass, Server, Building2, Sparkles, FileText, Milestone, Landmark } from 'lucide-react';
 import { getAllSolutions } from '@/lib/content/adapter';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -13,19 +13,21 @@ const iconMap: Record<string, React.ReactNode> = {
   Building2: <Building2 className="w-5 h-5 text-cyan-400" />,
   FileSpreadsheet: <FileText className="w-5 h-5 text-cyan-400" />,
   Sparkles: <Sparkles className="w-5 h-5 text-cyan-400" />,
+  Milestone: <Milestone className="w-5 h-5 text-cyan-400" />,
+  Landmark: <Landmark className="w-5 h-5 text-cyan-400" />,
 };
 
 // Curated capability tags per vertical
 const tagsMap: Record<string, string[]> = {
-  'sap-erp': ['S/4HANA', 'BTP Extensions', 'BASIS Hardening', 'Clean Core'],
-  'artificial-intelligence': ['Computer Vision', 'Predictive Maintenance', 'Digital Twins', 'Edge Neural'],
-  cybersecurity: ['Zero Trust', 'Cyber-Physical OT', 'DPDP 2025', 'Red Teaming'],
-  'software-development': ['Modular APIs', 'Facility Dashboards', 'React/Next.js', 'Distributed Systems'],
-  'digital-it': ['Turnkey IT', 'AIOps Monitoring', 'Gov Digitisation', 'Hybrid Cloud'],
-  'drone-technology': ['LiDAR Survey', 'Thermal Inspections', 'AI Defect Tagging', 'DGCA Compliant'],
-  'smart-infrastructure': ['HVAC AMC', 'Central Chillers', 'IoT Modbus', 'Energy Reduction'],
+  'digital-it': ['IT Strategy', 'System Integration', 'Process Automation', 'Modernisation'],
+  'sap-erp': ['S/4HANA', 'BTP Extensions', 'Data Migration', 'Application Management'],
+  'artificial-intelligence': ['Intelligent Docs', 'Predictive Analytics', 'Knowledge RAG', 'Business AI'],
+  cybersecurity: ['Zero Trust', 'Continuous Hardening', 'OT Security', 'DPDP 2025'],
+  'software-development': ['Custom Web/Mobile', 'Workflow Automation', 'API Middleware', 'Modern Frontends'],
   'digital-content': ['Technical SOPs', 'Interactive Media', 'Training Portals', 'WCAG 2.2'],
-  'innovation-rnd': ['Sensor Fusion', 'Drone Swarms', 'Smart City Pilots', 'Autonomous Grids'],
+  'drone-technology': ['Land Surveys', 'Progress Monitoring', 'Asset Inspection', 'GIS Integration'],
+  'project-management': ['Scope Management', 'Lifecycle Governance', 'Vendor Coordination', 'Commissioning'],
+  'government-technology': ['Application Modernisation', 'Citizen Portals', 'Infrastructure Telemetry', 'GIS Works'],
 };
 
 export async function CapabilityGrid() {

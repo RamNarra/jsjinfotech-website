@@ -87,6 +87,11 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
       badgeBg: 'bg-slate-900/80 text-cyan-300 border-slate-700',
       textAccent: 'text-cyan-300',
     },
+    Governance: {
+      gradient: 'from-amber-900/30 to-blue-900/20',
+      badgeBg: 'bg-amber-950/80 text-amber-300 border-amber-500/30',
+      textAccent: 'text-amber-400',
+    },
   }[solution.architecturalLayer];
 
   // Breadcrumb Schema
@@ -136,6 +141,13 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
               {solution.tagline}
             </p>
+
+            {solution.regulatoryNotice && (
+              <div className="p-4 rounded-xl bg-cyan-950/70 border border-cyan-400/40 text-xs text-cyan-200 flex items-start gap-2.5">
+                <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                <span><strong>Regulatory Governance:</strong> {solution.regulatoryNotice}</span>
+              </div>
+            )}
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link

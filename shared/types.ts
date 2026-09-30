@@ -6,8 +6,8 @@ export type SolutionSlug =
   | 'software-development'
   | 'digital-content'
   | 'drone-technology'
-  | 'smart-infrastructure'
-  | 'innovation-rnd';
+  | 'project-management'
+  | 'government-technology';
 
 export type IndustrySlug = 'government' | 'enterprise';
 
@@ -34,20 +34,28 @@ export interface RoadmapPhase {
   milestones: string[];
 }
 
+export interface ProjectStage {
+  stepNumber: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
 export interface SolutionPageContent {
   slug: SolutionSlug;
   title: string;
   eyebrow: string;
   tagline: string;
   overview: string;
-  autonomousCoreRole: string; // How this vertical converges into the core
+  autonomousCoreRole: string;
   keyCapabilities: CapabilityItem[];
-  architecturalLayer: 'Physical' | 'Enterprise' | 'Intelligence' | 'Cross-Layer';
+  architecturalLayer: 'Physical' | 'Enterprise' | 'Intelligence' | 'Cross-Layer' | 'Governance';
   useCases: {
     title: string;
     description: string;
     target: 'Government' | 'Enterprise' | 'Both';
   }[];
+  regulatoryNotice?: string;
   techStack: string[];
   faqs: {
     question: string;
@@ -86,7 +94,7 @@ export interface IndustryPageContent {
 
 export interface CompanyStats {
   verticalsCount: number;
-  phasesTo2030: number;
+  deliveryStages: number;
   convergedAiLayers: number;
   autonomyHorizonYear: number;
 }

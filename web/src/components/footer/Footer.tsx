@@ -72,9 +72,9 @@ export function Footer() {
                   {BRAND.executiveEmail}
                 </a>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Pan-India Operations · Government & Enterprise</span>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                <span>{BRAND.address.formatted}</span>
               </div>
             </div>
 

@@ -6,15 +6,15 @@ import { ContactActionResponse, ServiceInterestEnum } from '@/shared';
 import { CheckCircle2, AlertCircle, Send, Loader2, Lock, ShieldCheck } from 'lucide-react';
 
 const INTEREST_OPTIONS = [
-  { value: 'sap-erp', label: 'SAP & ERP Transformation' },
-  { value: 'artificial-intelligence', label: 'AI & Predictive Analytics' },
+  { value: 'digital-it', label: 'Digital & IT Consulting' },
+  { value: 'sap-erp', label: 'SAP Implementation & Management' },
+  { value: 'artificial-intelligence', label: 'AI & Intelligent Solutions' },
   { value: 'cybersecurity', label: 'Cybersecurity & Sovereign Defense' },
-  { value: 'software-development', label: 'Custom Software Engineering' },
-  { value: 'digital-it', label: 'IT Infrastructure & Consulting' },
-  { value: 'drone-technology', label: 'Autonomous Drone Technology' },
-  { value: 'smart-infrastructure', label: 'Smart Infrastructure & HVAC AMC' },
-  { value: 'digital-content', label: 'Digital Content & Technical Media' },
-  { value: 'innovation-rnd', label: 'R&D / New Technology Development' },
+  { value: 'software-development', label: 'Software & Application Development' },
+  { value: 'digital-content', label: 'Digital Content Development' },
+  { value: 'drone-technology', label: 'Drone Technology Projects' },
+  { value: 'project-management', label: 'Project Management & Execution' },
+  { value: 'government-technology', label: 'Government Technology Projects' },
   { value: 'other', label: 'Comprehensive Multi-Vertical Initiative' },
 ];
 
