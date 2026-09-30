@@ -38,12 +38,14 @@ const UNAVAILABLE = 'The contact form is temporarily unavailable. Please email s
 /** Names (never values) of production settings that are missing. */
 export function missingProductionConfig(env: ContactEnv): string[] {
   const need: [string, string | undefined][] = [
-    ['NEXT_PUBLIC_TURNSTILE_SITE_KEY', env.turnstileSiteKey],
-    ['CLOUDFLARE_TURNSTILE_SECRET_KEY', env.turnstileSecret],
     ['RESEND_API_KEY', env.resendKey],
     ['CONTACT_NOTIFICATION_EMAIL', env.notifyTo],
     ['CONTACT_FROM_EMAIL', env.from],
   ];
+  if (env.turnstileSiteKey || env.turnstileSecret) {
+    need.push(['NEXT_PUBLIC_TURNSTILE_SITE_KEY', env.turnstileSiteKey]);
+    need.push(['CLOUDFLARE_TURNSTILE_SECRET_KEY', env.turnstileSecret]);
+  }
   const missing = need.filter(([, v]) => !v?.trim()).map(([k]) => k);
   const dom = senderDomain(env.from);
   if (env.from?.trim() && (!dom || FREE_MAIL.test(dom))) missing.push('CONTACT_FROM_EMAIL (must be an address on a Resend-verified JSJ domain)');
@@ -160,9 +162,11 @@ export async function processContact(
     };
   }
 
-  const secret = env.production ? env.turnstileSecret! : env.turnstileSecret || TURNSTILE_TEST_SECRET;
-  const turnstile = await verifyTurnstile(d.turnstileToken ?? '', env, secret, doFetch);
-  if (!turnstile.ok) return { success: false, delivered: false, message: turnstile.message! };
+  const secret = env.production ? env.turnstileSecret : env.turnstileSecret || TURNSTILE_TEST_SECRET;
+  if (secret) {
+    const turnstile = await verifyTurnstile(d.turnstileToken ?? '', env, secret, doFetch);
+    if (!turnstile.ok) return { success: false, delivered: false, message: turnstile.message! };
+  }
 
   const referenceId = `JSJ-${Date.now().toString(36).toUpperCase()}`;
 
@@ -204,7 +208,8 @@ export async function processContact(
       signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!r.ok) {
-      console.error('[contact] Resend rejected the message:', r.status);
+      const errText = await r.text().catch(() => '');
+      console.error('[contact] Resend rejected the message:', r.status, errText);
       return { success: false, delivered: false, message: 'We could not send your enquiry. Please email support@jsjinfotech.co.in.' };
     }
   } catch (e) {

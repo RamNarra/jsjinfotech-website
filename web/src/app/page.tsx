@@ -1,4 +1,5 @@
 import { Hero } from '@/components/home/Hero';
+import { Ticker } from '@/components/home/Ticker';
 import { Statement } from '@/components/home/Statement';
 import { Convergence } from '@/components/home/Convergence';
 import { SolutionsShowcase } from '@/components/home/SolutionsShowcase';
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      {/* <Ticker /> */}
       <Statement />
       <Convergence />
       <SolutionsShowcase />

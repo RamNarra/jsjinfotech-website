@@ -39,11 +39,16 @@ const okFetch = (siteverify: object = { success: true, hostname: 'www.jsjinfotec
 describe('contact: production safety', () => {
   it('lists missing settings by name only', () => {
     expect(missingProductionConfig({ production: true, resendKey: 'x' })).toEqual([
-      'NEXT_PUBLIC_TURNSTILE_SITE_KEY',
-      'CLOUDFLARE_TURNSTILE_SECRET_KEY',
       'CONTACT_NOTIFICATION_EMAIL',
       'CONTACT_FROM_EMAIL',
     ]);
+    expect(
+      missingProductionConfig({
+        production: true,
+        resendKey: 'x',
+        turnstileSiteKey: 'k',
+      }),
+    ).toEqual(['CONTACT_NOTIFICATION_EMAIL', 'CONTACT_FROM_EMAIL', 'CLOUDFLARE_TURNSTILE_SECRET_KEY']);
   });
 
   it('never succeeds and never calls out when production config is incomplete', async () => {

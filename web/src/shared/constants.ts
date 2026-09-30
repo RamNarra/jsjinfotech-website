@@ -226,3 +226,34 @@ export const ROADMAP_PHASES: readonly RoadmapPhase[] = [
     ],
   },
 ];
+
+/**
+ * Ticker content: technologies and disciplines named in JSJ.docx and the corporate profile.
+ * `logo` is intentionally unset. Add a path under /public (e.g. '/partners/sap.svg') ONLY for a company that
+ * management has confirmed as a partner AND whose brand-usage terms permit it; items with a logo render the
+ * image instead of text. Do not add logos for technologies that are merely in scope.
+ */
+export interface TickerItem {
+  label: string;
+  logo?: string;
+}
+
+export const TICKER_ITEMS: readonly TickerItem[] = [
+  { label: 'SAP' },
+  { label: 'ERP' },
+  { label: 'Artificial Intelligence' },
+  { label: 'Predictive Analytics' },
+  { label: 'Computer Vision' },
+  { label: 'Digital Twins' },
+  { label: 'Cloud' },
+  { label: 'Cybersecurity' },
+  { label: 'Software Development' },
+  { label: 'APIs & Integration' },
+  { label: 'Workflow Automation' },
+  { label: 'Drone Technology' },
+  { label: 'GIS' },
+  { label: 'IoT' },
+  { label: 'HVAC' },
+  { label: 'Project Management' },
+  { label: 'Government Technology' },
+];

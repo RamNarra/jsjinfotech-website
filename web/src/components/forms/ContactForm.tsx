@@ -163,13 +163,9 @@ export function ContactForm({ defaultInterest = '' }: { defaultInterest?: string
             </>
           ) : null}
         </div>
-      ) : (
-        <p role="alert" className="text-[1rem] text-danger">
-          The contact form is temporarily unavailable. Please email support@jsjinfotech.co.in or call +91 89430 32965.
-        </p>
-      )}
+      ) : null}
 
-      <Button type="submit" disabled={pending || !SITE_KEY} className="w-full sm:w-auto sm:justify-self-start">
+      <Button type="submit" disabled={pending} className="w-full sm:w-auto sm:justify-self-start">
         {pending ? (
           <>
             <Loader2 aria-hidden className="size-4 animate-spin" /> Sending…
