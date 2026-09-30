@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#07112D',
+  themeColor: '#0070F2',
   width: 'device-width',
   initialScale: 1,
 };
@@ -82,6 +82,9 @@ export default function RootLayout({
     sameAs: [BRAND.linkedinUrl],
     address: {
       '@type': 'PostalAddress',
+      streetAddress: BRAND.address.street,
+      addressLocality: BRAND.address.city,
+      addressRegion: BRAND.address.state,
       addressCountry: 'IN',
     },
     knowsAbout: [
@@ -113,7 +116,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#F5F7FB] text-[#101A33] selection:bg-cyan-400 selection:text-[#07112D]">
+      <body className="min-h-screen flex flex-col bg-white text-[#12171C] selection:bg-[#D1EFFF] selection:text-[#0057D2]">
         <Header />
         <main className="flex-1 pt-[65px]">{children}</main>
         <Footer />

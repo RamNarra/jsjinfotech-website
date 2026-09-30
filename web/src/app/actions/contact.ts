@@ -103,7 +103,7 @@ export async function submitContactForm(
             <p><strong>Phone:</strong> ${validData.phone}</p>
             <p><strong>Service Interest:</strong> ${validData.interest}</p>
             <p><strong>Message:</strong></p>
-            <blockquote style="background:#f4f4f4;padding:12px;border-left:4px solid #16C7E8;">
+            <blockquote style="background:#f4f4f4;padding:12px;border-left:4px solid #0070F2;">
               ${validData.message.replace(/\n/g, '<br/>')}
             </blockquote>
             <p style="font-size:12px;color:#888;">Consent provided under DPDP Rules 2025 guidelines.</p>

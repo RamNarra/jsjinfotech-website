@@ -1,11 +1,9 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { IntelligenceStack } from '@/components/sections/IntelligenceStack';
 import { AutonomousCore } from '@/components/hero/AutonomousCore';
 import { ConvergenceModel } from '@/components/convergence/ConvergenceModel';
-import { BRAND } from '@/shared';
-import { Cpu, ShieldCheck, ArrowRight, Network } from 'lucide-react';
+import { Cpu } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Technology Architecture & Autonomous Core | JSJ INFOTECH',
@@ -18,16 +16,16 @@ export default function TechnologyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-20 bg-[#07112D] text-white bg-dark-grid border-b border-white/10">
+      <section className="py-16 lg:py-20 bg-white text-[#12171C] bg-enterprise-grid border-b border-[#DDE3EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold block">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#0070F2] font-semibold block">
               System Engineering Architecture
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#12171C]">
               The Technology Fabric of Autonomy.
             </h1>
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+            <p className="text-[#475E75] text-base sm:text-lg leading-relaxed">
               How JSJ engineers bridge real-world physical telemetry from chillers and drones directly into SAP business logic and neural models.
             </p>
           </div>
@@ -35,21 +33,21 @@ export default function TechnologyPage() {
       </section>
 
       {/* Autonomous Core Architecture Interactive */}
-      <section className="py-20 bg-[#0B1E42] text-white border-b border-white/10">
+      <section className="py-20 bg-[#F7F9FC] text-[#12171C] border-b border-[#DDE3EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-mono uppercase text-cyan-400 tracking-wider font-bold block">
+              <span className="text-xs font-mono uppercase text-[#0070F2] tracking-wider font-semibold block">
                 The Central Engine
               </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#12171C]">
                 The JSJ Autonomous Core.
               </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              <p className="text-[#475E75] text-sm sm:text-base leading-relaxed">
                 Rather than managing disjointed vendor contracts for IT, facility AMC, drone inspections, and software builds, JSJ converges all data streams into a unified self-optimizing system.
               </p>
-              <div className="p-4 rounded-2xl bg-[#07112D] border border-cyan-500/20 text-xs text-slate-300 space-y-2">
-                <div className="flex items-center gap-2 text-cyan-300 font-semibold font-mono">
+              <div className="p-5 rounded-2xl bg-white border border-[#DDE3EA] shadow-sm text-xs text-[#475E75] space-y-2">
+                <div className="flex items-center gap-2 text-[#0070F2] font-semibold font-mono">
                   <Cpu className="w-4 h-4" /> Real-Time Telemetric Bus
                 </div>
                 <p>

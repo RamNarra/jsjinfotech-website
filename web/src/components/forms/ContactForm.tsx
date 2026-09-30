@@ -2,8 +2,8 @@
 
 import React, { useState, useTransition } from 'react';
 import { submitContactForm } from '@/app/actions/contact';
-import { ContactActionResponse, ServiceInterestEnum } from '@/shared';
-import { CheckCircle2, AlertCircle, Send, Loader2, Lock, ShieldCheck } from 'lucide-react';
+import { ContactActionResponse } from '@/shared';
+import { CheckCircle2, AlertCircle, Send, Loader2 } from 'lucide-react';
 
 const INTEREST_OPTIONS = [
   { value: 'digital-it', label: 'Digital & IT Consulting' },
@@ -36,31 +36,31 @@ export function ContactForm() {
   };
 
   return (
-    <div className="bg-white rounded-3xl p-8 sm:p-10 border border-[#DDE4EF] shadow-2xl shadow-slate-900/5">
+    <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#DDE3EA] shadow-sm">
       {response?.success ? (
-        <div className="p-8 rounded-2xl bg-cyan-50 border border-cyan-200 text-center animate-in fade-in zoom-in-95">
-          <div className="w-14 h-14 rounded-full bg-cyan-500/10 text-cyan-600 flex items-center justify-center mx-auto mb-4">
-            <CheckCircle2 className="w-8 h-8" />
+        <div className="p-8 rounded-xl bg-[#EBF8FF] border border-[#D1EFFF] text-center animate-in fade-in zoom-in-95">
+          <div className="w-12 h-12 rounded-full bg-[#D1EFFF] text-[#0070F2] flex items-center justify-center mx-auto mb-4">
+            <CheckCircle2 className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold text-[#07112D]">Inquiry Received Successfully</h3>
-          <p className="mt-2 text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
+          <h3 className="text-xl font-bold text-[#12171C]">Inquiry Received Successfully</h3>
+          <p className="mt-2 text-sm text-[#475E75] leading-relaxed max-w-md mx-auto">
             {response.message}
           </p>
-          <div className="mt-6 pt-4 border-t border-cyan-100 flex items-center justify-center gap-2">
-            <span className="text-xs font-mono text-slate-500">Tracking Reference:</span>
-            <span className="text-xs font-mono font-bold text-cyan-800 bg-cyan-100/70 px-2.5 py-1 rounded">
+          <div className="mt-6 pt-4 border-t border-[#D1EFFF] flex items-center justify-center gap-2">
+            <span className="text-xs font-mono text-[#5B738B]">Tracking Reference:</span>
+            <span className="text-xs font-mono font-bold text-[#0070F2] bg-white px-2.5 py-1 rounded border border-[#D1EFFF]">
               {response.referenceId}
             </span>
           </div>
           <button
             onClick={() => setResponse(null)}
-            className="mt-6 inline-flex text-xs font-semibold text-cyan-700 hover:text-cyan-900 underline"
+            className="mt-6 inline-flex text-xs font-semibold text-[#0070F2] hover:text-[#0057D2] underline"
           >
             Send another inquiry
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {response && !response.success && (
             <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-red-800 text-xs">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
@@ -70,11 +70,11 @@ export function ContactForm() {
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Full Name */}
             <div>
-              <label htmlFor="fullName" className="block text-xs font-semibold text-[#101A33] mb-1.5">
-                Full Name <span className="text-cyan-600">*</span>
+              <label htmlFor="fullName" className="block text-xs font-semibold text-[#12171C] mb-1.5">
+                Full Name <span className="text-[#0070F2]">*</span>
               </label>
               <input
                 id="fullName"
@@ -82,7 +82,7 @@ export function ContactForm() {
                 type="text"
                 required
                 placeholder="e.g. Subhash Sharma"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDE4EF] bg-slate-50/50 text-sm text-[#101A33] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bg-white transition-all"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
               />
               {response?.fieldErrors?.fullName && (
                 <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.fullName[0]}</p>
@@ -91,16 +91,16 @@ export function ContactForm() {
 
             {/* Work Email */}
             <div>
-              <label htmlFor="workEmail" className="block text-xs font-semibold text-[#101A33] mb-1.5">
-                Work Email <span className="text-cyan-600">*</span>
+              <label htmlFor="workEmail" className="block text-xs font-semibold text-[#12171C] mb-1.5">
+                Work Email <span className="text-[#0070F2]">*</span>
               </label>
               <input
                 id="workEmail"
                 name="workEmail"
                 type="email"
                 required
-                placeholder="name@organization.gov.in"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDE4EF] bg-slate-50/50 text-sm text-[#101A33] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bg-white transition-all"
+                placeholder="name@organization.com"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
               />
               {response?.fieldErrors?.workEmail && (
                 <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.workEmail[0]}</p>
@@ -108,11 +108,11 @@ export function ContactForm() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block text-xs font-semibold text-[#101A33] mb-1.5">
-                Phone Number <span className="text-cyan-600">*</span>
+              <label htmlFor="phone" className="block text-xs font-semibold text-[#12171C] mb-1.5">
+                Phone Number <span className="text-[#0070F2]">*</span>
               </label>
               <input
                 id="phone"
@@ -120,7 +120,7 @@ export function ContactForm() {
                 type="tel"
                 required
                 placeholder="+91 98765 43210"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDE4EF] bg-slate-50/50 text-sm text-[#101A33] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bg-white transition-all"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
               />
               {response?.fieldErrors?.phone && (
                 <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.phone[0]}</p>
@@ -129,8 +129,8 @@ export function ContactForm() {
 
             {/* Company / Department */}
             <div>
-              <label htmlFor="company" className="block text-xs font-semibold text-[#101A33] mb-1.5">
-                Company / Department <span className="text-cyan-600">*</span>
+              <label htmlFor="company" className="block text-xs font-semibold text-[#12171C] mb-1.5">
+                Company / Department <span className="text-[#0070F2]">*</span>
               </label>
               <input
                 id="company"
@@ -138,7 +138,7 @@ export function ContactForm() {
                 type="text"
                 required
                 placeholder="Ministry / Enterprise Name"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDE4EF] bg-slate-50/50 text-sm text-[#101A33] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bg-white transition-all"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
               />
               {response?.fieldErrors?.company && (
                 <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.company[0]}</p>
@@ -148,15 +148,15 @@ export function ContactForm() {
 
           {/* Service Interest */}
           <div>
-            <label htmlFor="interest" className="block text-xs font-semibold text-[#101A33] mb-1.5">
-              Primary Area of Interest <span className="text-cyan-600">*</span>
+            <label htmlFor="interest" className="block text-xs font-semibold text-[#12171C] mb-1.5">
+              Primary Area of Interest <span className="text-[#0070F2]">*</span>
             </label>
             <select
               id="interest"
               name="interest"
               required
               defaultValue="sap-erp"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDE4EF] bg-slate-50/50 text-sm text-[#101A33] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bg-white transition-all"
+              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
             >
               {INTEREST_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -168,8 +168,8 @@ export function ContactForm() {
 
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-xs font-semibold text-[#101A33] mb-1.5">
-              Project Context / Objectives <span className="text-cyan-600">*</span>
+            <label htmlFor="message" className="block text-xs font-semibold text-[#12171C] mb-1.5">
+              Project Context / Objectives <span className="text-[#0070F2]">*</span>
             </label>
             <textarea
               id="message"
@@ -177,7 +177,7 @@ export function ContactForm() {
               required
               rows={4}
               placeholder="Describe your operational requirements, timeline, or current infrastructure challenge..."
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDE4EF] bg-slate-50/50 text-sm text-[#101A33] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bg-white transition-all"
+              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
             />
             {response?.fieldErrors?.message && (
               <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.message[0]}</p>
@@ -185,16 +185,16 @@ export function ContactForm() {
           </div>
 
           {/* DPDP 2025 Explicit Statutory Consent Notice */}
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <div className="p-4 rounded-xl bg-[#F7F9FC] border border-[#DDE3EA]">
             <label className="flex items-start gap-3 cursor-pointer">
               <input
                 type="checkbox"
                 name="dpdpConsent"
                 value="true"
                 required
-                className="mt-1 h-4 w-4 rounded border-slate-300 text-cyan-600 focus:ring-cyan-500"
+                className="mt-1 h-4 w-4 rounded border-[#DDE3EA] text-[#0070F2] focus:ring-[#0070F2]"
               />
-              <span className="text-[11px] text-slate-600 leading-relaxed">
+              <span className="text-[11px] text-[#475E75] leading-relaxed">
                 I acknowledge that submitted business information will be processed by JSJ INFOTECH solely for responding to this commercial engagement inquiry in accordance with the <strong>Digital Personal Data Protection (DPDP) Rules 2025</strong>. We do not sell or transfer personal data to third parties.
               </span>
             </label>
@@ -210,7 +210,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full py-3.5 px-6 rounded-xl text-xs font-bold uppercase tracking-widest text-[#07112D] bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-white shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 disabled:opacity-50"
+            className="w-full py-3 px-6 rounded-lg text-xs font-semibold uppercase tracking-wider text-white bg-[#0070F2] hover:bg-[#0057D2] shadow-sm transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0070F2] disabled:opacity-50"
           >
             {isPending ? (
               <>

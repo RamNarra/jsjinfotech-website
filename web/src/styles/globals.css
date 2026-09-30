@@ -8,7 +8,7 @@
   }
 
   body {
-    background-color: var(--color-bg-light);
+    background-color: var(--color-bg-base);
     color: var(--color-text-primary);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -17,36 +17,39 @@
   }
 
   ::selection {
-    background-color: var(--color-brand);
-    color: var(--primitive-navy-deep);
+    background-color: var(--primitive-light-blue);
+    color: var(--primitive-primary-blue);
   }
 }
 
-/* Custom Utilities for Futuristic Corporate Aesthetics */
-.bg-dark-grid {
+/* Enterprise Utilities - SAP Blue 7 Foundation */
+.bg-enterprise-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 112, 242, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 112, 242, 0.04) 1px, transparent 1px);
 }
 
-.bg-radial-glow {
-  background: radial-gradient(circle at 50% 40%, rgba(22, 199, 232, 0.15) 0%, rgba(118, 87, 246, 0.08) 45%, transparent 70%);
+.bg-enterprise-subtle {
+  background-color: var(--primitive-bg-soft);
 }
 
-.glass-dark {
-  background: rgba(11, 30, 66, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--primitive-border-dark);
+.card-enterprise {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.glass-card-hover {
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+.card-enterprise:hover {
+  border-color: rgba(0, 112, 242, 0.35);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
 }
 
-.glass-card-hover:hover {
-  transform: translateY(-3px);
-  border-color: rgba(22, 199, 232, 0.45);
-  box-shadow: 0 16px 36px -8px rgba(7, 17, 45, 0.15);
+.badge-blue {
+  background-color: var(--primitive-very-light-blue);
+  color: var(--primitive-primary-blue);
+  border: 1px solid rgba(0, 112, 242, 0.18);
 }
