@@ -40,14 +40,16 @@ export const ContactFormSchema = z.object({
   message: z
     .string()
     .trim()
-    .min(15, { message: 'Message must be at least 15 characters describing your initiative.' })
+    .min(15, { message: 'Please add a few words about what you need (15 characters minimum).' })
     .max(2500, { message: 'Message cannot exceed 2500 characters.' }),
   dpdpConsent: z
     .boolean()
     .refine((val: boolean) => val === true, {
-      message: 'You must acknowledge the processing of submitted business information under DPDP guidelines.',
+      message: 'Please tick the box to confirm we may use these details to respond.',
     }),
   turnstileToken: z.string().optional(),
+  /** Honeypot; must stay empty. */
+  website: z.string().max(0).optional(),
 });
 
 export type ContactFormData = z.infer<typeof ContactFormSchema>;
@@ -57,4 +59,6 @@ export interface ContactActionResponse {
   message: string;
   fieldErrors?: Partial<Record<keyof ContactFormData, string[]>>;
   referenceId?: string;
+  /** True only when an email was actually dispatched. */
+  delivered?: boolean;
 }

@@ -23,23 +23,26 @@ jsj-infotech/
 │   │   │   ├── sitemap.ts           # Dynamic XML sitemap
 │   │   │   └── robots.ts            # Robots.txt directives
 │   │   ├── components/  # Modular UI & SVG Autonomous Core
-│   │   ├── lib/content/ # Content adapter (Local mock <-> Sanity ready)
-│   │   ├── shared/      # Shared TypeScript models, contracts, and datasets
+│   │   ├── lib/content/ # Content adapter (local typed content <-> Sanity ready)
 │   │   └── styles/      # tokens.css (Centralized design tokens) & globals.css
 │   └── package.json
 ├── sanity/              # Decoupled Sanity Studio & Schemas
 │   ├── schemas/         # Solution, industry, siteSettings, roadmap, insight
 │   └── sanity.config.ts # Studio configuration
-└── shared/              # Framework-agnostic TypeScript contracts
+
 ```
 
 ---
 
+**Single content contract:** `web/src/shared/` is the only source of truth (types + content). Vercel deploys `web/` alone, so it must live there. The Sanity schemas in `sanity/schemas/` mirror those types field-for-field, and `web/src/__tests__/schema-parity.test.ts` fails if they drift. There is no second copy.
+
 ## 2. Key Capabilities & Design Invariants
 
-- **The Autonomous Core**: High-performance SVG composition with orbital geometry, pulsing luminous core, keyboard-focusable interactive nodes, and `prefers-reduced-motion` compliance.
+- **The Autonomous Core**: A light, precise SVG diagram of three concentric layers converging on the JSJ mark. Strokes draw once, hover or keyboard focus on a layer chip traces the path to the core, and the diagram is labelled by an HTML legend. Honors `prefers-reduced-motion`.
+- **Design system**: White-first, `#0070F2` reserved for action and diagram emphasis. All tokens live in `web/src/styles/tokens.css` (Tailwind v4 `@theme`); Geist Sans/Mono via `next/font`. Small blue text uses `--color-brand-text` for WCAG AA contrast.
+- **Content integrity**: All copy in `web/src/shared/` traces to `JSJ.docx` and the corporate profile PDF, keeping their "can / seek / intend" certainty. No invented clients, partners, statistics or articles. Partner logos appear only once verified assets exist.
 - **3-Layer Convergence Model**: Translates physical IoT telemetry (HVAC/drones) into enterprise business logic (SAP S/4HANA) and cognitive neural prediction (AI).
-- **2030 Roadmap**: Interactive 4-phase progression (Foundation → Integration → Intelligence → Autonomy).
+- **2030 Roadmap**: 4 phases (Foundation → Integration → Intelligence → Autonomy) built from the per-vertical table in the corporate profile.
 - **DPDP Rules 2025 Compliance**: Transparent statutory consent notice and server-side encrypted handling of corporate inquiries.
 - **Production Security**: Strict HSTS (`max-age=63072000`), X-Frame-Options (`SAMEORIGIN`), X-Content-Type-Options (`nosniff`), Referrer-Policy, and Permissions-Policy.
 
@@ -50,16 +53,15 @@ jsj-infotech/
 Copy `.env.example` to `.env.local` inside `web/`:
 
 ```bash
-# Cloudflare Turnstile (Security Verification)
-CLOUDFLARE_TURNSTILE_SITE_KEY=1x00000000000000000000AA
-CLOUDFLARE_TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+# Cloudflare Turnstile. Unset in development = Cloudflare's always-pass test keys. REQUIRED in production.
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+CLOUDFLARE_TURNSTILE_SECRET_KEY=
 
-# Resend Email Service (Inquiry Dispatch)
-# When unset in local development, inquiries are recorded cleanly in the server dev logger.
+# Resend. Unset in development = submissions are validated and logged, NOT emailed.
+# REQUIRED in production: without it the form reports failure instead of pretending to send.
 RESEND_API_KEY=
-
-# Contact Dispatch Recipient
 CONTACT_NOTIFICATION_EMAIL=support@jsjinfotech.co.in
+CONTACT_FROM_EMAIL=JSJ Website <inquiries@jsjinfotech.co.in>
 ```
 
 ---

@@ -1,33 +1,17 @@
+/**
+ * Mirrors InsightItem in web/src/shared/types.ts. Publish only real articles; `author` is optional and
+ * must be a real, named person.
+ */
 export default {
   name: 'insight',
-  title: 'Insight & Technical Article',
+  title: 'Insight',
   type: 'document',
   fields: [
-    { name: 'title', title: 'Article Title', type: 'string', validation: (Rule: any) => Rule.required() },
-    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title', maxLength: 96 } },
-    {
-      name: 'category',
-      title: 'Category',
-      type: 'string',
-      options: {
-        list: [
-          'AI & Automation',
-          'SAP & ERP Transformation',
-          'Cybersecurity & Sovereign Defense',
-          'Autonomous Drone Technology',
-          'Smart Infrastructure & HVAC',
-          'GovTech Innovation',
-        ],
-      },
-    },
+    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' }, validation: (R: any) => R.required() },
+    { name: 'title', title: 'Title', type: 'string', validation: (R: any) => R.required() },
     { name: 'excerpt', title: 'Excerpt', type: 'text', rows: 3 },
-    { name: 'publishedAt', title: 'Published At', type: 'datetime' },
-    { name: 'readingTime', title: 'Reading Time (e.g. 5 min)', type: 'string' },
-    {
-      name: 'body',
-      title: 'Article Body',
-      type: 'array',
-      of: [{ type: 'block' }],
-    },
+    { name: 'publishedAt', title: 'Published at', type: 'datetime', validation: (R: any) => R.required() },
+    { name: 'author', title: 'Author (optional, real person only)', type: 'string' },
+    { name: 'body', title: 'Body', type: 'array', of: [{ type: 'block' }] },
   ],
 };

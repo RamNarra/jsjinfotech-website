@@ -1,84 +1,41 @@
+/** Mirrors IndustryPageContent in web/src/shared/types.ts. */
+export const INDUSTRY_SLUGS = ['government', 'enterprise'] as const;
+
 export default {
   name: 'industry',
-  title: 'Industry Sector',
+  title: 'Industry',
   type: 'document',
   fields: [
+    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' }, validation: (R: any) => R.required() },
+    { name: 'title', title: 'Title', type: 'string', validation: (R: any) => R.required() },
+    { name: 'eyebrow', title: 'Eyebrow', type: 'string' },
+    { name: 'headline', title: 'Headline (H1)', type: 'string' },
+    { name: 'lead', title: 'Lead paragraph', type: 'text', rows: 4 },
+    { name: 'summary', title: 'Summary', type: 'text', rows: 2 },
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
-      name: 'eyebrow',
-      title: 'Eyebrow',
-      type: 'string',
-    },
-    {
-      name: 'tagline',
-      title: 'Tagline',
-      type: 'string',
-    },
-    {
-      name: 'summary',
-      title: 'Executive Summary',
-      type: 'text',
-      rows: 4,
-    },
-    {
-      name: 'mandates',
-      title: 'Strategic Mandates & Requirements',
-      type: 'array',
-      of: [{ type: 'string' }],
-    },
-    {
-      name: 'solutionOfferings',
-      title: 'Tailored Solution Offerings',
+      name: 'focusAreas',
+      title: 'Focus areas',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
-            { name: 'title', title: 'Offering Title', type: 'string' },
-            { name: 'description', title: 'Description', type: 'text', rows: 2 },
-            { name: 'verticalLink', title: 'Internal Solution Link', type: 'string' },
+            { name: 'title', title: 'Title', type: 'string' },
+            { name: 'detail', title: 'Detail', type: 'text', rows: 2 },
+            { name: 'solution', title: 'Solution slug', type: 'string' },
           ],
         },
       ],
     },
-    {
-      name: 'casePoints',
-      title: 'Operational Challenges & Solutions',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'challenge', title: 'Challenge', type: 'text', rows: 2 },
-            { name: 'convergenceSolution', title: 'JSJ Convergence Solution', type: 'text', rows: 2 },
-            { name: 'futureHorizon', title: 'Autonomous Horizon', type: 'string' },
-          ],
-        },
-      ],
-    },
+    { name: 'approach', title: 'How we work', type: 'array', of: [{ type: 'string' }] },
+    { name: 'closing', title: 'Closing statement', type: 'text', rows: 2 },
     {
       name: 'seo',
-      title: 'SEO Metadata',
+      title: 'SEO',
       type: 'object',
       fields: [
-        { name: 'metaTitle', title: 'Meta Title', type: 'string' },
-        { name: 'metaDescription', title: 'Meta Description', type: 'text', rows: 2 },
-        { name: 'keywords', title: 'Keywords', type: 'array', of: [{ type: 'string' }] },
+        { name: 'title', title: 'Title', type: 'string' },
+        { name: 'description', title: 'Description', type: 'text', rows: 2 },
       ],
     },
   ],

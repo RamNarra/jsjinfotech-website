@@ -1,124 +1,89 @@
 import type { Metadata, Viewport } from 'next';
-import { Header } from '@/components/navigation/Header';
-import { Footer } from '@/components/footer/Footer';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { BRAND } from '@/shared';
 import '@/styles/globals.css';
 
+const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', display: 'swap' });
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap' });
+
+const siteTitle = `${BRAND.name} — Technology & project execution, Hyderabad`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(BRAND.canonicalUrl),
-  title: {
-    default: `${BRAND.name} | ${BRAND.tagline} — Next-Gen IT, SAP, AI & Infrastructure`,
-    template: `%s | ${BRAND.name}`,
-  },
+  title: { default: siteTitle, template: `%s | ${BRAND.name}` },
   description: BRAND.description,
-  keywords: [
-    'JSJ INFOTECH',
-    'Autonomous by Design',
-    'SAP S/4HANA India',
-    'Enterprise AI',
-    'Autonomous Drone Technology',
-    'Smart Infrastructure HVAC AMC',
-    'Government IT Digitisation',
-    'Cybersecurity Sovereign India',
-  ],
+  applicationName: BRAND.name,
   authors: [{ name: BRAND.name }],
   creator: BRAND.name,
   publisher: BRAND.name,
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  alternates: {
-    canonical: '/',
-  },
+  formatDetection: { email: false, address: false, telephone: false },
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: BRAND.canonicalUrl,
     siteName: BRAND.name,
-    title: `${BRAND.name} | ${BRAND.tagline}`,
+    title: siteTitle,
     description: BRAND.description,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: `${BRAND.name} | ${BRAND.tagline}`,
-    description: BRAND.description,
-  },
+  twitter: { card: 'summary_large_image', title: siteTitle, description: BRAND.description },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0070F2',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const jsonLdOrg = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: BRAND.name,
-    legalName: BRAND.legalName,
-    url: BRAND.canonicalUrl,
-    logo: `${BRAND.canonicalUrl}/logo.png`,
-    description: BRAND.description,
-    telephone: BRAND.phone,
-    email: BRAND.supportEmail,
-    sameAs: [BRAND.linkedinUrl],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: BRAND.address.street,
-      addressLocality: BRAND.address.city,
-      addressRegion: BRAND.address.state,
-      addressCountry: 'IN',
-    },
-    knowsAbout: [
-      'SAP S/4HANA Implementation',
-      'Artificial Intelligence & Computer Vision',
-      'Autonomous Drone Surveying',
-      'HVAC Facility Maintenance AMC',
-      'Zero-Trust Cybersecurity',
-    ],
-  };
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: BRAND.name,
+  url: BRAND.canonicalUrl,
+  description: BRAND.description,
+  telephone: BRAND.phone,
+  email: BRAND.supportEmail,
+  sameAs: [BRAND.linkedinUrl],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: `${BRAND.address.street}, ${BRAND.address.area}`,
+    addressLocality: BRAND.address.city,
+    addressRegion: BRAND.address.state,
+    addressCountry: 'IN',
+  },
+};
 
-  const jsonLdWebsite = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: BRAND.name,
-    alternateName: 'JSJ Infotech',
-    url: BRAND.canonicalUrl,
-  };
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: BRAND.name,
+  url: BRAND.canonicalUrl,
+};
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
-        />
-      </head>
-      <body className="min-h-screen flex flex-col bg-white text-[#12171C] selection:bg-[#D1EFFF] selection:text-[#0057D2]">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="flex min-h-screen flex-col">
+        <JsonLd data={organization} />
+        <JsonLd data={website} />
+        <a
+          href="#main"
+          className="sr-only rounded-md bg-ink px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]"
+        >
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1 pt-[65px]">{children}</main>
+        <main id="main" className="flex-1 pt-[var(--header-h)]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

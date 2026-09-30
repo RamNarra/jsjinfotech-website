@@ -1,13 +1,13 @@
 import { MetadataRoute } from 'next';
-import { getAllSolutionSlugs, getAllIndustrySlugs } from '@/lib/content/adapter';
+import { getAllSolutions, getAllIndustries } from '@/lib/content/adapter';
 import { BRAND } from '@/shared';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = BRAND.canonicalUrl;
   const lastModified = new Date();
 
-  const solutionSlugs = await getAllSolutionSlugs();
-  const industrySlugs = await getAllIndustrySlugs();
+  const solutionSlugs = (await getAllSolutions()).map((s) => s.slug);
+  const industrySlugs = (await getAllIndustries()).map((i) => i.slug);
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -16,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 1.0,
     },
+    { url: `${baseUrl}/solutions`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/industries`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     {
       url: `${baseUrl}/technology`,
       lastModified,

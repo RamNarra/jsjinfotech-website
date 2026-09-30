@@ -1,61 +1,56 @@
-:root {
-  /* Primitive Brand Palette - Enterprise SAP Blue 7 Foundation */
-  --primitive-primary-blue: #0070F2;
-  --primitive-dark-blue: #0057D2;
-  --primitive-deep-blue: #0040B0;
-  --primitive-very-light-blue: #EBF8FF;
-  --primitive-light-blue: #D1EFFF;
-  --primitive-blue-surface: rgba(0, 112, 242, 0.06);
-  --primitive-blue-surface-strong: rgba(0, 112, 242, 0.10);
+/*
+ * JSJ design tokens. Every colour, radius, shadow, font and easing used by the site is defined here.
+ * White is the canvas (~85% of any page); #0070F2 is reserved for action, selection and diagram emphasis.
+ */
+@theme {
+  /* Brand */
+  --color-brand: #0070f2;
+  --color-brand-hover: #0057d2;
+  --color-brand-deep: #0040b0;
+  /* Small blue text: #0070F2 is 4.3:1 on soft surfaces (fails AA); this is 5.1:1 on #F7F9FC. Fills and strokes keep #0070F2. */
+  --color-brand-text: #0062da;
+  --color-brand-50: #ebf8ff;
+  --color-brand-100: #d1efff;
+  --color-brand-wash: rgb(0 112 242 / 0.06);
+  --color-brand-tint: rgb(0 112 242 / 0.1);
 
-  --primitive-bg-white: #FFFFFF;
-  --primitive-bg-soft: #F7F9FC;
-  --primitive-surface-muted: #F5F6F7;
-  --primitive-border: #DDE3EA;
-  --primitive-border-subtle: #E8EDF2;
+  /* Surfaces */
+  --color-canvas: #ffffff;
+  --color-soft: #f7f9fc;
+  --color-surface: #f5f6f7;
+  --color-line: #dde3ea;
+  --color-line-soft: #e8edf2;
 
-  --primitive-text-primary: #12171C;
-  --primitive-text-secondary: #475E75;
-  --primitive-text-muted: #5B738B;
+  /* Text */
+  --color-ink: #12171c;
+  --color-ink-2: #475e75;
+  --color-ink-3: #5b738b;
 
-  /* Semantic Design Tokens - Light Base (Default Enterprise Content) */
-  --color-brand: var(--primitive-primary-blue);
-  --color-brand-hover: var(--primitive-dark-blue);
-  --color-brand-active: var(--primitive-deep-blue);
-  --color-brand-subtle: var(--primitive-very-light-blue);
-  --color-brand-surface: var(--primitive-blue-surface);
+  /* Feedback */
+  --color-danger: #b42318;
+  --color-danger-wash: #fef3f2;
 
-  --color-bg-base: var(--primitive-bg-white);
-  --color-bg-light: var(--primitive-bg-soft);
-  --color-surface-card: var(--primitive-bg-white);
-  --color-surface-subtle: var(--primitive-surface-muted);
+  /* Type */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --color-text-primary: var(--primitive-text-primary);
-  --color-text-secondary: var(--primitive-text-secondary);
-  --color-text-muted: var(--primitive-text-muted);
-  --color-text-inverse: #FFFFFF;
+  /* Geometry */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
 
-  --color-border: var(--primitive-border);
-  --color-border-subtle: var(--primitive-border-subtle);
-  --color-border-focus: var(--primitive-primary-blue);
+  --shadow-hairline: 0 1px 0 rgb(18 23 28 / 0.04);
+  --shadow-card: 0 1px 2px rgb(18 23 28 / 0.04), 0 8px 24px -12px rgb(18 23 28 / 0.08);
+  --shadow-lift: 0 2px 4px rgb(18 23 28 / 0.04), 0 18px 40px -16px rgb(0 64 176 / 0.22);
 
-  /* Elevation & Geometry */
-  --radius-card: 12px;
-  --radius-button: 8px;
-  --radius-pill: 9999px;
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 700ms;
 
-  --shadow-subtle: 0 1px 3px rgba(18, 23, 28, 0.05), 0 1px 2px rgba(18, 23, 28, 0.03);
-  --shadow-card: 0 4px 12px rgba(18, 23, 28, 0.04), 0 1px 2px rgba(18, 23, 28, 0.02);
-  --shadow-card-hover: 0 12px 32px rgba(0, 112, 242, 0.08), 0 2px 6px rgba(18, 23, 28, 0.04);
-  --shadow-elevated: 0 16px 36px -4px rgba(18, 23, 28, 0.08);
-}
-
-/* Reduced Motion Safety */
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  /* Layout */
+  --container: 1200px;
+  --container-narrow: 760px;
+  --header-h: 60px;
 }

@@ -11,90 +11,64 @@ export type SolutionSlug =
 
 export type IndustrySlug = 'government' | 'enterprise';
 
-export interface NavItem {
-  title: string;
-  href: string;
-  description?: string;
-  badge?: string;
-  children?: NavItem[];
-}
-
-export interface CapabilityItem {
-  title: string;
-  description: string;
-  iconName?: string;
-  tags?: string[];
-}
-
-export interface RoadmapPhase {
-  phaseNumber: string;
-  name: string;
-  tagline: string;
-  description: string;
-  milestones: string[];
-}
-
-export interface ProjectStage {
-  stepNumber: string;
-  title: string;
-  subtitle: string;
-  description: string;
-}
+export type CoreLayer = 'Physical' | 'Enterprise' | 'Intelligence' | 'Delivery';
 
 export interface SolutionPageContent {
   slug: SolutionSlug;
+  number: string;
   title: string;
+  /** Short name used in dense lists and breadcrumbs. */
+  shortTitle: string;
   eyebrow: string;
-  tagline: string;
-  overview: string;
-  autonomousCoreRole: string;
-  keyCapabilities: CapabilityItem[];
-  architecturalLayer: 'Physical' | 'Enterprise' | 'Intelligence' | 'Cross-Layer' | 'Governance';
-  useCases: {
-    title: string;
-    description: string;
-    target: 'Government' | 'Enterprise' | 'Both';
-  }[];
-  regulatoryNotice?: string;
-  techStack: string[];
-  faqs: {
-    question: string;
-    answer: string;
-  }[];
-  seo: {
-    metaTitle: string;
-    metaDescription: string;
-    keywords: string[];
-  };
+  headline: string;
+  lead: string;
+  /** One sentence used on index surfaces. */
+  summary: string;
+  capabilitiesIntro: string;
+  capabilities: string[];
+  /** Where this capability sits in the JSJ convergence model. */
+  layer: CoreLayer;
+  coreRole: string;
+  /** Regulatory / scope caveat shown verbatim on the page. */
+  notice?: string;
+  related: SolutionSlug[];
+  seo: { title: string; description: string };
 }
 
 export interface IndustryPageContent {
   slug: IndustrySlug;
   title: string;
   eyebrow: string;
-  tagline: string;
+  headline: string;
+  lead: string;
   summary: string;
-  mandates: string[];
-  solutionOfferings: {
-    title: string;
-    description: string;
-    verticalLink: string;
-  }[];
-  casePoints: {
-    challenge: string;
-    convergenceSolution: string;
-    futureHorizon: string;
-  }[];
-  seo: {
-    metaTitle: string;
-    metaDescription: string;
-    keywords: string[];
-  };
+  focusAreas: { title: string; detail: string; solution: SolutionSlug }[];
+  approach: string[];
+  closing: string;
+  seo: { title: string; description: string };
 }
 
-export interface CompanyStats {
-  verticalsCount: number;
-  deliveryStages: number;
-  convergedAiLayers: number;
-  autonomyHorizonYear: number;
+export interface ProjectStage {
+  stepNumber: string;
+  title: string;
+  description: string;
+}
+
+export interface RoadmapPhase {
+  phaseNumber: string;
+  name: string;
+  summary: string;
+  /** Per-vertical milestones drawn from the corporate profile roadmap table. */
+  items: { vertical: string; milestone: string }[];
+}
+
+/** Published article. No articles exist yet; the list is empty until content is provided. */
+export interface InsightItem {
+  slug: string;
+  title: string;
+  excerpt: string;
+  /** ISO date. */
+  publishedAt: string;
+  /** Only set when a real, named author is supplied. */
+  author?: string;
 }

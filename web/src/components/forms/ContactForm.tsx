@@ -1,231 +1,189 @@
 'use client';
 
-import React, { useState, useTransition } from 'react';
+import Script from 'next/script';
+import { useState, useTransition } from 'react';
+import { AlertCircle, CheckCircle2, Loader2 } from 'lucide-react';
 import { submitContactForm } from '@/app/actions/contact';
-import { ContactActionResponse } from '@/shared';
-import { CheckCircle2, AlertCircle, Send, Loader2 } from 'lucide-react';
+import { SOLUTION_ORDER, SOLUTIONS_DATA, type ContactActionResponse } from '@/shared';
+import { Button } from '@/components/ui/Button';
 
-const INTEREST_OPTIONS = [
-  { value: 'digital-it', label: 'Digital & IT Consulting' },
-  { value: 'sap-erp', label: 'SAP Implementation & Management' },
-  { value: 'artificial-intelligence', label: 'AI & Intelligent Solutions' },
-  { value: 'cybersecurity', label: 'Cybersecurity & Sovereign Defense' },
-  { value: 'software-development', label: 'Software & Application Development' },
-  { value: 'digital-content', label: 'Digital Content Development' },
-  { value: 'drone-technology', label: 'Drone Technology Projects' },
-  { value: 'project-management', label: 'Project Management & Execution' },
-  { value: 'government-technology', label: 'Government Technology Projects' },
-  { value: 'other', label: 'Comprehensive Multi-Vertical Initiative' },
-];
+// Public Turnstile site key. Cloudflare's published always-pass key is used only outside production.
+const SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
+  (process.env.NODE_ENV === 'production' ? '' : '1x00000000000000000000AA');
 
-export function ContactForm() {
-  const [isPending, startTransition] = useTransition();
-  const [response, setResponse] = useState<ContactActionResponse | null>(null);
+const field =
+  'w-full rounded-[var(--radius-sm)] border border-line bg-white px-3.5 py-3 text-[1rem] text-ink placeholder:text-ink-3 transition-[border-color,box-shadow] duration-[var(--duration-fast)] hover:border-ink-3 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand-tint aria-[invalid=true]:border-danger';
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-
-    startTransition(async () => {
-      const res = await submitContactForm(null, formData);
-      setResponse(res);
-      if (res.success) {
-        (event.target as HTMLFormElement).reset();
-      }
-    });
-  };
-
+function Field({
+  id,
+  label,
+  error,
+  children,
+}: {
+  id: string;
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#DDE3EA] shadow-sm">
-      {response?.success ? (
-        <div className="p-8 rounded-xl bg-[#EBF8FF] border border-[#D1EFFF] text-center animate-in fade-in zoom-in-95">
-          <div className="w-12 h-12 rounded-full bg-[#D1EFFF] text-[#0070F2] flex items-center justify-center mx-auto mb-4">
-            <CheckCircle2 className="w-6 h-6" />
-          </div>
-          <h3 className="text-xl font-bold text-[#12171C]">Inquiry Received Successfully</h3>
-          <p className="mt-2 text-sm text-[#475E75] leading-relaxed max-w-md mx-auto">
-            {response.message}
-          </p>
-          <div className="mt-6 pt-4 border-t border-[#D1EFFF] flex items-center justify-center gap-2">
-            <span className="text-xs font-mono text-[#5B738B]">Tracking Reference:</span>
-            <span className="text-xs font-mono font-bold text-[#0070F2] bg-white px-2.5 py-1 rounded border border-[#D1EFFF]">
-              {response.referenceId}
-            </span>
-          </div>
-          <button
-            onClick={() => setResponse(null)}
-            className="mt-6 inline-flex text-xs font-semibold text-[#0070F2] hover:text-[#0057D2] underline"
-          >
-            Send another inquiry
-          </button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {response && !response.success && (
-            <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-red-800 text-xs">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
-              <div>
-                <span className="font-semibold block">{response.message}</span>
-              </div>
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Full Name */}
-            <div>
-              <label htmlFor="fullName" className="block text-xs font-semibold text-[#12171C] mb-1.5">
-                Full Name <span className="text-[#0070F2]">*</span>
-              </label>
-              <input
-                id="fullName"
-                name="fullName"
-                type="text"
-                required
-                placeholder="e.g. Subhash Sharma"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
-              />
-              {response?.fieldErrors?.fullName && (
-                <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.fullName[0]}</p>
-              )}
-            </div>
-
-            {/* Work Email */}
-            <div>
-              <label htmlFor="workEmail" className="block text-xs font-semibold text-[#12171C] mb-1.5">
-                Work Email <span className="text-[#0070F2]">*</span>
-              </label>
-              <input
-                id="workEmail"
-                name="workEmail"
-                type="email"
-                required
-                placeholder="name@organization.com"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
-              />
-              {response?.fieldErrors?.workEmail && (
-                <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.workEmail[0]}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Phone */}
-            <div>
-              <label htmlFor="phone" className="block text-xs font-semibold text-[#12171C] mb-1.5">
-                Phone Number <span className="text-[#0070F2]">*</span>
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                required
-                placeholder="+91 98765 43210"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
-              />
-              {response?.fieldErrors?.phone && (
-                <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.phone[0]}</p>
-              )}
-            </div>
-
-            {/* Company / Department */}
-            <div>
-              <label htmlFor="company" className="block text-xs font-semibold text-[#12171C] mb-1.5">
-                Company / Department <span className="text-[#0070F2]">*</span>
-              </label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                required
-                placeholder="Ministry / Enterprise Name"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
-              />
-              {response?.fieldErrors?.company && (
-                <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.company[0]}</p>
-              )}
-            </div>
-          </div>
-
-          {/* Service Interest */}
-          <div>
-            <label htmlFor="interest" className="block text-xs font-semibold text-[#12171C] mb-1.5">
-              Primary Area of Interest <span className="text-[#0070F2]">*</span>
-            </label>
-            <select
-              id="interest"
-              name="interest"
-              required
-              defaultValue="sap-erp"
-              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
-            >
-              {INTEREST_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Message */}
-          <div>
-            <label htmlFor="message" className="block text-xs font-semibold text-[#12171C] mb-1.5">
-              Project Context / Objectives <span className="text-[#0070F2]">*</span>
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows={4}
-              placeholder="Describe your operational requirements, timeline, or current infrastructure challenge..."
-              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE3EA] bg-white text-sm text-[#12171C] placeholder:text-[#5B738B] focus:outline-none focus:ring-2 focus:ring-[#0070F2] focus:border-[#0070F2] transition-all"
-            />
-            {response?.fieldErrors?.message && (
-              <p className="mt-1 text-[11px] text-red-600">{response.fieldErrors.message[0]}</p>
-            )}
-          </div>
-
-          {/* DPDP 2025 Explicit Statutory Consent Notice */}
-          <div className="p-4 rounded-xl bg-[#F7F9FC] border border-[#DDE3EA]">
-            <label className="flex items-start gap-3 cursor-pointer">
-              <input
-                type="checkbox"
-                name="dpdpConsent"
-                value="true"
-                required
-                className="mt-1 h-4 w-4 rounded border-[#DDE3EA] text-[#0070F2] focus:ring-[#0070F2]"
-              />
-              <span className="text-[11px] text-[#475E75] leading-relaxed">
-                I acknowledge that submitted business information will be processed by JSJ INFOTECH solely for responding to this commercial engagement inquiry in accordance with the <strong>Digital Personal Data Protection (DPDP) Rules 2025</strong>. We do not sell or transfer personal data to third parties.
-              </span>
-            </label>
-            {response?.fieldErrors?.dpdpConsent && (
-              <p className="mt-1.5 text-[11px] text-red-600 font-semibold">{response.fieldErrors.dpdpConsent[0]}</p>
-            )}
-          </div>
-
-          {/* Turnstile Test token passed in hidden input */}
-          <input type="hidden" name="turnstileToken" value="1x00000000000000000000AA" />
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={isPending}
-            className="w-full py-3 px-6 rounded-lg text-xs font-semibold uppercase tracking-wider text-white bg-[#0070F2] hover:bg-[#0057D2] shadow-sm transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0070F2] disabled:opacity-50"
-          >
-            {isPending ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Encrypting & Submitting...
-              </>
-            ) : (
-              <>
-                <Send className="w-4 h-4" />
-                Initiate Technology Engagement
-              </>
-            )}
-          </button>
-        </form>
-      )}
+    <div>
+      <label htmlFor={id} className="mb-1.5 block text-[0.875rem] font-medium">
+        {label}
+      </label>
+      {children}
+      {error ? (
+        <p id={`${id}-error`} className="mt-1.5 text-[0.8125rem] text-danger">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
+}
+
+export function ContactForm({ defaultInterest = '' }: { defaultInterest?: string }) {
+  const [pending, startTransition] = useTransition();
+  const [res, setRes] = useState<ContactActionResponse | null>(null);
+  // Load the Turnstile script only once the visitor engages with the form (keeps it off the critical path).
+  const [armed, setArmed] = useState(false);
+  const err = (k: keyof NonNullable<ContactActionResponse['fieldErrors']>) =>
+    res?.fieldErrors?.[k]?.[0];
+  const aria = (k: keyof NonNullable<ContactActionResponse['fieldErrors']>) => ({
+    'aria-invalid': err(k) ? true : undefined,
+    'aria-describedby': err(k) ? `${String(k)}-error` : undefined,
+  });
+
+  if (res?.success) {
+    return (
+      <div role="status" className="rounded-[var(--radius-lg)] border border-line bg-soft p-8 sm:p-10">
+        <CheckCircle2 aria-hidden className="size-7 text-brand-text" />
+        <h3 className="t-h3 mt-4">
+          {res.delivered ? 'Thank you — your enquiry is in.' : 'Validated — not sent (development mode).'}
+        </h3>
+        <p className="t-small mt-2">{res.message}</p>
+        {res.referenceId ? (
+          <p className="t-num mt-5">Reference {res.referenceId}</p>
+        ) : null}
+        <Button variant="text" className="mt-6" onClick={() => setRes(null)}>
+          Send another enquiry
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      className="grid gap-5 rounded-[var(--radius-lg)] border border-line bg-white p-6 shadow-card sm:p-9"
+      onSubmit={(e) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const data = new FormData(form);
+        startTransition(async () => {
+          const out = await submitContactForm(null, data);
+          setRes(out);
+          if (out.success) form.reset();
+          else if (window.turnstile) window.turnstile.reset();
+        });
+      }}
+      onFocusCapture={() => setArmed(true)}
+      onPointerEnter={() => setArmed(true)}
+    >
+      {res && !res.success ? (
+        <div role="alert" className="flex gap-3 rounded-[var(--radius-sm)] border border-danger/30 bg-danger-wash p-4 text-[0.9375rem] text-danger">
+          <AlertCircle aria-hidden className="mt-0.5 size-4 shrink-0" />
+          {res.message}
+        </div>
+      ) : null}
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field id="fullName" label="Name" error={err('fullName')}>
+          <input id="fullName" name="fullName" required autoComplete="name" className={field} {...aria('fullName')} />
+        </Field>
+        <Field id="workEmail" label="Work email" error={err('workEmail')}>
+          <input id="workEmail" name="workEmail" type="email" required autoComplete="email" className={field} {...aria('workEmail')} />
+        </Field>
+        <Field id="phone" label="Phone" error={err('phone')}>
+          <input id="phone" name="phone" type="tel" required autoComplete="tel" className={field} {...aria('phone')} />
+        </Field>
+        <Field id="company" label="Company or department" error={err('company')}>
+          <input id="company" name="company" required autoComplete="organization" className={field} {...aria('company')} />
+        </Field>
+      </div>
+
+      <Field id="interest" label="Area of interest" error={err('interest')}>
+        <select id="interest" name="interest" required defaultValue={defaultInterest} className={field} {...aria('interest')}>
+          <option value="" disabled>
+            Select an area
+          </option>
+          {SOLUTION_ORDER.map((slug) => (
+            <option key={slug} value={slug}>
+              {SOLUTIONS_DATA[slug].title}
+            </option>
+          ))}
+          <option value="other">Something else / more than one area</option>
+        </select>
+      </Field>
+
+      <Field id="message" label="How can we help?" error={err('message')}>
+        <textarea id="message" name="message" required rows={4} className={field} {...aria('message')} />
+      </Field>
+
+      {/* Honeypot: humans never see or fill this. */}
+      <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Website
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
+      <div>
+        <label className="flex items-start gap-3">
+          <input
+            type="checkbox"
+            name="dpdpConsent"
+            value="true"
+            required
+            className="mt-1 size-4 shrink-0 accent-[var(--color-brand)]"
+          />
+          <span className="t-small">
+            I agree that JSJ INFOTECH may use the details I submit to respond to this enquiry.
+          </span>
+        </label>
+        {err('dpdpConsent') ? (
+          <p className="mt-1.5 text-[0.8125rem] text-danger">{err('dpdpConsent')}</p>
+        ) : null}
+      </div>
+
+      {SITE_KEY ? (
+        <div className="min-h-[65px]">
+          {armed ? (
+            <>
+              <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
+              <div className="cf-turnstile" data-sitekey={SITE_KEY} data-theme="light" />
+            </>
+          ) : null}
+        </div>
+      ) : (
+        <p role="alert" className="text-[0.875rem] text-danger">
+          The contact form is temporarily unavailable. Please email support@jsjinfotech.co.in or call +91 89430 32965.
+        </p>
+      )}
+
+      <Button type="submit" disabled={pending || !SITE_KEY} className="w-full sm:w-auto sm:justify-self-start">
+        {pending ? (
+          <>
+            <Loader2 aria-hidden className="size-4 animate-spin" /> Sending…
+          </>
+        ) : (
+          'Send enquiry'
+        )}
+      </Button>
+    </form>
+  );
+}
+
+declare global {
+  interface Window {
+    turnstile?: { reset: () => void };
+  }
 }

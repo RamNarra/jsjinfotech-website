@@ -1,26 +1,13 @@
+import type { ProjectStage, RoadmapPhase } from './types';
+
 export const BRAND = {
   name: 'JSJ INFOTECH',
-  legalName: 'JSJ INFOTECH Private Limited',
+  legalName: 'JSJ INFOTECH',
   tagline: 'Autonomous by Design',
-  subTagline: 'Technology · Consulting · SAP · AI · Software · Project Management · Drone Technology · Government Projects',
   description:
-    'A technology-driven IT consulting and project execution company based in Hyderabad. Operating across enterprise IT, SAP, AI, software development, autonomous drones, project management, and government system modernisations.',
-  vision2030:
-    "By 2030, JSJ INFOTECH will operate as India's leading converged technology partner — where every government facility we maintain, every enterprise system we run, and every drone we fly feeds a single, self-improving AI layer. Infrastructure will not wait to fail before it is fixed; it will report on itself, predict its own needs, and increasingly manage itself. JSJ's role will shift from vendor to intelligence partner.",
-  mission:
-    "To deliver technology solutions that are practical, scalable, secure and aligned with the strategic objectives of our clients.",
-  missionObjectives: [
-    'Deliver end-to-end IT and technology projects from concept to ongoing management.',
-    'Enable organisations to modernise legacy systems through structured engineering.',
-    'Implement, enhance, and manage enterprise technology platforms including SAP.',
-    'Integrate Artificial Intelligence into business, operational, and civic processes.',
-    'Develop customised, secure software platforms and high-performance digital tools.',
-    'Introduce drone technology into suitable commercial and public sector applications.',
-    'Support government technology projects, digital infrastructure, and system upgrades.',
-    'Build long-term technology partnerships with leading national and international companies.',
-  ],
+    'JSJ INFOTECH is a technology-driven IT consulting and project execution company in Hyderabad, bringing together SAP, AI, software development, project management, drone technology and government technology projects.',
   phone: '+91 89430 32965',
-  displayPhone: '+91 89430-32965',
+  phoneHref: '+918943032965',
   supportEmail: 'support@jsjinfotech.co.in',
   executiveEmail: 'subhash@jsjinfotech.co.in',
   canonicalUrl: 'https://www.jsjinfotech.co.in',
@@ -32,245 +19,209 @@ export const BRAND = {
     country: 'India',
     formatted: 'Plot No. 144, Road No. 72, Jubilee Hills, Hyderabad, Telangana, India',
   },
-  location: 'Hyderabad, Telangana, India',
   linkedinUrl: 'https://www.linkedin.com/company/jsj-infotech',
-  stats: {
-    verticalsCount: '09',
-    deliveryStages: '06',
-    convergedAiLayers: '01',
-    autonomyHorizon: '2030',
-  },
-  colors: {
-    primaryBlue: '#0070F2',
-    darkBlue: '#0057D2',
-    deepBlue: '#0040B0',
-    veryLightBlue: '#EBF8FF',
-    lightBlue: '#D1EFFF',
-    blueSurface: 'rgba(0,112,242,0.06)',
-    blueSurfaceStrong: 'rgba(0,112,242,0.10)',
-    background: '#FFFFFF',
-    softBackground: '#F7F9FC',
-    mutedSurface: '#F5F6F7',
-    border: '#DDE3EA',
-    primaryText: '#12171C',
-    secondaryText: '#475E75',
-    mutedText: '#5B738B',
-  },
 } as const;
 
-export const SOLUTIONS_LIST = [
+export const NAV_ITEMS = [
+  { title: 'Solutions', href: '/solutions' },
+  { title: 'Industries', href: '/industries' },
+  { title: 'Technology', href: '/technology' },
+  { title: 'Company', href: '/company' },
+  { title: 'Insights', href: '/insights' },
+] as const;
+
+/** The convergence model from the corporate profile. */
+export const CORE_LAYERS = [
   {
-    slug: 'digital-it',
-    title: 'Digital & IT Consulting',
-    eyebrow: 'Strategy & Modernisation',
-    shortDesc: 'IT strategy, technology assessment, system integration, process automation, cloud modernisation, and turnkey project implementation.',
-    layer: 'Enterprise' as const,
-    icon: 'Server',
+    id: 'physical',
+    name: 'Physical layer',
+    nodes: ['HVAC', 'Drones', 'IoT'],
+    detail: 'The facilities, equipment and field assets where operations actually happen.',
   },
   {
-    slug: 'sap-erp',
-    title: 'SAP Implementation & Management',
-    eyebrow: 'Enterprise Technology',
-    shortDesc: 'End-to-end implementation support, upgrade and enhancement projects, application management, data migration, and third-party integration.',
-    layer: 'Enterprise' as const,
-    icon: 'Database',
+    id: 'enterprise',
+    name: 'Enterprise layer',
+    nodes: ['SAP', 'ERP', 'IT', 'Software'],
+    detail: 'The platforms that run finance, operations, records and workflows.',
   },
   {
-    slug: 'artificial-intelligence',
-    title: 'AI & Intelligent Solutions',
-    eyebrow: 'Intelligence Layer',
-    shortDesc: 'AI-powered business applications, intelligent document processing, predictive analytics, enterprise knowledge assistants, and process optimisation.',
-    layer: 'Intelligence' as const,
-    icon: 'Cpu',
-  },
-  {
-    slug: 'cybersecurity',
-    title: 'Cybersecurity & Sovereign Defense',
-    eyebrow: 'Resilience & Compliance',
-    shortDesc: 'Zero-trust architecture, continuous infrastructure hardening, OT network isolation, threat monitoring, and DPDP 2025 compliance.',
-    layer: 'Enterprise' as const,
-    icon: 'ShieldCheck',
-  },
-  {
-    slug: 'software-development',
-    title: 'Software & Application Development',
-    eyebrow: 'Custom Digital Platforms',
-    shortDesc: 'Customised web and mobile applications, business process tools, API integration, workflow automation, and application modernisation.',
-    layer: 'Enterprise' as const,
-    icon: 'Code2',
-  },
-  {
-    slug: 'digital-content',
-    title: 'Digital Content Development',
-    eyebrow: 'Technical Media & Publishing',
-    shortDesc: 'Technical documentation portals, interactive operational SOPs, digital training media, and structured communications for technology rollouts.',
-    layer: 'Cross-Layer' as const,
-    icon: 'FileSpreadsheet',
-  },
-  {
-    slug: 'drone-technology',
-    title: 'Drone Technology Projects',
-    eyebrow: 'Aerial Telemetry & Inspection',
-    shortDesc: 'Land and infrastructure surveys, construction monitoring, asset inspection, mapping & GIS integration, and aerial analytics with full regulatory compliance.',
-    layer: 'Physical' as const,
-    icon: 'Compass',
-  },
-  {
-    slug: 'project-management',
-    title: 'Project Management & Execution',
-    eyebrow: 'Governance & Accountability',
-    shortDesc: 'Structured 6-stage lifecycle: planning, scope, resource coordination, vendor management, budget monitoring, quality assurance, and handover.',
-    layer: 'Governance' as const,
-    icon: 'Milestone',
-  },
-  {
-    slug: 'government-technology',
-    title: 'Government Technology Projects',
-    eyebrow: 'Public Sector Modernisation',
-    shortDesc: 'Government application modernisation, IT system upgrades, digital service platforms, data analytics, infrastructure monitoring, and GIS initiatives.',
-    layer: 'Cross-Layer' as const,
-    icon: 'Landmark',
+    id: 'intelligence',
+    name: 'Intelligence layer',
+    nodes: ['AI', 'Analytics', 'Computer vision', 'Digital twins'],
+    detail: 'The models and analytics that turn data from both layers into decisions.',
   },
 ] as const;
 
-export const PROJECT_DELIVERY_STAGES = [
+export const PROJECT_DELIVERY_STAGES: readonly ProjectStage[] = [
   {
     stepNumber: '01',
     title: 'Requirement & Opportunity Assessment',
-    subtitle: 'Discovery & Feasibility',
-    description: "Understanding the client's strategic objectives, existing technology environment, operational bottlenecks, and desired project outcomes.",
+    description:
+      "Understanding the client's objectives, existing systems, challenges and desired outcomes.",
   },
   {
     stepNumber: '02',
     title: 'Solution Development',
-    subtitle: 'Architecture & Strategy',
-    description: 'Identifying the optimal technology stack, system architecture, specialist partner ecosystem, and phased implementation methodology.',
+    description:
+      'Identifying the appropriate technology, architecture, partners and implementation strategy.',
   },
   {
     stepNumber: '03',
     title: 'Project Planning',
-    subtitle: 'Scope & Governance',
-    description: 'Defining clear project scope, schedules, resource allocations, responsibilities, commercial budgets, and milestone deliverables.',
+    description:
+      'Defining scope, timelines, resources, responsibilities, budgets and implementation milestones.',
   },
   {
     stepNumber: '04',
     title: 'Implementation',
-    subtitle: 'Execution & Integration',
-    description: 'Coordinating internal engineering teams, specialist technology partners, equipment vendors, and client stakeholders for disciplined execution.',
+    description:
+      'Coordinating technology teams, partners, vendors and stakeholders for execution.',
   },
   {
     stepNumber: '05',
     title: 'Testing & Deployment',
-    subtitle: 'Quality & User Acceptance',
-    description: 'Conducting comprehensive functional testing, security validation, user acceptance testing (UAT), and staged, controlled production rollout.',
+    description:
+      'Conducting testing, validation, user acceptance and controlled deployment.',
   },
   {
     stepNumber: '06',
     title: 'Enhancement & Support',
-    subtitle: 'Lifecycle Optimization',
-    description: 'Providing post-implementation maintenance, system optimization, ongoing upgrades, AI capability injection, and continuous operational support.',
+    description:
+      'Providing system optimisation, upgrades, AI integration and ongoing management as required.',
+  },
+];
+
+export const PARTNER_CLUSTERS = [
+  {
+    name: 'Technology',
+    items: [
+      'Global technology companies',
+      'Software development companies',
+      'AI companies',
+      'Cloud and cybersecurity companies',
+    ],
+  },
+  {
+    name: 'Implementation',
+    items: [
+      'SAP specialists and system integrators',
+      'Drone technology providers',
+      'Engineering and infrastructure technology firms',
+    ],
+  },
+  {
+    name: 'Public sector & research',
+    items: [
+      'Government technology solution providers',
+      'Research and innovation organisations',
+    ],
   },
 ] as const;
 
-export const STRATEGIC_PARTNERSHIP_ECOSYSTEM = [
+export const COLLABORATION_MODELS = [
+  'Technology partnerships',
+  'Strategic alliances',
+  'Joint implementation',
+  'System integration partnerships',
+  'Technology licensing',
+  'AI solution partnerships',
+  'International solution representation',
+  'Joint ventures for specific projects',
+] as const;
+
+export const MISSION_POINTS = [
+  'Deliver end-to-end IT and technology projects.',
+  'Enable organisations to modernise legacy systems.',
+  'Implement and manage enterprise technology platforms.',
+  'Integrate AI into business and operational processes.',
+  'Develop customised software and digital applications.',
+  'Introduce drone technology into suitable commercial and government applications.',
+  'Support government technology projects and system upgrades.',
+  'Build long-term technology partnerships with leading national and international companies.',
+] as const;
+
+export const PROJECT_VERTICALS = [
   {
-    category: 'Global Technology Companies',
-    description: 'Bringing tier-one enterprise computing and cloud infrastructure to Indian enterprises and institutions.',
+    title: 'Enterprise technology',
+    text: 'Implementation, integration, enhancement and management of enterprise technology platforms.',
   },
   {
-    category: 'SAP Specialists & System Integrators',
-    description: 'Collaborating on deep functional and technical implementation, migration, and clean-core development.',
+    title: 'Digital transformation',
+    text: 'Modernisation of business processes through digital platforms, automation, analytics and AI.',
   },
   {
-    category: 'Specialist AI Companies',
-    description: 'Deploying advanced neural models, computer vision, and predictive analytics into business processes.',
+    title: 'AI & intelligent solutions',
+    text: 'Development and integration of AI-enabled applications for business, government and institutional requirements.',
   },
   {
-    category: 'Software Development Firms',
-    description: 'Co-engineering bespoke applications, enterprise APIs, and high-throughput transaction engines.',
+    title: 'Drone technology',
+    text: 'Technology-led drone projects involving data collection, inspection, mapping, surveillance and other approved applications.',
   },
   {
-    category: 'Drone Technology Providers',
-    description: 'Deploying DGCA-compliant UAV hardware, aerial imaging, mapping, and sensor payloads.',
+    title: 'Software & application development',
+    text: 'Customised software, web applications, mobile applications, enterprise tools and technology platforms.',
   },
   {
-    category: 'Cloud & Cybersecurity Firms',
-    description: 'Enforcing zero-trust architecture, sovereign cloud hosting, and continuous penetration hardening.',
-  },
-  {
-    category: 'Engineering & Infrastructure Firms',
-    description: 'Integrating electromechanical facilities, smart HVAC AMC, and physical IoT telemetry at the edge.',
-  },
-  {
-    category: 'Government Technology Solution Providers',
-    description: 'Delivering compliant e-governance platforms, citizen service portals, and public infrastructure upgrades.',
+    title: 'Government technology projects',
+    text: 'Participation in government IT projects, system upgrades, digital infrastructure initiatives and technology modernisation programmes.',
   },
 ] as const;
 
-export const INDUSTRIES_LIST = [
-  {
-    slug: 'government',
-    title: 'Government & Public Sector',
-    eyebrow: 'Sovereign Scale & Critical Infrastructure',
-    tagline: 'Digitising public services, securing vital infrastructure, and deploying autonomous monitoring for public assets.',
-    mandates: ['Digital India Compliance', 'Continuous Facility AMC', 'Critical Asset Drone Surveys', 'Zero-Trust Data Protection'],
-  },
-  {
-    slug: 'enterprise',
-    title: 'Enterprise & Industrial',
-    eyebrow: 'Connected Operations & Global Workflows',
-    tagline: 'Modernising legacy ERP into intelligent systems, scaling predictive AI, and unifying physical and digital facilities.',
-    mandates: ['SAP S/4HANA Transformation', 'Supply Chain Visibility', 'Predictive Asset Maintenance', 'Enterprise Cloud Migration'],
-  },
-] as const;
+export const VISION_2030_STATEMENT =
+  "By 2030, JSJ INFOTECH will operate as India's leading converged technology partner — where every government facility we maintain, every enterprise system we run, and every drone we fly feeds a single, self-improving AI layer.";
 
-export const ROADMAP_PHASES = [
+export const VISION_2030_CLOSING =
+  "Infrastructure will not wait to fail before it is fixed; it will report on itself, predict its own needs, and increasingly manage itself. JSJ's role will shift from vendor to intelligence partner.";
+
+/** Four-phase roadmap. Milestones are the per-vertical entries of the corporate profile table. */
+export const ROADMAP_PHASES: readonly RoadmapPhase[] = [
   {
     phaseNumber: '01',
-    name: 'FOUNDATION',
-    tagline: 'Core Infrastructure & Operational Stability',
-    description: 'Stabilising mission-critical IT, SAP core systems, baseline government facility AMC contracts, and dedicated custom software platforms.',
-    milestones: [
-      'SAP ECC to S/4HANA roadmap baseline',
-      'Zero-trust network configuration across IT estates',
-      'High-uptime facility maintenance operations',
-      'Targeted manual drone aerial survey workflows',
+    name: 'Foundation',
+    summary: 'Proven capability in each vertical, on infrastructure built to be upgraded.',
+    items: [
+      { vertical: 'IT', milestone: 'Cloud-native infrastructure' },
+      { vertical: 'SAP', milestone: 'Core implementation' },
+      { vertical: 'AI', milestone: 'Use-case pilots' },
+      { vertical: 'Drones', milestone: 'Manual survey missions' },
+      { vertical: 'Software', milestone: 'Custom builds' },
+      { vertical: 'HVAC (Govt)', milestone: 'AMC maintenance' },
+      { vertical: 'New tech', milestone: 'R&D pilots' },
     ],
   },
   {
     phaseNumber: '02',
-    name: 'INTEGRATION',
-    tagline: 'Cross-System Connectivity & Telemetry',
-    description: 'Connecting physical IoT telemetry from sensors and drones directly into enterprise SAP and data warehouse backends.',
-    milestones: [
-      'IoT edge gateway telemetry across government sites',
-      'Drone flight data ingestion pipelines into central analytics',
-      'AIOps integration for self-healing server infrastructure',
-      'Unified enterprise dashboards combining operational and financial metrics',
+    name: 'Integration',
+    summary: 'Verticals begin to share data and platforms instead of running side by side.',
+    items: [
+      { vertical: 'AI', milestone: 'Cross-system integration' },
+      { vertical: 'Software', milestone: 'API-first modular platforms' },
+      { vertical: 'HVAC (Govt)', milestone: 'IoT-enabled monitoring' },
+      { vertical: 'New tech', milestone: 'Cross-vertical integration' },
     ],
   },
   {
     phaseNumber: '03',
-    name: 'INTELLIGENCE',
-    tagline: 'Predictive Models & Automated Action Triggers',
-    description: 'Deploying custom computer vision, machine learning anomaly detection, and predictive maintenance algorithms.',
-    milestones: [
-      'Thermal and optical aerial defect detection via AI',
-      'Predictive component failure alerts in mechanical cooling plants',
-      'SAP ERP workflow automation powered by machine intelligence',
-      'Continuous security posture scoring & automated patch pipelines',
+    name: 'Intelligence',
+    summary: 'Analytics and AI move from pilots into the operating layer.',
+    items: [
+      { vertical: 'IT', milestone: 'AIOps self-healing systems' },
+      { vertical: 'SAP', milestone: 'AI-augmented analytics' },
+      { vertical: 'Drones', milestone: 'AI-analysed inspection' },
     ],
   },
   {
     phaseNumber: '04',
-    name: 'AUTONOMY',
-    tagline: 'Self-Directing, Closed-Loop Ecosystems (2030 Horizon)',
-    description: 'Full convergence into the JSJ Autonomous Core: infrastructure that monitors itself, predicts failure, and triggers repair without human friction.',
-    milestones: [
-      'Self-improving enterprise systems dynamically adjusting to operational shifts',
-      'Autonomous drone swarms performing scheduled asset audits',
-      'Zero-touch facilities adjusting energy, cooling, and safety autonomously',
-      'End-to-end intelligent partnership model for national infrastructure',
+    name: 'Autonomy',
+    summary: 'Operations that increasingly monitor and manage themselves.',
+    items: [
+      { vertical: 'IT', milestone: 'Fully autonomous IT operations' },
+      { vertical: 'SAP', milestone: 'Autonomous enterprise workflows with AI copilots' },
+      { vertical: 'AI', milestone: 'Enterprise-wide autonomous decision layer' },
+      { vertical: 'Drones', milestone: 'Autonomous fleets & swarm data collection' },
+      { vertical: 'Software', milestone: 'AI-embedded, self-improving applications' },
+      { vertical: 'HVAC (Govt)', milestone: 'Predictive, near-autonomous facility management' },
+      { vertical: 'New tech', milestone: 'Smart city / smart infrastructure at scale' },
     ],
   },
-] as const;
+];
