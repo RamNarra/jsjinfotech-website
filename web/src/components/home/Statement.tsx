@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/ui/Reveal';
+import { ScrollText } from './ScrollText';
 
 const facts = [
   { k: 'Who we serve', v: 'Enterprises, government organisations, institutions and strategic partners.' },
@@ -13,13 +14,10 @@ export function Statement() {
   return (
     <section className="section-y border-t border-line-soft">
       <div className="container-x">
-        <Reveal>
-          <p className="t-h2 max-w-[24ch] sm:max-w-[30ch] lg:max-w-[38ch]">
-            JSJ starts with the requirement, then develops the solution, plans it, implements it,
-            integrates it, deploys it and{' '}
-            <span className="text-ink-3">supports it.</span>
-          </p>
-        </Reveal>
+        <ScrollText
+          className="t-h2 max-w-[26ch] sm:max-w-[32ch] lg:max-w-[40ch] !text-[clamp(2.1rem,4.4vw,4rem)]"
+          text="JSJ starts with the requirement, then develops the solution, plans it, implements it, integrates it, deploys it and supports it."
+        />
         <dl className="mt-16 grid gap-10 border-t border-line pt-8 md:grid-cols-3">
           {facts.map((f, i) => (
             <Reveal key={f.k} delay={i * 0.08}>

@@ -37,7 +37,7 @@ const nodes: NodePoint[] = CORE_LAYERS.flatMap((layer) =>
 );
 
 /** Light, precise convergence diagram: three layers feeding one core. */
-export function AutonomousCore({ className }: { className?: string }) {
+export function AutonomousCore({ className, legend = true }: { className?: string; legend?: boolean }) {
   const [active, setActive] = useState<string | null>(null);
   const activeNode = nodes.find((n) => n.key === active);
   const activeLayer = activeNode?.layer ?? null;
@@ -160,6 +160,7 @@ export function AutonomousCore({ className }: { className?: string }) {
       </svg>
 
       {/* Accessible, keyboard-operable legend (also the mobile labelling) */}
+      {legend ? (
       <ul className="mt-6 grid gap-5 sm:grid-cols-3">
         {CORE_LAYERS.map((layer) => (
           <li key={layer.id}>
@@ -196,6 +197,7 @@ export function AutonomousCore({ className }: { className?: string }) {
           </li>
         ))}
       </ul>
+      ) : null}
     </div>
   );
 }

@@ -7,7 +7,7 @@ import { BRAND } from '@/shared';
 import '@/styles/globals.css';
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', display: 'optional' });
-const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'optional' });
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap', preload: false });
 
 const siteTitle = `${BRAND.name} — Technology & project execution, Hyderabad`;
 

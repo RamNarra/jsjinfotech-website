@@ -1,7 +1,7 @@
 import { Hero } from '@/components/home/Hero';
 import { Statement } from '@/components/home/Statement';
 import { Convergence } from '@/components/home/Convergence';
-import { SolutionsIndex } from '@/components/home/SolutionsIndex';
+import { SolutionsShowcase } from '@/components/home/SolutionsShowcase';
 import { Audiences } from '@/components/home/Audiences';
 import { DeliverySection } from '@/components/home/DeliverySection';
 import { Ecosystem } from '@/components/home/Ecosystem';
@@ -14,7 +14,7 @@ export default function HomePage() {
       <Hero />
       <Statement />
       <Convergence />
-      <SolutionsIndex />
+      <SolutionsShowcase />
       <Audiences />
       <DeliverySection />
       <Ecosystem />
