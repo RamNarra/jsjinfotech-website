@@ -76,6 +76,18 @@ CONTACT_FROM_EMAIL=JSJ Website <inquiries@jsjinfotech.co.in>
 
 Until steps 3 and 4 are done the form is disabled and shows the phone and email instead. Rate limiting is per server instance (3 per client per 10 minutes, 40 per hour overall); add a Vercel WAF rate-limit rule for a hard global cap.
 
+### Hosting on Hostinger (Node.js Web App)
+
+The app needs a Node.js runtime (Server Action + Turnstile + Resend), so it cannot run as PHP/static files in `public_html`. In hPanel create a **Node.js Web App** (Business plan or higher) and import this private GitHub repo, `main` branch:
+
+- Root/app directory: `web`
+- Node.js: 22.x (any >= 20.9)
+- Install: `npm ci` · Build: `npm run build` · Start: `npm run start` (Next reads the `PORT` Hostinger supplies)
+- Environment variables (hPanel, never in Git): `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `CLOUDFLARE_TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `CONTACT_NOTIFICATION_EMAIL`, `CONTACT_FROM_EMAIL`
+- Attach `jsjinfotech.co.in` / `www` to the app. Do **not** edit or remove the existing MX/SPF/DMARC records: company email depends on them.
+
+Keep the Vercel deployment as a rollback until the Hostinger site is verified.
+
 ## 4. Local Development & Production Build
 
 ```bash
