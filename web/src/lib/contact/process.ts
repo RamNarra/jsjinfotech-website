@@ -8,7 +8,12 @@ export interface ContactEnv {
   /** Comma-separated recipient list. */
   notifyTo?: string;
   from?: string;
+  /** Hostnames Turnstile tokens may have been issued for (production). */
+  allowedHostnames?: string[];
 }
+
+/** Returns false when the caller should be throttled. */
+export type Guard = () => boolean;
 
 // Cloudflare's published always-pass secret. Development only; never consulted in production.
 const TURNSTILE_TEST_SECRET = '1x0000000000000000000000000000000AA';
@@ -17,6 +22,16 @@ export const escapeHtml = (v: string) =>
   v.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
 const oneLine = (v: string) => v.replace(/[\r\n]+/g, ' ').trim();
+
+const FETCH_TIMEOUT_MS = 8000;
+const TURNSTILE_ACTION = 'contact';
+const FREE_MAIL = /^(gmail|googlemail|yahoo|outlook|hotmail|live|icloud|proton|protonmail|aol|rediffmail)\./i;
+
+/** The sender must be an address on a domain JSJ can verify with Resend; consumer mailboxes cannot be. */
+export function senderDomain(from: string | undefined): string | null {
+  const m = from?.match(/<?([^<>\s@]+@([^<>\s@]+\.[^<>\s@]+))>?\s*$/);
+  return m ? m[2].toLowerCase() : null;
+}
 
 const UNAVAILABLE = 'The contact form is temporarily unavailable. Please email support@jsjinfotech.co.in or call us.';
 
@@ -29,7 +44,10 @@ export function missingProductionConfig(env: ContactEnv): string[] {
     ['CONTACT_NOTIFICATION_EMAIL', env.notifyTo],
     ['CONTACT_FROM_EMAIL', env.from],
   ];
-  return need.filter(([, v]) => !v?.trim()).map(([k]) => k);
+  const missing = need.filter(([, v]) => !v?.trim()).map(([k]) => k);
+  const dom = senderDomain(env.from);
+  if (env.from?.trim() && (!dom || FREE_MAIL.test(dom))) missing.push('CONTACT_FROM_EMAIL (must be an address on a Resend-verified JSJ domain)');
+  return missing;
 }
 
 export function buildEmailHtml(d: {
@@ -54,8 +72,16 @@ export function buildEmailHtml(d: {
 <p style="color:#5B738B;font-size:12px">The sender ticked the consent box to be contacted about this enquiry.</p>`;
 }
 
+interface SiteverifyResponse {
+  success?: boolean;
+  hostname?: string;
+  action?: string;
+  'error-codes'?: string[];
+}
+
 async function verifyTurnstile(
   token: string,
+  env: ContactEnv,
   secret: string,
   doFetch: typeof fetch,
 ): Promise<{ ok: boolean; message?: string }> {
@@ -65,14 +91,30 @@ async function verifyTurnstile(
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({ secret, response: token }),
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
-    const json = (await r.json()) as { success?: boolean };
-    return json.success === true
-      ? { ok: true }
-      : { ok: false, message: 'Security check failed. Please refresh and try again.' };
+    const json = (await r.json()) as SiteverifyResponse;
+    if (json.success !== true) {
+      const expired = json['error-codes']?.some((c) => c === 'timeout-or-duplicate' || c === 'invalid-input-response');
+      return {
+        ok: false,
+        message: expired
+          ? 'The security check expired. Please complete it again and resubmit.'
+          : 'Security check failed. Please try again.',
+      };
+    }
+    // Production tokens must be issued for our own widget on one of our own hostnames.
+    if (env.production) {
+      const allowed = (env.allowedHostnames ?? []).map((h) => h.toLowerCase());
+      if (json.action !== TURNSTILE_ACTION || !json.hostname || !allowed.includes(json.hostname.toLowerCase())) {
+        console.error('[contact] Turnstile token rejected (action/hostname mismatch).');
+        return { ok: false, message: 'Security check failed. Please try again.' };
+      }
+    }
+    return { ok: true };
   } catch (e) {
     console.error('[contact] Turnstile verification error:', e);
-    return { ok: false, message: 'Security check unavailable. Please try again shortly.' };
+    return { ok: false, message: 'The security check is unavailable right now. Please try again shortly.' };
   }
 }
 
@@ -80,6 +122,7 @@ export async function processContact(
   formData: FormData,
   env: ContactEnv,
   doFetch: typeof fetch = fetch,
+  guard: Guard = () => true,
 ): Promise<ContactActionResponse> {
   const parsed = ContactFormSchema.safeParse({
     fullName: formData.get('fullName'),
@@ -109,8 +152,16 @@ export async function processContact(
     }
   }
 
+  if (!guard()) {
+    return {
+      success: false,
+      delivered: false,
+      message: 'Too many enquiries from this connection. Please try again later, or call +91 89430 32965.',
+    };
+  }
+
   const secret = env.production ? env.turnstileSecret! : env.turnstileSecret || TURNSTILE_TEST_SECRET;
-  const turnstile = await verifyTurnstile(d.turnstileToken ?? '', secret, doFetch);
+  const turnstile = await verifyTurnstile(d.turnstileToken ?? '', env, secret, doFetch);
   if (!turnstile.ok) return { success: false, delivered: false, message: turnstile.message! };
 
   const referenceId = `JSJ-${Date.now().toString(36).toUpperCase()}`;
@@ -150,6 +201,7 @@ export async function processContact(
         subject: `[${referenceId}] ${oneLine(interestLabel)} — ${oneLine(d.company)}`,
         html: buildEmailHtml({ referenceId, ...d, interestLabel }),
       }),
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!r.ok) {
       console.error('[contact] Resend rejected the message:', r.status);

@@ -159,7 +159,7 @@ export function ContactForm({ defaultInterest = '' }: { defaultInterest?: string
           {armed ? (
             <>
               <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
-              <div className="cf-turnstile" data-sitekey={SITE_KEY} data-theme="light" />
+              <div className="cf-turnstile" data-sitekey={SITE_KEY} data-action="contact" data-theme="light" />
             </>
           ) : null}
         </div>

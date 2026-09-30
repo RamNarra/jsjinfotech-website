@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { buildEmailHtml, escapeHtml, missingProductionConfig, processContact, type ContactEnv } from '@/lib/contact/process';
+import { buildEmailHtml, escapeHtml, missingProductionConfig, processContact, senderDomain, type ContactEnv } from '@/lib/contact/process';
+import { allow, allowSubmission, resetRateLimits } from '@/lib/contact/rate-limit';
 
 const valid = (over: Record<string, string> = {}) => {
   const f = new FormData();
@@ -25,12 +26,13 @@ const fullProd: ContactEnv = {
   resendKey: 'rk',
   notifyTo: 'a@x.in, b@x.in',
   from: 'JSJ <no-reply@x.in>',
+  allowedHostnames: ['www.jsjinfotech.co.in', 'jsjinfotech.vercel.app'],
 };
 
-const okFetch = () =>
+const okFetch = (siteverify: object = { success: true, hostname: 'www.jsjinfotech.co.in', action: 'contact' }) =>
   vi.fn(async (url: string | URL | Request) =>
     String(url).includes('turnstile')
-      ? new Response(JSON.stringify({ success: true }))
+      ? new Response(JSON.stringify(siteverify))
       : new Response('{}', { status: 200 }),
   ) as unknown as typeof fetch;
 
@@ -75,10 +77,60 @@ describe('contact: production safety', () => {
 
   it('fails explicitly when Resend rejects', async () => {
     const f = vi.fn(async (u: string | URL | Request) =>
-      String(u).includes('turnstile') ? new Response(JSON.stringify({ success: true })) : new Response('no', { status: 422 }),
+      String(u).includes('turnstile')
+        ? new Response(JSON.stringify({ success: true, hostname: 'jsjinfotech.vercel.app', action: 'contact' }))
+        : new Response('no', { status: 422 }),
     ) as unknown as typeof fetch;
     const r = await processContact(valid(), fullProd, f);
     expect(r).toMatchObject({ success: false, delivered: false });
+  });
+});
+
+describe('contact: Turnstile and sender hardening', () => {
+  it('rejects a token issued for another hostname or action (production)', async () => {
+    const wrongHost = await processContact(valid(), fullProd, okFetch({ success: true, hostname: 'evil.example', action: 'contact' }));
+    const wrongAction = await processContact(valid(), fullProd, okFetch({ success: true, hostname: 'www.jsjinfotech.co.in', action: 'login' }));
+    expect(wrongHost.success).toBe(false);
+    expect(wrongAction.success).toBe(false);
+  });
+
+  it('asks the visitor to retry on an expired or duplicate token', async () => {
+    const r = await processContact(valid(), fullProd, okFetch({ success: false, 'error-codes': ['timeout-or-duplicate'] }));
+    expect(r.success).toBe(false);
+    expect(r.message).toMatch(/expired/i);
+  });
+
+  it('fails cleanly when Siteverify is unreachable', async () => {
+    const f = vi.fn(async () => { throw new Error('network'); }) as unknown as typeof fetch;
+    const r = await processContact(valid(), fullProd, f);
+    expect(r).toMatchObject({ success: false, delivered: false });
+    expect(r.message).not.toMatch(/network|cloudflare|error:/i);
+  });
+
+  it('refuses consumer-mailbox senders in production', () => {
+    expect(senderDomain('JSJ <hello@jsjinfotech.co.in>')).toBe('jsjinfotech.co.in');
+    expect(missingProductionConfig({ ...fullProd, from: 'noreply@gmail.com' })[0]).toMatch(/CONTACT_FROM_EMAIL/);
+    expect(missingProductionConfig({ ...fullProd, from: 'not-an-email' })[0]).toMatch(/CONTACT_FROM_EMAIL/);
+    expect(missingProductionConfig(fullProd)).toEqual([]);
+  });
+
+  it('blocks a throttled client before calling any external service', async () => {
+    const f = okFetch();
+    const r = await processContact(valid(), fullProd, f, () => false);
+    expect(r.success).toBe(false);
+    expect(f).not.toHaveBeenCalled();
+  });
+});
+
+describe('contact: rate limiting', () => {
+  it('allows 3 per client per window, then blocks, then recovers', () => {
+    resetRateLimits();
+    const t = 1_000_000;
+    expect([1, 2, 3, 4].map((i) => allowSubmission('1.2.3.4', t + i))).toEqual([true, true, true, false]);
+    expect(allowSubmission('5.6.7.8', t + 5)).toBe(true);
+    expect(allowSubmission('1.2.3.4', t + 11 * 60 * 1000)).toBe(true);
+    expect(allow('x', { limit: 1, windowMs: 10 }, 0)).toBe(true);
+    expect(allow('x', { limit: 1, windowMs: 10 }, 5)).toBe(false);
   });
 });
 

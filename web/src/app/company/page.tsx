@@ -56,7 +56,7 @@ export default function CompanyPage() {
           <Reveal>
             <p className="t-eyebrow">Vision</p>
             <p className="t-h2 mt-3">
-              To be a trusted technology and project execution partner.
+              To become a trusted technology and project execution partner.
             </p>
             <p className="t-lead mt-6">
               For organisations seeking digital transformation, intelligent technology adoption and

@@ -19,7 +19,7 @@ jsj-infotech/
 │   │   │   ├── vision-2030/         # Official Vision 2030 & 4-phase roadmap
 │   │   │   ├── company/             # Corporate profile & founding purpose
 │   │   │   ├── insights/            # Engineering papers & LinkedIn feed
-│   │   │   ├── contact/             # Contact hub & DPDP 2025 compliant form
+│   │   │   ├── contact/             # Contact page & secure enquiry form
 │   │   │   ├── sitemap.ts           # Dynamic XML sitemap
 │   │   │   └── robots.ts            # Robots.txt directives
 │   │   ├── components/  # Modular UI & SVG Autonomous Core
@@ -43,7 +43,7 @@ jsj-infotech/
 - **Content integrity**: All copy in `web/src/shared/` traces to `JSJ.docx` and the corporate profile PDF, keeping their "can / seek / intend" certainty. No invented clients, partners, statistics or articles. Partner logos appear only once verified assets exist.
 - **3-Layer Convergence Model**: Translates physical IoT telemetry (HVAC/drones) into enterprise business logic (SAP S/4HANA) and cognitive neural prediction (AI).
 - **2030 Roadmap**: 4 phases (Foundation → Integration → Intelligence → Autonomy) built from the per-vertical table in the corporate profile.
-- **DPDP Rules 2025 Compliance**: Transparent statutory consent notice and server-side encrypted handling of corporate inquiries.
+- **Contact form**: Turnstile (server-verified, hostname + action checked), Zod, honeypot, per-client rate limit, escaped Resend email. In production it refuses to submit unless all five settings are present, and never reports success without delivery.
 - **Production Security**: Strict HSTS (`max-age=63072000`), X-Frame-Options (`SAMEORIGIN`), X-Content-Type-Options (`nosniff`), Referrer-Policy, and Permissions-Policy.
 
 ---
