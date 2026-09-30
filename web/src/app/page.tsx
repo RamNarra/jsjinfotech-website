@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      {/* <Ticker /> */}
+      <Ticker />
       <Statement />
       <Convergence />
       <SolutionsShowcase />

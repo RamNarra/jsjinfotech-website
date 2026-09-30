@@ -234,7 +234,8 @@
   .ticker-row > ul[aria-hidden] {
     display: none;
   }
-  .ticker-btn {
+  .ticker-btn,
+  .ticker-fade {
     display: none !important;
   }
 }
