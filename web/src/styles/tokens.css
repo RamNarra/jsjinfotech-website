@@ -1,0 +1,49 @@
+:root {
+  /* Primitive Brand Palette */
+  --primitive-navy-deep: #07112D;
+  --primitive-midnight: #0B1E42;
+  --primitive-cyan: #16C7E8;
+  --primitive-cyan-glow: rgba(22, 199, 232, 0.25);
+  --primitive-violet: #7657F6;
+  --primitive-violet-glow: rgba(118, 87, 246, 0.25);
+  --primitive-slate-soft: #F5F7FB;
+  --primitive-white: #FFFFFF;
+  --primitive-text-main: #101A33;
+  --primitive-text-muted: #5E6B85;
+  --primitive-border-light: #DDE4EF;
+  --primitive-border-dark: rgba(22, 199, 232, 0.18);
+
+  /* Semantic Design Tokens - Light Base (Default Editorial/Content) */
+  --color-brand: var(--primitive-cyan);
+  --color-brand-secondary: var(--primitive-violet);
+  --color-bg-light: var(--primitive-slate-soft);
+  --color-bg-dark: var(--primitive-navy-deep);
+  --color-surface-light: var(--primitive-white);
+  --color-surface-dark: var(--primitive-midnight);
+  --color-surface-dark-accent: #0f2552;
+  --color-text-primary: var(--primitive-text-main);
+  --color-text-secondary: var(--primitive-text-muted);
+  --color-text-inverse: var(--primitive-white);
+  --color-text-inverse-muted: #94A3B8;
+  --color-border: var(--primitive-border-light);
+  --color-border-dark: var(--primitive-border-dark);
+
+  /* Radii & Shadows */
+  --radius-card: 16px;
+  --radius-button: 10px;
+  --radius-pill: 9999px;
+  --shadow-subtle: 0 4px 20px -2px rgba(16, 26, 51, 0.05);
+  --shadow-elevated: 0 12px 36px -4px rgba(16, 26, 51, 0.09);
+  --shadow-glow-cyan: 0 0 40px -10px rgba(22, 199, 232, 0.35);
+  --shadow-glow-violet: 0 0 40px -10px rgba(118, 87, 246, 0.35);
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

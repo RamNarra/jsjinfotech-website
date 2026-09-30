@@ -1,0 +1,177 @@
+export const BRAND = {
+  name: 'JSJ INFOTECH',
+  legalName: 'JSJ INFOTECH Private Limited',
+  tagline: 'Autonomous by Design',
+  subTagline: 'Next-Generation IT · Artificial Intelligence · Robotics · Smart Infrastructure',
+  description:
+    'A future-ready technology partner for government and enterprise. Converging enterprise IT, SAP systems, artificial intelligence, autonomous drones, custom software, and smart infrastructure into one intelligent autonomous core.',
+  vision2030:
+    "By 2030, JSJ INFOTECH will operate as India's leading converged technology partner — where every government facility we maintain, every enterprise system we run, and every drone we fly feeds a single, self-improving AI layer. Infrastructure will not wait to fail before it is fixed; it will report on itself, predict its own needs, and increasingly manage itself.",
+  phone: '+91 89430 32965',
+  displayPhone: '+91 89430-32965',
+  supportEmail: 'support@jsjinfotech.co.in',
+  executiveEmail: 'subhash@jsjinfotech.co.in',
+  canonicalUrl: 'https://www.jsjinfotech.co.in',
+  location: 'India',
+  linkedinUrl: 'https://www.linkedin.com/company/jsj-infotech',
+  stats: {
+    verticalsCount: '07+',
+    phasesTo2030: '04',
+    convergedAiLayers: '01',
+    autonomyHorizon: '2030',
+  },
+  colors: {
+    navy: '#07112D',
+    midnight: '#0B1E42',
+    cyan: '#16C7E8',
+    violet: '#7657F6',
+    softBg: '#F5F7FB',
+    white: '#FFFFFF',
+    textPrimary: '#101A33',
+    textSecondary: '#5E6B85',
+    border: '#DDE4EF',
+  },
+} as const;
+
+export const SOLUTIONS_LIST = [
+  {
+    slug: 'sap-erp',
+    title: 'SAP & ERP Transformation',
+    eyebrow: 'Enterprise Systems',
+    shortDesc: 'Modernising SAP landscapes into AI-augmented enterprise platforms, S/4HANA migrations, ABAP, BASIS, and end-to-end ERP workflows.',
+    layer: 'Enterprise' as const,
+    icon: 'Database',
+  },
+  {
+    slug: 'artificial-intelligence',
+    title: 'Artificial Intelligence & Predictive Analytics',
+    eyebrow: 'Intelligence Layer',
+    shortDesc: 'Custom neural models, predictive maintenance, computer vision pipelines, and digital twin architectures.',
+    layer: 'Intelligence' as const,
+    icon: 'Cpu',
+  },
+  {
+    slug: 'cybersecurity',
+    title: 'Cybersecurity & Infrastructure Hardening',
+    eyebrow: 'Resilience & Compliance',
+    shortDesc: 'Zero-trust architecture, threat intelligence, continuous auditing, cyber-physical defense, and sovereign data governance.',
+    layer: 'Enterprise' as const,
+    icon: 'ShieldCheck',
+  },
+  {
+    slug: 'software-development',
+    title: 'Custom Software Engineering',
+    eyebrow: 'Built for What\'s Next',
+    shortDesc: 'Modular, API-first software architectures engineered to absorb emerging AI capabilities without costly rebuilds.',
+    layer: 'Enterprise' as const,
+    icon: 'Code2',
+  },
+  {
+    slug: 'digital-it',
+    title: 'IT Projects & Consulting',
+    eyebrow: 'Future-Ready Infrastructure',
+    shortDesc: 'End-to-end IT delivery, cloud-native deployments, automated operations (AIOps), and government digitization consulting.',
+    layer: 'Enterprise' as const,
+    icon: 'Server',
+  },
+  {
+    slug: 'drone-technology',
+    title: 'Autonomous Drone Technology',
+    eyebrow: 'Autonomous Data Capture',
+    shortDesc: 'High-precision aerial surveys, 3D photogrammetry, automated infrastructure inspections, and swarm fleet telemetry.',
+    layer: 'Physical' as const,
+    icon: 'Compass',
+  },
+  {
+    slug: 'smart-infrastructure',
+    title: 'Smart Infrastructure & HVAC AMC',
+    eyebrow: 'Physical Systems & Facilities',
+    shortDesc: 'Large-scale government facility HVAC AMC, IoT telemetry, energy analytics, and automated maintenance triggers.',
+    layer: 'Physical' as const,
+    icon: 'Building2',
+  },
+  {
+    slug: 'digital-content',
+    title: 'Digital Content & Technical Media',
+    eyebrow: 'Documentation & Communications',
+    shortDesc: 'Technical publishing, interactive training systems, structured digital documentation, and multimedia communications.',
+    layer: 'Cross-Layer' as const,
+    icon: 'FileSpreadsheet',
+  },
+  {
+    slug: 'innovation-rnd',
+    title: 'R&D & New Technology Development',
+    eyebrow: 'Innovation Frontier',
+    shortDesc: 'Cross-vertical platforms combining drone, SAP, and IoT telemetry into unified predictive autonomy models.',
+    layer: 'Intelligence' as const,
+    icon: 'Sparkles',
+  },
+] as const;
+
+export const INDUSTRIES_LIST = [
+  {
+    slug: 'government',
+    title: 'Government & Public Sector',
+    eyebrow: 'Sovereign Scale & Critical Infrastructure',
+    tagline: 'Digitising public services, securing vital infrastructure, and deploying autonomous monitoring for public assets.',
+    mandates: ['Digital India Compliance', 'Continuous Facility AMC', 'Critical Asset Drone Surveys', 'Zero-Trust Data Protection'],
+  },
+  {
+    slug: 'enterprise',
+    title: 'Enterprise & Industrial',
+    eyebrow: 'Connected Operations & Global Workflows',
+    tagline: 'Modernising legacy ERP into intelligent systems, scaling predictive AI, and unifying physical and digital facilities.',
+    mandates: ['SAP S/4HANA Transformation', 'Supply Chain Visibility', 'Predictive Asset Maintenance', 'Enterprise Cloud Migration'],
+  },
+] as const;
+
+export const ROADMAP_PHASES = [
+  {
+    phaseNumber: '01',
+    name: 'FOUNDATION',
+    tagline: 'Core Infrastructure & Operational Stability',
+    description: 'Stabilising mission-critical IT, SAP core systems, baseline government HVAC AMC contracts, and dedicated custom software platforms.',
+    milestones: [
+      'SAP ECC to S/4HANA roadmap baseline',
+      'Zero-trust network configuration across IT estates',
+      'High-uptime HVAC facility maintenance operations',
+      'Targeted manual drone aerial survey workflows',
+    ],
+  },
+  {
+    phaseNumber: '02',
+    name: 'INTEGRATION',
+    tagline: 'Cross-System Connectivity & Telemetry',
+    description: 'Connecting physical IoT telemetry from HVAC and drone sensors directly into enterprise SAP and data warehouse backends.',
+    milestones: [
+      'IoT edge gateway telemetry across government sites',
+      'Drone flight data ingestion pipelines into central analytics',
+      'AIOps integration for self-healing server infrastructure',
+      'Unified enterprise dashboards combining operational and financial metrics',
+    ],
+  },
+  {
+    phaseNumber: '03',
+    name: 'INTELLIGENCE',
+    tagline: 'Predictive Models & Automated Action Triggers',
+    description: 'Deploying custom computer vision, machine learning anomaly detection, and predictive maintenance algorithms.',
+    milestones: [
+      'Thermal and optical aerial defect detection via AI',
+      'Predictive component failure alerts in HVAC cooling plants',
+      'SAP ERP workflow automation powered by machine intelligence',
+      'Continuous security posture scoring & automated patch pipelines',
+    ],
+  },
+  {
+    phaseNumber: '04',
+    name: 'AUTONOMY',
+    tagline: 'Self-Directing, Closed-Loop Ecosystems (2030 Horizon)',
+    description: 'Full convergence into the JSJ Autonomous Core: infrastructure that monitors itself, predicts failure, and triggers repair without human friction.',
+    milestones: [
+      'Self-improving enterprise systems dynamically adjusting to operational shifts',
+      'Autonomous drone swarms performing scheduled asset audits',
+      'Zero-touch facilities adjusting energy, cooling, and safety autonomously',
+      'End-to-end intelligent partnership model for national infrastructure',
+    ],
+  },
+] as const;
