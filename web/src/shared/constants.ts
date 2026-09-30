@@ -10,8 +10,8 @@ export const BRAND = {
   phoneHref: '+918943032965',
   supportEmail: 'support@jsjinfotech.co.in',
   executiveEmail: 'subhash@jsjinfotech.co.in',
-  // Set NEXT_PUBLIC_SITE_URL to the primary hostname once DNS points at this deployment.
-  canonicalUrl: (process.env.NEXT_PUBLIC_SITE_URL || 'https://jsjinfotech.vercel.app').replace(/\/$/, ''),
+  // Primary live domain
+  canonicalUrl: (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.jsjinfotech.co.in').replace(/\/$/, ''),
   address: {
     street: 'Plot No. 144, Road No. 72',
     area: 'Jubilee Hills',

@@ -28,8 +28,22 @@ export const metadata: Metadata = {
     siteName: BRAND.name,
     title: siteTitle,
     description: BRAND.description,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: `${BRAND.name} — ${BRAND.tagline}`,
+        type: 'image/png',
+      },
+    ],
   },
-  twitter: { card: 'summary_large_image', title: siteTitle, description: BRAND.description },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: BRAND.description,
+    images: ['/og-image.png'],
+  },
   robots: {
     index: true,
     follow: true,
