@@ -35,6 +35,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Every old route resolves to the maintenance page (temporary 307, keeps SEO equity).
+  async redirects() {
+    return [{ source: '/:path((?!_next|api|icon|apple-icon|opengraph-image|twitter-image|robots.txt|og-image).+)', destination: '/', permanent: false }];
+  },
   async headers() {
     return [
       {
