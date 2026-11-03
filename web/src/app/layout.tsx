@@ -6,8 +6,8 @@ const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', dis
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.jsjinfotech.co.in'),
-  title: 'JSJ INFOTECH — Coming soon',
-  description: 'JSJ INFOTECH is rebuilding its website. Back soon.',
+  title: 'Under Maintenance',
+  description: 'Under Maintenance',
 };
 
 export const viewport: Viewport = {
