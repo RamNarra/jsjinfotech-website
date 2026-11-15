@@ -111,7 +111,7 @@ const L = (name: string, file?: string): Client => (file ? { name, logo: `/clien
 export const clientGroups: { name: string; clients: Client[] }[] = [
   {
     name: 'SAP Public Cloud',
-    clients: [L('The Man Company'), L('IndianOil LNG', 'indianoil-lng.svg'), L('Utkarsh', 'utkarsh.webp'), L('Webel Solar'), L('Genus'), L('Kiri Industries', 'kiri-industries.svg'), L('Virgo Group'), L('IPL Biologicals', 'ipl-biologicals.png'), L('Museum of the Future')],
+    clients: [L('The Man Company', 'the-man-company.png'), L('IndianOil LNG', 'indianoil-lng.svg'), L('Utkarsh', 'utkarsh.webp'), L('Webel Solar'), L('Genus', 'genus.png'), L('Kiri Industries', 'kiri-industries.svg'), L('Virgo Group'), L('IPL Biologicals', 'ipl-biologicals.png'), L('Museum of the Future')],
   },
   {
     name: 'RISE with SAP',

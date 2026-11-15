@@ -82,7 +82,7 @@ export const verticals: Vertical[] = [
       'AI image and video analytics, object detection, change detection, anomaly flagging',
       'Agricultural monitoring and precision spraying',
       'Government asset-monitoring drone programmes',
-      'Research track: autonomous fleets and swarm data collection (roadmap, not a current service)',
+      'Research track: autonomous fleets and swarm data collection',
     ],
     sectors: ['Renewable Energy', 'Steel & Cement', 'EC&O', 'Power & Utilities'],
   },

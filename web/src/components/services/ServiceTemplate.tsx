@@ -41,7 +41,7 @@ export function ServiceTemplate({ v }: { v: Vertical }) {
             </ul>
           </div>
           <div className="rounded-[28px] border border-line bg-mist p-4 lg:sticky lg:top-32">
-            <div className={v.slug === 'hvac-government' ? 'mb-6' : ''}><VerticalMedia v={v} /></div>
+            <VerticalMedia v={v} />
           </div>
         </div>
       </section>

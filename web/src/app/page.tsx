@@ -16,6 +16,7 @@ import { EngagementSteps } from '@/components/sections/EngagementSteps';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 import { SapBadge, SapLogo, SgnLogo } from '@/components/brand/SapBadge';
 import { LogoLockup } from '@/components/brand/Logo';
+import { HvacScreen } from '@/components/visuals/Screens';
 import { ArrowLink, Eyebrow, H2, JsonLd } from '@/components/ui';
 import { organizationLd } from '@/lib/seo';
 
@@ -56,16 +57,9 @@ export default function Home() {
             </p>
             <ArrowLink href="/about" className="mt-6">More about JSJ</ArrowLink>
           </div>
-          <div className="grid grid-cols-5 grid-rows-2 gap-4">
-            <figure className="col-span-3 row-span-2 overflow-hidden rounded-[28px]">
-              <img src="/images/gen/smart-building-sm.webp" alt="Digital twin of a building with a temperature heatmap on a control room screen" loading="lazy" className="h-full min-h-80 w-full object-cover" />
-            </figure>
-            <figure className="col-span-2 overflow-hidden rounded-[28px]">
-              <img src="/images/gen/hvac-govt-sm.webp" alt="Technician inspecting HVAC chillers on a government building roof" loading="lazy" className="h-full w-full object-cover" />
-            </figure>
-            <figure className="col-span-2 overflow-hidden rounded-[28px]">
-              <img src="/images/gen/ai-vision-sm.webp" alt="Drone camera view of a solar farm with panels detected by computer vision" loading="lazy" className="h-full w-full object-cover" />
-            </figure>
+          <div className="relative">
+            <img src="/images/gen/rnd-lab-sm.webp" alt="Engineering lab with a robotic arm, a drone and IoT sensor boards" loading="lazy" className="h-[420px] w-full rounded-[28px] object-cover" />
+            <HvacScreen className="absolute -bottom-8 -left-4 w-[70%] sm:-left-8" />
           </div>
         </div>
       </section>

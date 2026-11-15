@@ -19,7 +19,7 @@ export default function Page() {
       <PageHero eyebrow="Careers" title="Build the systems that run what’s next." lead="We hire engineers, consultants and project managers in Hyderabad." />
       <section className="section-y">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:items-center">
-          <img src="/images/gen/team-meeting-sm.webp" alt="Team reviewing a project plan on a wall screen" loading="lazy" className="h-80 w-full rounded-[28px] object-cover lg:h-[420px]" />
+          <img src="/images/gen/rnd-lab-sm.webp" alt="Engineering lab with a robotic arm, a drone and sensor boards" loading="lazy" className="h-80 w-full rounded-[28px] object-cover lg:h-[420px]" />
           <div>
             <Eyebrow>Why JSJ</Eyebrow>
             <H2>Engineering that leaves the screen.</H2>

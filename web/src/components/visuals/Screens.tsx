@@ -1,4 +1,4 @@
-import { Bot, CheckCircle2, FileText, MapPin, Plane, Send, Thermometer, TrendingUp } from 'lucide-react';
+import { Bot, CheckCircle2, FileText, MapPin, Plane, Send, ShieldCheck, Thermometer, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 // Illustrative product screens drawn in HTML/CSS (no screenshots of third-party software, no fake data claims).
@@ -138,6 +138,32 @@ export function DocScreen({ className }: { className?: string }) {
           <span className="inline-flex items-center gap-1 text-teal"><CheckCircle2 aria-hidden className="size-3.5" /> Ready to post</span>
         </div>
       </div>
+    </Window>
+  );
+}
+
+export function InfraScreen({ className }: { className?: string }) {
+  const items = [
+    ['On-premise servers', '42 nodes', 'ok'],
+    ['Cloud workloads', '118 services', 'ok'],
+    ['Security policies', 'Zero-trust active', 'ok'],
+    ['Patch compliance', '2 hosts pending', 'warn'],
+  ] as const;
+  return (
+    <Window title="Hybrid infrastructure and security" className={className}>
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 p-4">
+        <div className="rounded-xl border border-line p-3 text-center text-[12px]"><p className="font-semibold">Data centre</p><p className="text-muted">On-premise</p></div>
+        <span className="inline-flex size-10 items-center justify-center rounded-full bg-violet/10 text-violet"><ShieldCheck aria-hidden className="size-5" /></span>
+        <div className="rounded-xl border border-line p-3 text-center text-[12px]"><p className="font-semibold">Cloud</p><p className="text-muted">Public and private</p></div>
+      </div>
+      <ul className="divide-y divide-line border-t border-line">
+        {items.map(([k, v, s]) => (
+          <li key={k} className="flex items-center justify-between px-4 py-2.5 text-[13px]">
+            <span>{k}</span>
+            <span className={cn('rounded-full px-2 py-0.5 text-[11px] font-medium', s === 'ok' ? 'bg-[#e9f6ec] text-[#2f7a3c]' : 'bg-[#fff1e3] text-[#a2531a]')}>{v}</span>
+          </li>
+        ))}
+      </ul>
     </Window>
   );
 }
