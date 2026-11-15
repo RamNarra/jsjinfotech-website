@@ -1,0 +1,15 @@
+# JSJ INFOTECH
+
+> Technology and engineering company in Hyderabad, India. Enterprise IT, SAP (with joint venture partner SGN Software Pvt. Ltd., an SAP Gold Partner, Partner ID 0001635021), AI, drones, software development, government HVAC projects and new technology R&D.
+
+## Pages
+- /about/
+- /partnership/
+- /services/ (it-consulting, sap, ai, drones, software, hvac-government, rnd)
+- /industries/
+- /roadmap/
+- /contact/
+
+## Contact
+- Phone: +91 89430 32965
+- Email: subhash@jsjinfotech.co.in
