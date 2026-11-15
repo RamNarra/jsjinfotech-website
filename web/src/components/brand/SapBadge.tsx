@@ -39,3 +39,12 @@ export function PartnershipLockup({ dark = false, compact = false, className }: 
     </div>
   );
 }
+
+// SAP logo, owner decision 2026-11-15 (see docs): shown next to SAP content, linked to sap.com, never animated.
+export function SapLogo({ height = 40, className }: { height?: number; className?: string }) {
+  return (
+    <a href="https://www.sap.com" target="_blank" rel="noopener noreferrer" aria-label="SAP (opens sap.com)" className={cn('inline-block', className)}>
+      <img src="/brand/sap-logo.webp" alt="SAP" height={height} width={Math.round(height * 2.02)} style={{ height, width: 'auto' }} />
+    </a>
+  );
+}

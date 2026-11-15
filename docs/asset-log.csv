@@ -1,9 +1,16 @@
 file,used_on,source_type,source_name_or_tool,source_url,licence,created_or_downloaded_on,prompt_or_query,reviewer,status
-web/public/images/hvac-*.webp,home; HVAC service; industries,photo,Alf van Beem (Wikimedia Commons),https://commons.wikimedia.org/wiki/File:HVAC_Air_Handler_Unit,_pic1.JPG,CC0,2026-11-15,,Claude,ok
-web/public/images/solar-*.webp,home; industries,photo,Paora (Wikimedia Commons),https://commons.wikimedia.org/wiki/File:K%C5%8Dwhai_Park_Solar_Farm_PA01.jpg,CC0,2026-11-15,,Claude,ok
-web/public/images/technician-*.webp,home; IT service; careers,photo,Derrick Coetzee (Wikimedia Commons),https://commons.wikimedia.org/wiki/File:Technician_with_laptop_working_on_server_rack_at_NERSC.jpg,CC0,2026-11-15,,Claude,ok
-web/public/images/factory-*.webp,R&D service; industries,photo,KUKA Roboter GmbH (Wikimedia Commons),https://commons.wikimedia.org/wiki/File:Factory_Automation_Robotics_Palettizing_Bread.jpg,Public domain,2026-11-15,,Claude,ok
-web/public/images/datacenter-*.webp,industries,photo,Carl Lender (Wikimedia Commons),https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg,CC BY 2.0 (credit required),2026-11-15,,Claude,ok
 web/public/brand/sgn-logo.webp,lock-ups,logo,SGN Software via JSJ corporate profile docx,,owner-supplied,2026-11-15,,Claude,VERIFY usage
 web/public/brand/sap-gold-partner-badge.webp,lock-ups,badge,JSJ corporate profile docx,,owner-supplied; SAP trademark,2026-11-15,,Claude,VERIFY SGN/SAP permission
 web/public/clients/*,client proof,logo,each company's own website header; Valvoline and IndianOil from Wikimedia Commons,,trademarks of owners,2026-11-15,,Claude,VERIFY permission
+web/public/images/gen/hero-city*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/hero-enterprise*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/drone*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/it-noc*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/sap-finance*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/software-team*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/hvac-govt*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/rnd-lab*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/smart-building*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/ai-vision*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/images/gen/team-meeting*.webp,see code,AI-generated,Antigravity CLI image tool,,generated for JSJ (verify model terms),2026-11-15,see session prompt (corporate photo style; no faces; no text; no logos),Claude,ok
+web/public/brand/sap-logo.webp,partner strip; SAP section,logo,SAP certificate PDF,,SAP trademark,2026-11-15,,Claude,owner decision to display

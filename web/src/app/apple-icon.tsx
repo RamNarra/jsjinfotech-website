@@ -13,7 +13,6 @@ export default async function AppleIcon() {
   return new ImageResponse(
     (
       <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#ffffff' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} width={140} height={86} alt="" />
       </div>
     ),

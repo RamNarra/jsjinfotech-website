@@ -1,8 +1,8 @@
-import { SapBadge, SgnLogo } from '@/components/brand/SapBadge';
+import { SapBadge, SapLogo, SgnLogo } from '@/components/brand/SapBadge';
 import { ClientMarquee } from './ClientMarquee';
 
 // Proof band right under the hero: who our SAP partner is, in plain words, then the logos of SAP clients served by SGN.
-// SAP corporate logo is reserved for SAP, so only the partner badge (linked to sap.com) is shown.
+// SAP logo shown by owner decision (2026-11-15); SAP logos link to sap.com and are not animated.
 export function PartnerStrip() {
   return (
     <section aria-labelledby="partner-strip-h" className="relative border-y border-line bg-white">
@@ -10,6 +10,7 @@ export function PartnerStrip() {
         <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
           <SgnLogo height={52} />
           <SapBadge size="lg" />
+          <SapLogo height={52} />
         </div>
         <div className="max-w-md">
           <h2 id="partner-strip-h" className="font-display text-xl font-semibold tracking-tight">SAP projects delivered with SGN Software</h2>

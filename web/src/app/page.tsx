@@ -14,7 +14,7 @@ import { RoadmapTimeline } from '@/components/sections/RoadmapTimeline';
 import { IndustryGrid } from '@/components/sections/IndustryGrid';
 import { EngagementSteps } from '@/components/sections/EngagementSteps';
 import { ClosingCta } from '@/components/sections/ClosingCta';
-import { SapBadge, SgnLogo } from '@/components/brand/SapBadge';
+import { SapBadge, SapLogo, SgnLogo } from '@/components/brand/SapBadge';
 import { LogoLockup } from '@/components/brand/Logo';
 import { ArrowLink, Eyebrow, H2, JsonLd } from '@/components/ui';
 import { organizationLd } from '@/lib/seo';
@@ -58,13 +58,13 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-5 grid-rows-2 gap-4">
             <figure className="col-span-3 row-span-2 overflow-hidden rounded-[28px]">
-              <img src="/images/hvac-800.webp" alt="Air handling unit in a government plant room" loading="lazy" className="h-full min-h-80 w-full object-cover" />
+              <img src="/images/gen/smart-building-sm.webp" alt="Digital twin of a building with a temperature heatmap on a control room screen" loading="lazy" className="h-full min-h-80 w-full object-cover" />
             </figure>
             <figure className="col-span-2 overflow-hidden rounded-[28px]">
-              <img src="/images/solar-800.webp" alt="Solar farm seen from above" loading="lazy" className="h-full w-full object-cover" />
+              <img src="/images/gen/hvac-govt-sm.webp" alt="Technician inspecting HVAC chillers on a government building roof" loading="lazy" className="h-full w-full object-cover" />
             </figure>
             <figure className="col-span-2 overflow-hidden rounded-[28px]">
-              <img src="/images/technician-800.webp" alt="Engineer servicing a server rack" loading="lazy" className="h-full w-full object-cover" />
+              <img src="/images/gen/ai-vision-sm.webp" alt="Drone camera view of a solar farm with panels detected by computer vision" loading="lazy" className="h-full w-full object-cover" />
             </figure>
           </div>
         </div>
@@ -116,6 +116,7 @@ export default function Home() {
       <section className="on-ink section-y bg-ink text-on-ink" aria-labelledby="sap-h">
         <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.4fr]">
           <div>
+            <SapLogo height={56} className="mb-6" />
             <Eyebrow dark>SAP with SGN Software</Eyebrow>
             <H2 className="text-white"><span id="sap-h">Buy, implement and run SAP with one partnership.</span></H2>
             <p className="mt-5 text-lg leading-8 text-on-ink-muted">

@@ -6,11 +6,11 @@ import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta('Industries', 'Fourteen industries served by JSJ INFOTECH and SGN Software, from chemicals, steel and power to retail and banking.', '/industries/');
 
-const photos: { src: string; alt: string; label: string; credit?: string }[] = [
-  { src: '/images/factory-800.webp', alt: 'Robots on an automated production line', label: 'Manufacturing' },
-  { src: '/images/solar-800.webp', alt: 'Solar farm seen from above', label: 'Renewable energy' },
-  { src: '/images/hvac-800.webp', alt: 'Air handling unit in a plant room', label: 'Public infrastructure' },
-  { src: '/images/datacenter-800.webp', alt: 'Rows of server racks in a data centre', label: 'High tech', credit: 'Photo: Carl Lender, CC BY 2.0' },
+const photos: { src: string; alt: string; label: string }[] = [
+  { src: '/images/gen/drone-sm.webp', alt: 'Survey drone over a factory and solar field', label: 'Manufacturing and energy' },
+  { src: '/images/gen/sap-finance-sm.webp', alt: 'Finance team reviewing ERP dashboards', label: 'Enterprise operations' },
+  { src: '/images/gen/hvac-govt-sm.webp', alt: 'Technician inspecting rooftop HVAC chillers', label: 'Public infrastructure' },
+  { src: '/images/gen/it-noc-sm.webp', alt: 'Network operations centre', label: 'High tech and banking' },
 ];
 
 export default function Page() {
@@ -23,7 +23,6 @@ export default function Page() {
             <li key={p.src} className="relative overflow-hidden rounded-[24px]">
               <img src={p.src} alt={p.alt} loading="lazy" className="h-48 w-full object-cover md:h-64" />
               <span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold backdrop-blur">{p.label}</span>
-              {p.credit && <span className="absolute top-2 right-3 text-[10px] text-white/90 drop-shadow">{p.credit}</span>}
             </li>
           ))}
         </ul>

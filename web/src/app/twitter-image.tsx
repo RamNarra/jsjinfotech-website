@@ -13,7 +13,6 @@ export default async function OgImage() {
   return new ImageResponse(
     (
       <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 72, background: 'linear-gradient(120deg,#ffffff 0%,#eef1fb 55%,#efe6f6 100%)' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} width={230} height={140} alt="" />
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 68, fontWeight: 700, color: '#0b1530', letterSpacing: -2 }}>Intelligent technology.</div>

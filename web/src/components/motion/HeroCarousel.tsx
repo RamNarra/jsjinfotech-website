@@ -5,7 +5,6 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { slides } from '@/content/hero';
 import { Button } from '@/components/ui';
-import { PartnershipLockup } from '@/components/brand/SapBadge';
 import { HeroVisual } from './HeroVisual';
 import { Aurora } from './Aurora';
 import { NeuralField } from './NeuralField';
@@ -78,20 +77,19 @@ export function HeroCarousel() {
               );
             })()}
             <p className="mt-6 max-w-[60ch] text-lg leading-8 text-muted">{s.body}</p>
-            {s.visual === 'sap' && <PartnershipLockup compact className="mt-6" />}
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href={s.primary.href} variant="primary">{s.primary.label}</Button>
               <Button href={s.secondary.href} variant="outline">{s.secondary.label}</Button>
             </div>
           </motion.div>
         </AnimatePresence>
-        <div className="relative mx-auto hidden aspect-square w-full max-w-[600px] rounded-[40px] border border-white/70 bg-white/75 p-6 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.45)] backdrop-blur-xl md:block">
+        <div className="relative mx-auto hidden aspect-square w-full max-w-[640px] rounded-[36px] border border-white/70 bg-white/75 p-3 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.45)] backdrop-blur-xl md:block">
           <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 rounded-[40px] opacity-60" />
           <div aria-hidden className="absolute -inset-px -z-10 rounded-[36px] bg-[conic-gradient(from_180deg,rgba(123,92,255,0.6),rgba(196,92,219,0.3),rgba(134,224,90,0.4),rgba(123,92,255,0.6))] opacity-50 blur-3xl" />
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={s.visual}
-              className="absolute inset-6"
+              className="absolute inset-3"
               initial={reduce ? false : { opacity: 0, scale: 1.02 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={reduce ? undefined : { opacity: 0 }}
