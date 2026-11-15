@@ -7,7 +7,7 @@ export const sgn = {
   partnerId: '0001635021',
   level: 'SAP Gold Partner',
   certificateIssued: 'Nov 02, 2026',
-  engagementModel: 'SAP PartnerEdge Sell — Solution Sales: SAP product and technology advisory and support services',
+  engagementModel: 'SAP PartnerEdge Sell (Solution Sales): SAP product and technology advisory and support services',
 } as const;
 
 export type Metric = { value: number; suffix: string; label: string };
@@ -41,8 +41,8 @@ export const competencies = [
 
 // Product authorizations (authorized to sell), exact list from certificate page 2.
 export const authorizations = [
-  { name: 'SAP Cloud ERP', note: 'GROW with SAP — public cloud' },
-  { name: 'SAP Cloud ERP Private', note: 'RISE with SAP — private cloud' },
+  { name: 'SAP Cloud ERP', note: 'GROW with SAP, public cloud' },
+  { name: 'SAP Cloud ERP Private', note: 'RISE with SAP, private cloud' },
   { name: 'Spend Management', note: 'SAP Ariba sourcing, contracts, procure-to-pay' },
   { name: 'Human Capital Management', note: 'SAP SuccessFactors' },
   { name: 'Customer Relationship Management', note: 'SAP CX' },
@@ -52,16 +52,16 @@ export const authorizations = [
 
 export const serviceLines = [
   'Licence resale & PartnerEdge Cloud Choice',
-  'Implementation — GROW and RISE with SAP',
-  'Migration — ECC or S/4HANA to RISE',
+  'Implementation, GROW and RISE with SAP',
+  'Migration, ECC or S/4HANA to RISE',
   'Post-implementation support',
 ];
 
 export const designations = [
-  'SAP PartnerEdge Cloud Choice — customers buy SAP cloud licences with SGN supporting them throughout the contract.',
-  'Partner-Led Territories — qualified to support customers in dedicated market segments.',
-  'SAP-Qualified Partner-Packaged Solution — CastingSoft by SGN, for metals and mining in India/APJ.',
-  'Growth Champion Partner of the Year 2024 — awarded to SGN Software at SAP Partner Kick-Off Meeting 2025.',
+  'SAP PartnerEdge Cloud Choice, customers buy SAP cloud licences with SGN supporting them throughout the contract.',
+  'Partner-Led Territories, qualified to support customers in dedicated market segments.',
+  'SAP-Qualified Partner-Packaged Solution, CastingSoft by SGN, for metals and mining in India/APJ.',
+  'Growth Champion Partner of the Year 2024, awarded to SGN Software at SAP Partner Kick-Off Meeting 2025.',
 ];
 
 export type PartnershipRow = { area: string; jsj: string; sgn: string; combined: string };
@@ -102,21 +102,27 @@ export const engagementSteps = [
 ];
 
 // SAP clients served by SGN Software. Source: corporate profile page 5. Owner approved display (OD-04).
-export const clientGroups = [
+// Logos taken from each company's own website header (or Wikimedia for Valvoline / IndianOil), 2026-11-15.
+// VERIFY: confirm logo use permission and that each logo matches the SGN client entity before launch.
+export type Client = { name: string; logo?: string };
+
+const L = (name: string, file?: string): Client => (file ? { name, logo: `/clients/${file}` } : { name });
+
+export const clientGroups: { name: string; clients: Client[] }[] = [
   {
     name: 'SAP Public Cloud',
-    clients: ['The Man Company', 'IndianOil LNG', 'Utkarsh', 'Webel Solar', 'Genus', 'Kiri Industries', 'Virgo Group', 'IPL Biologicals', 'Museum of the Future'],
+    clients: [L('The Man Company'), L('IndianOil LNG', 'indianoil-lng.svg'), L('Utkarsh', 'utkarsh.webp'), L('Webel Solar'), L('Genus'), L('Kiri Industries', 'kiri-industries.svg'), L('Virgo Group'), L('IPL Biologicals', 'ipl-biologicals.png'), L('Museum of the Future')],
   },
   {
     name: 'RISE with SAP',
-    clients: ['DCM Shriram', 'Mamaearth', 'IOL Chemicals & Pharma', 'Sportking India', 'Safex', 'Sunsure', 'Briar Chemicals', 'GLS', 'Tulip Compression'],
+    clients: [L('DCM Shriram', 'dcm-shriram.png'), L('Mamaearth', 'mamaearth.png'), L('IOL Chemicals & Pharma', 'iol-chemicals.webp'), L('Sportking India'), L('Safex', 'safex.png'), L('Sunsure', 'sunsure.png'), L('Briar Chemicals', 'briar-chemicals.svg'), L('GLS', 'gls.png'), L('Tulip Compression')],
   },
   {
     name: 'SAP S/4HANA',
-    clients: ['Shakambhari Group', 'Tarsons', 'Edible Group', 'LINC', 'Black Tiger Cement', 'Aludecor', 'Dollar', 'Ripley Stevedoring', 'Bathwal Corporation'],
+    clients: [L('Shakambhari Group', 'shakambhari.svg'), L('Tarsons', 'tarsons.png'), L('Edible Group', 'edible-group.png'), L('LINC', 'linc.webp'), L('Black Tiger Cement', 'black-tiger-cement.png'), L('Aludecor', 'aludecor.png'), L('Dollar'), L('Ripley Stevedoring'), L('Bathwal Corporation')],
   },
   {
-    name: 'Finance & Spend (Ariba)',
-    clients: ['Relaxo', 'Exide', 'ReNew Power', 'Crompton Greaves', 'Valvoline', 'CenturyPly', 'Nuvoco', 'Luminous', 'Shyam Steel'],
+    name: 'Finance & Spend (SAP Ariba)',
+    clients: [L('Relaxo'), L('Exide', 'exide.png'), L('ReNew Power', 'renew.svg'), L('Crompton Greaves', 'crompton.webp'), L('Valvoline', 'valvoline.svg'), L('CenturyPly', 'centuryply.png'), L('Nuvoco', 'nuvoco.png'), L('Luminous'), L('Shyam Steel', 'shyam-steel.jpg')],
   },
 ];

@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: 'JSJ INFOTECH | Enterprise IT, SAP with SGN, AI, Drones, Software, Smart Infrastructure', template: '%s | JSJ INFOTECH' },
   description: site.description,
-  openGraph: { siteName: site.name, type: 'website', images: ['/og-image.png'] },
-  twitter: { card: 'summary_large_image', images: ['/og-image.png'] },
+  openGraph: { siteName: site.name, type: 'website' },
+  twitter: { card: 'summary_large_image' },
 };
 
 export const viewport: Viewport = { themeColor: '#05040b', width: 'device-width', initialScale: 1 };

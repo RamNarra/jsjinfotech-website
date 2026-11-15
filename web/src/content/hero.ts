@@ -36,7 +36,7 @@ export const slides: Slide[] = [
   {
     id: 's4',
     headline: 'One Technology Partner. Seven Integrated Verticals.',
-    body: 'IT Projects & Consulting · SAP Solutions with SGN · AI Innovations · Drone Technology · Software Development · HVAC Government Projects · New Technology R&D.',
+    body: 'IT Projects & Consulting, SAP Solutions with SGN, AI Innovations, Drone Technology, Software Development, HVAC Government Projects, New Technology R&D.',
     primary: { label: 'View All Services', href: '/services' },
     secondary: { label: 'Request a Consultation', href: '/contact' },
     visual: 'seven',

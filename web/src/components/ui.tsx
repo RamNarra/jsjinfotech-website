@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { Aurora } from '@/components/motion/Aurora';
 
@@ -29,19 +28,15 @@ export function Button({ href, children, variant = 'primary', className }: BtnPr
 
 export function ArrowLink({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) {
   return (
-    <Link href={href} className={cn('group inline-flex min-h-11 items-center gap-1.5 font-medium text-violet hover:text-violet-deep', className)}>
+    <Link href={href} className={cn('inline-flex min-h-11 items-center font-semibold text-violet underline decoration-violet/30 underline-offset-4 transition-colors hover:decoration-violet', className)}>
       {children}
-      <ArrowRight aria-hidden className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" strokeWidth={1.75} />
     </Link>
   );
 }
 
 export function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <p className={cn('label-caps mb-5 inline-flex items-center gap-2', dark ? 'text-violet-hi' : 'text-violet')}>
-      <span aria-hidden className="h-px w-6 bg-gradient-to-r from-teal to-magenta" />
-      {children}
-    </p>
+    <p className={cn('mb-4 text-[15px] font-semibold', dark ? 'text-violet-hi' : 'text-violet')}>{children}</p>
   );
 }
 
@@ -69,5 +64,5 @@ export function JsonLd({ data }: { data: object }) {
 }
 
 export function GradientText({ children }: { children: React.ReactNode }) {
-  return <span className="text-gradient">{children}</span>;
+  return <>{children}</>;
 }

@@ -10,7 +10,7 @@ export function PartnershipTable() {
           <tr className="border-b border-line bg-mist">
             <th scope="col" className="w-[14%] p-5 label-caps text-muted">Area</th>
             <th scope="col" className="p-5 font-display font-semibold">JSJ INFOTECH</th>
-            <th scope="col" className="p-5 font-display font-semibold">SGN Software — SAP Gold Partner</th>
+            <th scope="col" className="p-5 font-display font-semibold">SGN Software, SAP Gold Partner</th>
             <th scope="col" className="p-5 font-display font-semibold text-violet-deep">Combined outcome</th>
           </tr>
         </thead>

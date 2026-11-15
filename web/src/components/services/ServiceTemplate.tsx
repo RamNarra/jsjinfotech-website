@@ -8,6 +8,7 @@ import { PageHero, Button, Eyebrow, H2, ArrowLink, JsonLd } from '@/components/u
 import { PartnershipLockup, SapBadge } from '@/components/brand/SapBadge';
 import { ClientMatrix } from '@/components/sections/ClientMatrix';
 import { ClosingCta } from '@/components/sections/ClosingCta';
+import { VerticalMedia } from '@/components/sections/VerticalCards';
 import { breadcrumbLd } from '@/lib/seo';
 
 export function ServiceTemplate({ v }: { v: Vertical }) {
@@ -17,7 +18,7 @@ export function ServiceTemplate({ v }: { v: Vertical }) {
     <>
       <JsonLd data={breadcrumbLd([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services/' }, { name: v.name, path: `/services/${v.slug}/` }])} />
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Service', name: v.name, description: v.promise, provider: { '@type': 'Organization', name: site.name, url: site.url }, areaServed: 'IN' }} />
-      <PageHero eyebrow={`Service ${v.number}${v.research ? ' · Research track' : ''}`} title={v.name} lead={v.promise}>
+      <PageHero eyebrow={v.research ? 'Research track' : 'Services'} title={v.name} lead={v.promise}>
         {v.sgn && <SapBadge dark showId className="mt-6" />}
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button href="/contact" variant="light">Discuss a Project</Button>
@@ -26,24 +27,29 @@ export function ServiceTemplate({ v }: { v: Vertical }) {
       </PageHero>
 
       <section className="section-y">
-        <div className="container-x">
-          <Eyebrow>What we deliver</Eyebrow>
-          <H2>{v.title}</H2>
-          <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {v.capabilities.map((c) => (
-              <li key={c} className="flex gap-3 rounded-2xl card spotlight p-5 leading-7">
-                <Check aria-hidden className="mt-1 size-5 shrink-0 text-violet" strokeWidth={1.75} />
-                <span>{c}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="container-x grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-start">
+          <div>
+            <Eyebrow>What we deliver</Eyebrow>
+            <H2>{v.title}</H2>
+            <ul className="mt-8 space-y-3">
+              {v.capabilities.map((c) => (
+                <li key={c} className="flex gap-3 text-[17px] leading-7">
+                  <Check aria-hidden className="mt-1 size-5 shrink-0 text-violet" strokeWidth={2} />
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-[28px] border border-line bg-mist p-4 lg:sticky lg:top-32">
+            <div className={v.slug === 'hvac-government' ? 'mb-6' : ''}><VerticalMedia v={v} /></div>
+          </div>
         </div>
       </section>
 
       <section className="section-y bg-mist">
         <div className="container-x">
           <Eyebrow>How we work</Eyebrow>
-          <H2>Engage · Design · Deliver · Run &amp; Evolve</H2>
+          <H2>Engage, Design, Deliver, Run &amp; Evolve</H2>
           <ol className="mt-10 grid gap-4 md:grid-cols-4">
             {engagementSteps.map((s) => (
               <li key={s.n} className="rounded-2xl card spotlight p-6">

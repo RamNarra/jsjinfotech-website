@@ -7,8 +7,8 @@ export function pageMeta(title: string, description: string, path: string): Meta
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { title: `${title} | JSJ INFOTECH`, description, url, siteName: site.name, type: 'website', images: ['/og-image.png'] },
-    twitter: { card: 'summary_large_image', title: `${title} | JSJ INFOTECH`, description, images: ['/og-image.png'] },
+    openGraph: { title: `${title} | JSJ INFOTECH`, description, url, siteName: site.name, type: 'website' },
+    twitter: { card: 'summary_large_image', title: `${title} | JSJ INFOTECH`, description },
   };
 }
 
@@ -24,6 +24,9 @@ export const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: site.name,
+  legalName: site.legal.name,
+  taxID: site.legal.gstin,
+  identifier: { '@type': 'PropertyValue', propertyID: 'LLPIN', value: site.legal.llpin },
   url: site.url,
   logo: `${site.url}/brand/jsj-logo.svg`,
   slogan: site.tagline,

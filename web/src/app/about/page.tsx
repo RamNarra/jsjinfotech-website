@@ -16,7 +16,7 @@ export default function Page() {
             <Eyebrow>Company</Eyebrow>
             <H2>One integrated partner</H2>
             <p className="mt-6 leading-8 text-muted">
-              JSJ INFOTECH operates at the intersection of enterprise IT, SAP systems, artificial intelligence, drones, custom software and government HVAC maintenance. The company is built to be a single technology partner — one that maintains today’s systems and continuously upgrades them with AI, automation and connected intelligence.
+              JSJ INFOTECH operates at the intersection of enterprise IT, SAP systems, artificial intelligence, drones, custom software and government HVAC maintenance. The company is built to be a single technology partner, one that maintains today’s systems and continuously upgrades them with AI, automation and connected intelligence.
             </p>
             <p className="mt-4 leading-8 text-muted">
               JSJ INFOTECH delivers SAP programmes through a combined technology and delivery partnership with SGN Software Pvt. Ltd., an SAP Gold Partner. SGN is JSJ’s joint venture partner for SAP projects and a strategic partner across the wider JSJ portfolio.

@@ -1,14 +1,27 @@
+'use client';
+
 import { site } from '@/content/site';
 
 const MESSAGE = 'Hi JSJ INFOTECH, I would like to know more about your services.';
 
 // Opens WhatsApp chat with Mr. Subhash (+91 89430 32965) and a preset message.
-// wa.me works on mobile (app) and desktop (WhatsApp Web / desktop app).
+// Phones: wa.me opens the WhatsApp app. Desktop: open WhatsApp Web's chat directly (wa.me on desktop
+// shows an extra "Continue to chat" page first). The plain wa.me href remains the no-JS fallback.
+const PHONE = site.phone.tel.replace('+', '');
+const TEXT = encodeURIComponent(MESSAGE);
+
 export function WhatsAppButton() {
-  const href = `https://wa.me/${site.phone.tel.replace('+', '')}?text=${encodeURIComponent(MESSAGE)}`;
+  const href = `https://wa.me/${PHONE}?text=${TEXT}`;
+  const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    if (mobile) return;
+    e.preventDefault();
+    window.open(`https://web.whatsapp.com/send?phone=${PHONE}&text=${TEXT}`, '_blank', 'noopener,noreferrer');
+  };
   return (
     <a
       href={href}
+      onClick={onClick}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with JSJ INFOTECH on WhatsApp (opens in a new tab)"

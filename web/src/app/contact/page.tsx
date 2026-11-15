@@ -4,7 +4,7 @@ import { EnquiryForm } from '@/components/forms/EnquiryForm';
 import { site } from '@/content/site';
 import { pageMeta } from '@/lib/seo';
 
-export const metadata = pageMeta('Contact', 'Discuss a project with JSJ INFOTECH. Jubilee Hills, Hyderabad. +91 89430 32965 · subhash@jsjinfotech.co.in', '/contact/');
+export const metadata = pageMeta('Contact', 'Discuss a project with JSJ INFOTECH. Jubilee Hills, Hyderabad. +91 89430 32965, subhash@jsjinfotech.co.in', '/contact/');
 
 export default function Page() {
   return (

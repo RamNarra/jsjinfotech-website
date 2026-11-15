@@ -1,24 +1,38 @@
+/* eslint-disable @next/next/no-img-element */
 import { PageHero } from '@/components/ui';
-import { industries } from '@/content/industries';
+import { IndustryGrid } from '@/components/sections/IndustryGrid';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 import { pageMeta } from '@/lib/seo';
 
-export const metadata = pageMeta('Industries', 'Fourteen sectors served by JSJ INFOTECH and SGN Software, from government and utilities to chemicals, steel and retail.', '/industries/');
+export const metadata = pageMeta('Industries', 'Fourteen industries served by JSJ INFOTECH and SGN Software, from chemicals, steel and power to retail and banking.', '/industries/');
+
+const photos: { src: string; alt: string; label: string; credit?: string }[] = [
+  { src: '/images/factory-800.webp', alt: 'Robots on an automated production line', label: 'Manufacturing' },
+  { src: '/images/solar-800.webp', alt: 'Solar farm seen from above', label: 'Renewable energy' },
+  { src: '/images/hvac-800.webp', alt: 'Air handling unit in a plant room', label: 'Public infrastructure' },
+  { src: '/images/datacenter-800.webp', alt: 'Rows of server racks in a data centre', label: 'High tech', credit: 'Photo: Carl Lender, CC BY 2.0' },
+];
 
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="Industries" title="Fourteen sectors. One delivery model." lead="Use cases below restate service capabilities. Specific references are available on request." />
-      <section className="section-y">
-        <ul className="container-x grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((x, i) => (
-            <li key={x.name} className="rounded-2xl card spotlight p-6">
-              <span className="font-mono text-sm text-violet">{String(i + 1).padStart(2, '0')}</span>
-              <h2 className="mt-4 font-display text-xl font-semibold">{x.name}</h2>
-              <p className="mt-2 text-[15px] leading-6 text-muted">{x.use}</p>
+      <PageHero eyebrow="Industries" title="Fourteen industries, one delivery model." lead="The same team and method, tuned to how each industry runs." />
+      <section className="pt-16">
+        <ul className="container-x grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {photos.map((p) => (
+            <li key={p.src} className="relative overflow-hidden rounded-[24px]">
+              <img src={p.src} alt={p.alt} loading="lazy" className="h-48 w-full object-cover md:h-64" />
+              <span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold backdrop-blur">{p.label}</span>
+              {p.credit && <span className="absolute top-2 right-3 text-[10px] text-white/90 drop-shadow">{p.credit}</span>}
             </li>
           ))}
         </ul>
+      </section>
+      <section className="section-y">
+        <div className="container-x">
+          <IndustryGrid detailed />
+          <p className="mt-6 text-sm text-muted">Use cases describe what we deliver in each industry. Specific references are available on request.</p>
+        </div>
       </section>
       <ClosingCta />
     </>

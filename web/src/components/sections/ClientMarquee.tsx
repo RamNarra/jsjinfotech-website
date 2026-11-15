@@ -1,23 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
 import { clientGroups } from '@/content/sap';
 
-// Infinite client ticker. Second copy is aria-hidden and hidden under reduced motion.
+// Logo ticker (only clients with a logo file). Second copy is aria-hidden and hidden under reduced motion.
 export function ClientMarquee() {
-  const all = clientGroups.flatMap((g) => g.clients);
-  const Row = ({ hidden = false }: { hidden?: boolean }) => (
-    <ul aria-hidden={hidden || undefined} className={hidden ? 'flex motion-reduce:hidden' : 'flex flex-wrap motion-safe:flex-nowrap'}>
-      {all.map((c) => (
-        <li key={c} className="flex items-center gap-6 px-6 py-2 font-display text-xl font-medium whitespace-nowrap text-muted/90 md:text-2xl">
-          {c}
-          <span aria-hidden className="size-1.5 rounded-full bg-electric/70" />
-        </li>
-      ))}
-    </ul>
-  );
+  const withLogo = clientGroups.flatMap((g) => g.clients).filter((c) => c.logo);
   return (
     <div className="marquee overflow-hidden">
-      <div className="marquee-track">
-        <Row />
-        <Row hidden />
+      <div className="marquee-track items-center">
+        {[0, 1].map((k) => (
+          <ul key={k} aria-hidden={k === 1 || undefined} className={k === 1 ? 'flex items-center motion-reduce:hidden' : 'flex flex-wrap items-center motion-safe:flex-nowrap'}>
+            {withLogo.map((c) => (
+              <li key={c.name} className="flex h-16 items-center px-8">
+                <img src={c.logo} alt={k === 0 ? `${c.name} logo` : ''} loading="lazy" className="max-h-10 max-w-[130px] object-contain opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0" />
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export default function Page() {
           <Eyebrow>SAP Gold Partner credentials</Eyebrow>
           <H2>{sgn.legalName} is certified by SAP as an {sgn.level}.</H2>
           <p className="mt-4 max-w-[68ch] text-muted">
-            Partner ID <span className="font-mono">{sgn.partnerId}</span> · {sgn.city} · {sgn.engagementModel}. SAP certificate issued {sgn.certificateIssued}.
+            Partner ID <span className="font-mono">{sgn.partnerId}</span>, {sgn.city}, {sgn.engagementModel}. SAP certificate issued {sgn.certificateIssued}.
           </p>
           <p className="mt-3 max-w-[68ch] text-sm text-muted">
             Verification: SGN Software’s status can be checked on the{' '}
@@ -48,7 +48,7 @@ export default function Page() {
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
             <div>
               <h3 className="font-display text-xl font-semibold">Authorized to sell</h3>
-              <ul className="mt-4 space-y-2 text-muted">{authorizations.map((a) => <li key={a.name}>• {a.name} — {a.note}</li>)}</ul>
+              <ul className="mt-4 space-y-2 text-muted">{authorizations.map((a) => <li key={a.name}>• {a.name}, {a.note}</li>)}</ul>
             </div>
             <div>
               <h3 className="font-display text-xl font-semibold">Designations and recognition</h3>

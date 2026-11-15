@@ -37,7 +37,7 @@ export const verticals: Vertical[] = [
     name: 'SAP Solutions with SGN',
     title: 'SAP delivery with SGN Software, SAP Gold Partner',
     promise:
-      'Enterprise SAP delivery through JSJ INFOTECH’s joint venture with SGN Software — from licensing and implementation to migration, support and SAP Business AI.',
+      'Enterprise SAP delivery through JSJ INFOTECH’s joint venture with SGN Software, from licensing and implementation to migration, support and SAP Business AI.',
     card: 'SAP licensing and advisory, GROW with SAP, RISE with SAP, SAP S/4HANA, migration, SAP BTP, Business Data Cloud, Signavio, Ariba, SuccessFactors, integration and support.',
     capabilities: [
       'SAP licence resale, including SAP PartnerEdge Cloud Choice',
@@ -56,7 +56,7 @@ export const verticals: Vertical[] = [
     name: 'AI Innovations',
     title: 'The intelligence layer',
     promise:
-      'AI connects every JSJ vertical — turning data from drones, HVAC sensors and enterprise systems into predictive decisions.',
+      'AI connects every JSJ vertical, turning data from drones, HVAC sensors and enterprise systems into predictive decisions.',
     card: 'Generative AI applications, predictive maintenance, computer vision, AI copilots, digital twins, MLOps and AI extensions over SAP.',
     capabilities: [
       'Generative AI applications for enterprise and government workflows',
@@ -65,7 +65,7 @@ export const verticals: Vertical[] = [
       'AI copilots and assistants for government citizen services',
       'Digital twin development for simulation and monitoring',
       'MLOps pipelines for continuous model deployment',
-      'AI over SAP S/4HANA with SGN — invoice and document processing, AI-assisted ABAP QA',
+      'AI over SAP S/4HANA with SGN, invoice and document processing, AI-assisted ABAP QA',
     ],
     sectors: ['Manufacturing', 'Power & Utilities', 'Retail', 'Pharmaceuticals'],
   },
@@ -79,7 +79,7 @@ export const verticals: Vertical[] = [
     capabilities: [
       'High-precision aerial survey, mapping and 3D modelling',
       'Drone inspection of infrastructure, buildings and HVAC installations',
-      'AI image and video analytics — object detection, change detection, anomaly flagging',
+      'AI image and video analytics, object detection, change detection, anomaly flagging',
       'Agricultural monitoring and precision spraying',
       'Government asset-monitoring drone programmes',
       'Research track: autonomous fleets and swarm data collection (roadmap, not a current service)',
@@ -98,7 +98,7 @@ export const verticals: Vertical[] = [
       'API-first architecture and system integration, including SAP integration with SGN',
       'Legacy modernisation into cloud-native, AI-ready platforms',
       'Continuous delivery (CI/CD) and DevOps engineering',
-      'Embedded AI features — recommendations, automation, intelligent search',
+      'Embedded AI features, recommendations, automation, intelligent search',
     ],
     sectors: ['Banking', 'Retail', 'Professional Services', 'High Tech'],
   },

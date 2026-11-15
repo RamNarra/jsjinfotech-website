@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import { ArrowUpRight, Server, Boxes, BrainCircuit, Plane, Code2, Fan, FlaskConical, type LucideIcon } from 'lucide-react';
-import { verticals } from '@/content/verticals';
-import { Reveal } from '@/components/motion/Reveal';
+import { Server, Boxes, BrainCircuit, Plane, Code2, Fan, FlaskConical, type LucideIcon } from 'lucide-react';
+import { verticals, type Vertical } from '@/content/verticals';
+import { ErpScreen, CopilotScreen, DroneMapScreen, CodeScreen, HvacScreen } from '@/components/visuals/Screens';
 import { cn } from '@/lib/cn';
-import { SapBadge } from '@/components/brand/SapBadge';
 
 const icons: Record<string, LucideIcon> = {
   'it-consulting': Server,
@@ -15,53 +15,72 @@ const icons: Record<string, LucideIcon> = {
   rnd: FlaskConical,
 };
 
-// Bento: size = hierarchy. SAP and AI carry the big tiles.
+// Photos: Wikimedia Commons (public domain / CC0 / CC BY), see docs/asset-log.csv.
+export function VerticalMedia({ v }: { v: Vertical }) {
+  switch (v.slug) {
+    case 'sap':
+      return <ErpScreen className="w-full" />;
+    case 'ai':
+      return <CopilotScreen className="w-full" />;
+    case 'drones':
+      return <DroneMapScreen className="w-full" />;
+    case 'software':
+      return <CodeScreen className="w-full" />;
+    case 'hvac-government':
+      return (
+        <div className="relative">
+          <img src="/images/hvac-800.webp" alt="Air handling unit in a plant room" loading="lazy" className="h-56 w-full rounded-2xl object-cover" />
+          <HvacScreen className="absolute right-3 -bottom-6 w-[78%]" />
+        </div>
+      );
+    case 'it-consulting':
+      return <img src="/images/technician-800.webp" alt="Engineer working on a server rack" loading="lazy" className="h-56 w-full rounded-2xl object-cover" />;
+    default:
+      return <img src="/images/factory-800.webp" alt="Industrial robots on an automated production line" loading="lazy" className="h-56 w-full rounded-2xl object-cover" />;
+  }
+}
+
 const span: Record<string, string> = {
-  sap: 'lg:col-span-4 lg:row-span-2',
-  ai: 'lg:col-span-2 lg:row-span-2',
+  sap: 'lg:col-span-4',
+  ai: 'lg:col-span-2',
   'it-consulting': 'lg:col-span-2',
   drones: 'lg:col-span-2',
   software: 'lg:col-span-2',
-  'hvac-government': 'lg:col-span-2',
-  rnd: 'lg:col-span-2',
+  'hvac-government': 'lg:col-span-3',
+  rnd: 'lg:col-span-3',
 };
 const order = ['sap', 'ai', 'it-consulting', 'drones', 'software', 'hvac-government', 'rnd'];
 
 export function VerticalCards() {
-  const list = order.map((s) => verticals.find((v) => v.slug === s)!).filter(Boolean);
+  const list = order.map((s) => verticals.find((v) => v.slug === s)).filter((v): v is Vertical => Boolean(v));
   return (
-    <ul className="grid auto-rows-[minmax(220px,auto)] gap-4 md:grid-cols-2 lg:grid-cols-6">
-      {list.map((v, i) => {
+    <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+      {list.map((v) => {
         const Icon = icons[v.slug] ?? Server;
         const big = v.slug === 'sap';
         return (
           <li key={v.slug} className={cn(span[v.slug])}>
-            <Reveal delay={i * 0.05} className="h-full">
-              <Link
-                href={`/services/${v.slug}`}
-                className={cn(
-                  'spotlight group relative flex h-full flex-col overflow-hidden rounded-3xl card p-6 transition-transform duration-300 ease-standard hover:-translate-y-1 motion-reduce:hover:translate-y-0 lg:p-8',
-                  big && 'bg-[radial-gradient(120%_90%_at_100%_0%,rgba(67,121,189,0.16),rgba(163,83,160,0.10)_40%,transparent_70%)]',
-                )}
-              >
-                {big && <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 opacity-70" />}
-                <div className="relative flex items-start justify-between">
-                  <span className="inline-flex size-12 items-center justify-center rounded-2xl border border-line bg-gradient-to-br from-white to-mist text-violet shadow-[0_6px_20px_-10px_rgba(96,75,159,0.5)]">
-                    <Icon aria-hidden className="size-6" strokeWidth={1.5} />
+            <Link
+              href={`/services/${v.slug}`}
+              className="group flex h-full flex-col rounded-[28px] border border-line bg-mist p-4 transition-colors duration-200 hover:border-violet/40 hover:bg-white"
+            >
+              <div className={cn('rounded-2xl', v.slug === 'hvac-government' && 'mb-6')}>
+                <VerticalMedia v={v} />
+              </div>
+              <div className="flex flex-1 flex-col px-2 pt-6 pb-2">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex size-10 items-center justify-center rounded-xl bg-white text-violet ring-1 ring-line">
+                    <Icon aria-hidden className="size-5" strokeWidth={1.6} />
                   </span>
-                  <span className="font-mono text-xs text-muted">{v.number}</span>
+                  <h3 className={cn('font-display font-semibold tracking-tight', big ? 'text-2xl md:text-3xl' : 'text-xl')}>{v.name}</h3>
                 </div>
-                <div className="relative mt-auto pt-10">
-                  <h3 className={cn('font-display font-semibold tracking-tight', big ? 'text-3xl md:text-4xl' : 'text-xl leading-7')}>{v.name}</h3>
-                  <p className={cn('mt-2 leading-6 text-muted', big ? 'max-w-xl text-base md:text-lg md:leading-7' : 'text-[15px]')}>{v.card}</p>
-                  {big && <SapBadge size="sm" link={false} className="mt-6 flex" />}
-                  {v.research && <span className="mt-4 inline-block rounded-full border border-line px-2.5 py-1 text-xs text-muted">Research track</span>}
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-violet group-hover:text-violet-deep">
-                    Explore <ArrowUpRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </div>
-              </Link>
-            </Reveal>
+                <p className={cn('mt-3 leading-7 text-muted', big ? 'max-w-2xl text-[17px]' : 'text-[15px] leading-6')}>{v.card}</p>
+                {v.research && <p className="mt-3 text-sm font-medium text-[#a2531a]">Research track, not a current service</p>}
+                <span className="mt-auto pt-5 text-sm font-semibold text-violet underline decoration-violet/30 underline-offset-4 group-hover:decoration-violet">
+                  Learn about {v.name}
+                </span>
+              </div>
+            </Link>
           </li>
         );
       })}

@@ -17,6 +17,7 @@ describe('content rules', () => {
   it('36 SGN clients in four groups', () => {
     expect(clientGroups).toHaveLength(4);
     expect(clientGroups.flatMap((g) => g.clients)).toHaveLength(36);
+    for (const c of clientGroups.flatMap((g) => g.clients)) if (c.logo) expect(c.logo).toMatch(/^\/clients\//);
   });
   it('SGN metrics match profile', () => expect(sgnMetrics.map((m) => m.value)).toEqual([15, 250, 100, 75, 25, 16]));
   it('partner ID matches certificate', () => expect(sgn.partnerId).toBe('0001635021'));

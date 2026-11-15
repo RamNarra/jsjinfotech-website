@@ -67,15 +67,12 @@ export function HeroCarousel() {
             exit={reduce ? undefined : { opacity: 0, y: -8 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 label-caps text-violet">
-              <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-green shadow-[0_0_8px_2px_rgba(110,190,68,0.6)]" />
-              {String(i + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}<span className="hidden sm:inline"> · JSJ INFOTECH × SGN Software</span>
-            </p>
+            
             {(() => {
               const cut = s.headline.indexOf('. ') + 1;
               const Tag = i === 0 ? 'h1' : 'h2';
               return (
-                <Tag className="mt-6 font-display text-[42px] leading-[44px] font-semibold tracking-[-0.035em] text-balance md:text-[60px] md:leading-[64px] xl:text-[72px] xl:leading-[74px]">
+                <Tag className="font-display text-[42px] leading-[44px] font-semibold tracking-[-0.035em] text-balance md:text-[60px] md:leading-[64px] xl:text-[72px] xl:leading-[74px]">
                   {s.headline.slice(0, cut)} <span className="text-gradient">{s.headline.slice(cut).trim()}</span>
                 </Tag>
               );
@@ -88,8 +85,8 @@ export function HeroCarousel() {
             </div>
           </motion.div>
         </AnimatePresence>
-        <div className="on-ink relative mx-auto hidden aspect-square w-full max-w-[520px] rounded-[36px] bg-ink p-6 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.7)] ring-1 ring-ink/10 md:block">
-          <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 rounded-[36px]" />
+        <div className="relative mx-auto hidden aspect-square w-full max-w-[600px] rounded-[40px] border border-white/70 bg-white/75 p-6 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.45)] backdrop-blur-xl md:block">
+          <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 rounded-[40px] opacity-60" />
           <div aria-hidden className="absolute -inset-px -z-10 rounded-[36px] bg-[conic-gradient(from_180deg,rgba(123,92,255,0.6),rgba(196,92,219,0.3),rgba(134,224,90,0.4),rgba(123,92,255,0.6))] opacity-50 blur-3xl" />
           <AnimatePresence mode="wait" initial={false}>
             <motion.div

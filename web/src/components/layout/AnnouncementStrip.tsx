@@ -26,7 +26,7 @@ export function AnnouncementStrip() {
           <strong className="font-semibold">JSJ INFOTECH × SGN Software</strong>
           <span className="mx-2 opacity-60">|</span>Joint Venture Partner for SAP Projects
           <span className="mx-2 hidden opacity-60 sm:inline">|</span>
-          <span className="hidden sm:inline">SGN Software — SAP Gold Partner</span>
+          <span className="hidden sm:inline">SGN Software, SAP Gold Partner</span>
         </p>
         <button
           type="button"

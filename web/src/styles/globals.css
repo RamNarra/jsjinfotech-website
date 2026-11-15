@@ -71,7 +71,7 @@ html.lenis, html.lenis body { height: auto; }
 @media (min-width: 768px) { .section-y { padding-block: 96px; } }
 @media (min-width: 1024px) { .section-y { padding-block: 128px; } }
 
-.label-caps { font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+.label-caps { font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; }
 
 /* Logo-spectrum headline text */
 .text-gradient {
@@ -122,7 +122,7 @@ html.lenis, html.lenis body { height: auto; }
 .glass {
   background: rgb(255 255 255 / 0.72);
   border: 1px solid rgb(11 21 48 / 0.08);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.9), 0 12px 40px -18px rgb(11 21 48 / 0.25);
+  box-shadow: 0 12px 40px -18px rgb(11 21 48 / 0.25);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
 }
@@ -162,9 +162,9 @@ html.lenis, html.lenis body { height: auto; }
 /* Primary CTA: logo violet, subtle spectrum glow */
 .btn-glow {
   background: linear-gradient(135deg, #604b9f, #7761aa);
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12) inset, 0 10px 30px -10px rgb(96 75 159 / 0.65);
+  box-shadow: 0 10px 30px -12px rgb(96 75 159 / 0.6);
 }
-.btn-glow:hover { background: linear-gradient(135deg, #47367f, #604b9f); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.2) inset, 0 14px 36px -8px rgb(96 75 159 / 0.8); }
+.btn-glow:hover { background: linear-gradient(135deg, #47367f, #604b9f); box-shadow: 0 14px 36px -10px rgb(96 75 159 / 0.75); }
 
 /* Marquee */
 .marquee { mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
