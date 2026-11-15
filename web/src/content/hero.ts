@@ -5,17 +5,18 @@ export type Slide = {
   body: string;
   primary: { label: string; href: string };
   secondary: { label: string; href: string };
-  visual: 'network' | 'sap' | 'twin' | 'seven';
+  visual: 'sap' | 'seven';
 };
 
+// Owner decision 2026-11-15: two slides only, rotating every 7 seconds.
 export const slides: Slide[] = [
   {
-    id: 's1',
-    headline: 'Intelligent Technology. Connected Enterprise.',
-    body: 'JSJ INFOTECH brings enterprise IT, AI, software engineering and smart infrastructure together to help organizations modernize the systems that power business and public services.',
-    primary: { label: 'Explore Our Capabilities', href: '/services' },
-    secondary: { label: 'Talk to Our Team', href: '/contact' },
-    visual: 'network',
+    id: 's4',
+    headline: 'One Technology Partner. Seven Integrated Verticals.',
+    body: 'IT Projects & Consulting, SAP Solutions with SGN, AI Innovations, Drone Technology, Software Development, HVAC Government Projects, New Technology R&D.',
+    primary: { label: 'View All Services', href: '/services' },
+    secondary: { label: 'Request a Consultation', href: '/contact' },
+    visual: 'seven',
   },
   {
     id: 's2',
@@ -24,21 +25,5 @@ export const slides: Slide[] = [
     primary: { label: 'Explore SAP Solutions', href: '/services/sap' },
     secondary: { label: 'Meet the Partnership', href: '/partnership' },
     visual: 'sap',
-  },
-  {
-    id: 's3',
-    headline: 'From Enterprise Intelligence to Smart Infrastructure.',
-    body: 'Connect AI, computer vision, autonomous drone data, software and IoT-enabled infrastructure to create more informed, responsive operations.',
-    primary: { label: 'Discover AI & Innovation', href: '/services/ai' },
-    secondary: { label: 'Discuss a Project', href: '/contact' },
-    visual: 'twin',
-  },
-  {
-    id: 's4',
-    headline: 'One Technology Partner. Seven Integrated Verticals.',
-    body: 'IT Projects & Consulting, SAP Solutions with SGN, AI Innovations, Drone Technology, Software Development, HVAC Government Projects, New Technology R&D.',
-    primary: { label: 'View All Services', href: '/services' },
-    secondary: { label: 'Request a Consultation', href: '/contact' },
-    visual: 'seven',
   },
 ];
