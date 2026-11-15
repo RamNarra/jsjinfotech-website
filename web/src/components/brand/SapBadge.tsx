@@ -21,7 +21,7 @@ export function SapBadge({ className, showId = false, size = 'md', link = true }
 }
 
 export function SgnLogo({ height = 32, className }: { height?: number; className?: string }) {
-  return <img src="/brand/sgn-logo.webp" alt="SGN Software" height={height} width={Math.round(height * 4.87)} style={{ height, width: 'auto' }} className={className} />;
+  return <img src="/brand/sgn-logo.webp" alt="SGN Software" height={height} width={Math.round(height * 4.87)} style={{ '--h': `${height}px` } as React.CSSProperties} className={cn('h-[calc(var(--h)*0.72)] w-auto sm:h-[var(--h)]', className)} />;
 }
 
 // Lock-up per SRS §4.4: [JSJ logo] × [SGN logo] [SAP Gold Partner badge]. Logos sit on white so both read correctly.
@@ -44,7 +44,7 @@ export function PartnershipLockup({ dark = false, compact = false, className }: 
 export function SapLogo({ height = 40, className }: { height?: number; className?: string }) {
   return (
     <a href="https://www.sap.com" target="_blank" rel="noopener noreferrer" aria-label="SAP (opens sap.com)" className={cn('inline-block', className)}>
-      <img src="/brand/sap-logo.webp" alt="SAP" height={height} width={Math.round(height * 2.02)} style={{ height, width: 'auto' }} />
+      <img src="/brand/sap-logo.webp" alt="SAP" height={height} width={Math.round(height * 2.02)} style={{ '--h': `${height}px` } as React.CSSProperties} className="h-[calc(var(--h)*0.72)] w-auto sm:h-[var(--h)]" />
     </a>
   );
 }

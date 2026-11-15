@@ -10,9 +10,14 @@ export function LogoLockup({ height = 48, dark = false, className }: { height?: 
   const markH = height * 0.74;
   const width = Math.round((markH * 242.14) / 148);
   return (
-    <span className={cn('inline-flex flex-col items-start', className)} style={{ width }} role="img" aria-label="JSJ INFOTECH">
-      <img src="/brand/jsj-mark.svg" alt="" width={width} height={Math.round(markH)} style={{ width, height: markH }} />
-      <svg viewBox="0 0 242 40" width={width} height={Math.round(width * 40 / 242)} aria-hidden className="mt-[3%] block overflow-visible">
+    <span
+      className={cn('inline-flex w-[calc(var(--w)*0.75)] flex-col items-start sm:w-[var(--w)]', className)}
+      style={{ '--w': `${width}px` } as React.CSSProperties}
+      role="img"
+      aria-label="JSJ INFOTECH"
+    >
+      <img src="/brand/jsj-mark.svg" alt="" width={width} height={Math.round(markH)} className="h-auto w-full" />
+      <svg viewBox="0 0 242 40" aria-hidden className="mt-[3%] block h-auto w-full overflow-visible">
         <text
           x="1"
           y="31"

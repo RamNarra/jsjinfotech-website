@@ -37,7 +37,7 @@ export function HeroCarousel() {
       ref={root}
       aria-roledescription="carousel"
       aria-label="JSJ INFOTECH highlights"
-      className="relative flex min-h-[720px] items-center overflow-hidden bg-mist text-text lg:min-h-[min(100svh,960px)]"
+      className="relative flex min-h-[640px] items-center overflow-hidden bg-mist text-text lg:min-h-[min(100svh,960px)]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setFocused(true)}
@@ -54,7 +54,7 @@ export function HeroCarousel() {
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
       <NeuralField className="pointer-events-none absolute inset-0 h-full w-full opacity-60" />
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
-      <div className="container-x relative grid items-center gap-10 pt-36 pb-28 lg:grid-cols-[1.1fr_1fr] lg:pt-40 lg:pb-28">
+      <div className="container-x relative grid items-center gap-8 pt-32 pb-28 md:gap-10 lg:grid-cols-[1.1fr_1fr] lg:pt-40">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={s.id}
@@ -71,19 +71,19 @@ export function HeroCarousel() {
               const cut = s.headline.indexOf('. ') + 1;
               const Tag = i === 0 ? 'h1' : 'h2';
               return (
-                <Tag className="font-display text-[42px] leading-[44px] font-semibold tracking-[-0.035em] text-balance md:text-[60px] md:leading-[64px] xl:text-[72px] xl:leading-[74px]">
+                <Tag className="t-hero font-display font-semibold text-balance">
                   {s.headline.slice(0, cut)} <span className="text-gradient">{s.headline.slice(cut).trim()}</span>
                 </Tag>
               );
             })()}
-            <p className="mt-6 max-w-[60ch] text-lg leading-8 text-muted">{s.body}</p>
+            <p className="t-lead mt-5 max-w-[60ch] text-muted">{s.body}</p>
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href={s.primary.href} variant="primary">{s.primary.label}</Button>
               <Button href={s.secondary.href} variant="outline">{s.secondary.label}</Button>
             </div>
           </motion.div>
         </AnimatePresence>
-        <div className="relative mx-auto hidden aspect-square w-full max-w-[640px] rounded-[36px] border border-white/70 bg-white/75 p-3 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.45)] backdrop-blur-xl md:block">
+        <div className="relative mx-auto aspect-square w-full max-w-[420px] md:max-w-[640px] rounded-[36px] border border-white/70 bg-white/75 p-3 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.45)] backdrop-blur-xl ">
           <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 rounded-[40px] opacity-60" />
           <div aria-hidden className="absolute -inset-px -z-10 rounded-[36px] bg-[conic-gradient(from_180deg,rgba(123,92,255,0.6),rgba(196,92,219,0.3),rgba(134,224,90,0.4),rgba(123,92,255,0.6))] opacity-50 blur-3xl" />
           <AnimatePresence mode="wait" initial={false}>
