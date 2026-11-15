@@ -15,7 +15,7 @@ export const site = {
   },
   phone: { display: '+91 89430 32965', tel: '+918943032965' },
   email: { enquiry: 'support@jsjinfotech.co.in', support: 'support@jsjinfotech.co.in' },
-  mapUrl: 'https://www.openstreetmap.org/search?query=Road%20Number%2072%20Jubilee%20Hills%20Hyderabad',
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Plot+No.144%2C+Rd+Number+72%2C+Jubilee+Hills%2C+Hyderabad%2C+Telangana+500096',
 } as const;
 
 export type NavItem = { label: string; href: string };

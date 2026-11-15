@@ -15,7 +15,7 @@ export default function Page() {
           <div className="relative"><EnquiryForm /></div>
           <aside className="space-y-6 rounded-2xl border border-line bg-mist p-6 lg:self-start">
             <h2 className="font-display text-xl font-semibold">JSJ INFOTECH</h2>
-            <p className="flex gap-3"><MapPin aria-hidden className="mt-1 size-5 shrink-0 text-violet" strokeWidth={1.5} /><span>{site.address.full}<br /><a className="text-violet underline" href={site.mapUrl} rel="noopener" target="_blank">Open map</a></span></p>
+            <p className="flex gap-3"><MapPin aria-hidden className="mt-1 size-5 shrink-0 text-violet" strokeWidth={1.5} /><span>{site.address.full}<br /><a className="text-violet underline" href={site.mapUrl} rel="noopener" target="_blank">Open on Google Maps</a></span></p>
             <p className="flex gap-3"><Mail aria-hidden className="mt-0.5 size-5 shrink-0 text-violet" strokeWidth={1.5} /><a className="block hover:text-violet" href={`mailto:${site.email.support}`}>{site.email.support}</a></p>
           </aside>
         </div>
