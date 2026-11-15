@@ -63,8 +63,8 @@ export function IndustryGrid({ detailed = false }: { detailed?: boolean }) {
       className={cn(
         "grid gap-5",
         detailed
-          ? "sm:grid-cols-2 lg:grid-cols-3"
-          : "grid-cols-2 md:grid-cols-4 lg:grid-cols-7",
+          ? "md:grid-cols-2"
+          : "sm:grid-cols-2 lg:grid-cols-3",
       )}
     >
       {industries.map((x) => {
@@ -82,7 +82,7 @@ export function IndustryGrid({ detailed = false }: { detailed?: boolean }) {
                   loading="lazy"
                   className={cn(
                     "w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]",
-                    detailed ? "h-52" : "h-40",
+                    "aspect-[16/10]",
                   )}
                 />
                 <span className="absolute top-3 left-3 inline-flex size-9 items-center justify-center rounded-xl bg-white/95 text-violet shadow">
@@ -96,7 +96,7 @@ export function IndustryGrid({ detailed = false }: { detailed?: boolean }) {
                 </span>
               </div>
             )}
-            <div className="p-4">
+            <div className="p-5">
               <p className="font-display text-[17px] leading-6 font-semibold">
                 {x.name === "EC&O" ? "Engineering & Construction" : x.name}
               </p>
