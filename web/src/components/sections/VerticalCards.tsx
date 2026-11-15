@@ -54,7 +54,7 @@ export function VerticalCards() {
                 <div className="relative mt-auto pt-10">
                   <h3 className={cn('font-display font-semibold tracking-tight', big ? 'text-3xl md:text-4xl' : 'text-xl leading-7')}>{v.name}</h3>
                   <p className={cn('mt-2 leading-6 text-muted', big ? 'max-w-xl text-base md:text-lg md:leading-7' : 'text-[15px]')}>{v.card}</p>
-                  {big && <SapBadge size="sm" className="mt-6 flex" />}
+                  {big && <SapBadge size="sm" link={false} className="mt-6 flex" />}
                   {v.research && <span className="mt-4 inline-block rounded-full border border-line px-2.5 py-1 text-xs text-muted">Research track</span>}
                   <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-violet group-hover:text-violet-deep">
                     Explore <ArrowUpRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

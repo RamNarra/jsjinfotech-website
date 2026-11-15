@@ -4,6 +4,7 @@ import { site } from '@/content/site';
 import { sgn, serviceLines, authorizations, engagementSteps } from '@/content/sap';
 import { industries } from '@/content/industries';
 import { HeroCarousel } from '@/components/motion/HeroCarousel';
+import { PartnerStrip } from '@/components/sections/PartnerStrip';
 import { CapabilityRibbon } from '@/components/sections/CapabilityRibbon';
 import { PartnershipTable } from '@/components/sections/PartnershipTable';
 import { VerticalCards } from '@/components/sections/VerticalCards';
@@ -40,6 +41,7 @@ export default function Home() {
       {/* 01 Partnership strip renders in layout (home only). */}
       {/* 02 */}
       <HeroCarousel />
+      <PartnerStrip />
       {/* 03 */}
       <CapabilityRibbon />
 

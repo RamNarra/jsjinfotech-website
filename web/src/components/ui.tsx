@@ -49,14 +49,14 @@ export function H2({ children, className }: { children: React.ReactNode; classNa
   return <h2 className={cn('font-display text-[32px] leading-[38px] font-semibold tracking-[-0.02em] text-balance md:text-[48px] md:leading-[54px]', className)}>{children}</h2>;
 }
 
-export function PageHero({ eyebrow, title, lead, children }: { eyebrow: string; title: string; lead?: string; children?: React.ReactNode }) {
+export function PageHero({ eyebrow, title, lead, children }: { eyebrow: string; title: React.ReactNode; lead?: string; children?: React.ReactNode }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-mist pt-40 pb-20 md:pt-48 md:pb-28">
       <Aurora intensity={0.55} />
       <div aria-hidden className="bg-lines pointer-events-none absolute inset-0" />
       <div className="container-x relative">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="max-w-4xl font-display text-[40px] leading-[44px] font-semibold tracking-[-0.03em] text-balance text-text md:text-[68px] md:leading-[72px]">{title}</h1>
+        <h1 className="max-w-5xl font-display text-[40px] leading-[44px] font-semibold tracking-[-0.03em] text-balance text-text md:text-[68px] md:leading-[72px]">{title}</h1>
         {lead && <p className="mt-6 max-w-[68ch] text-lg leading-8 text-muted md:text-xl md:leading-[30px]">{lead}</p>}
         {children}
       </div>

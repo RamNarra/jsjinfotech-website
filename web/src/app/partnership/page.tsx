@@ -11,7 +11,7 @@ export const metadata = pageMeta('Partnership', 'JSJ INFOTECH × SGN Software: j
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="Partnership" title="JSJ INFOTECH × SGN Software" lead="A combined technology and delivery partnership. SGN is JSJ INFOTECH’s joint venture partner for SAP projects and a strategic partner across JSJ’s technology portfolio." />
+      <PageHero eyebrow="Partnership" title={<><span className="whitespace-nowrap">JSJ INFOTECH</span> <span className="text-gradient">×</span> <span className="whitespace-nowrap">SGN Software</span></>} lead="A combined technology and delivery partnership. SGN is JSJ INFOTECH’s joint venture partner for SAP projects and a strategic partner across JSJ’s technology portfolio." />
       <section className="section-y">
         <div className="container-x">
           <PartnershipLockup />
@@ -25,6 +25,10 @@ export default function Page() {
           <H2>{sgn.legalName} is certified by SAP as an {sgn.level}.</H2>
           <p className="mt-4 max-w-[68ch] text-muted">
             Partner ID <span className="font-mono">{sgn.partnerId}</span> · {sgn.city} · {sgn.engagementModel}. SAP certificate issued {sgn.certificateIssued}.
+          </p>
+          <p className="mt-3 max-w-[68ch] text-sm text-muted">
+            Verification: SGN Software’s status can be checked on the{' '}
+            <a className="text-violet underline" href="https://partnerfinder.sap.com/" target="_blank" rel="noopener noreferrer">SAP Partner Finder</a>. A copy of the SAP partner certificate is available on request.
           </p>
           <div className="mt-10 overflow-x-auto rounded-2xl card">
             <table className="w-full min-w-[640px] text-left text-[15px]">

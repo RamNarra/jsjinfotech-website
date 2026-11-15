@@ -59,7 +59,7 @@ export function Footer() {
           </nav>
         </div>
         <p className="mt-6 max-w-4xl text-[12px] leading-5 text-on-ink-muted/80">
-          SAP, SAP S/4HANA, RISE with SAP, GROW with SAP, SAP Ariba, SAP SuccessFactors, SAP Business AI, SAP BTP, SAP PartnerEdge and SAP Gold Partner are trademarks or registered trademarks of SAP SE in Germany and other countries. JSJ INFOTECH is not SAP. All other names are trademarks of their owners.
+          SAP, SAP S/4HANA, RISE with SAP, GROW with SAP, SAP Ariba, SAP SuccessFactors, SAP Business AI, SAP BTP, SAP PartnerEdge and SAP Gold Partner are trademarks or registered trademarks of SAP SE in Germany and other countries. This site is not affiliated with SAP SE or an SAP affiliate company. All other names are trademarks of their owners.
         </p>
       </div>
     </footer>

@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { site } from '@/content/site';
 import { AnnouncementStrip } from '@/components/layout/AnnouncementStrip';
 import { Header } from '@/components/layout/Header';
+import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 import { Footer } from '@/components/layout/Footer';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

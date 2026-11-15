@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { primaryNav, site } from '@/content/site';
 import { cn } from '@/lib/cn';
+import { Logo } from '@/components/brand/Logo';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,14 +41,11 @@ export function Header() {
     >
       <div
         className={cn(
-          'mx-auto flex h-16 w-[calc(100%-24px)] max-w-[1240px] items-center justify-between rounded-full pr-2 pl-4 transition-all duration-300 lg:h-[68px] lg:pl-5',
+          'mx-auto flex h-[72px] w-[calc(100%-24px)] max-w-[1240px] items-center justify-between rounded-full pr-2 pl-5 transition-all duration-300 lg:h-[80px] lg:pl-7',
           solid ? 'glass' : 'border border-transparent',
         )}
       >
-        <Link href="/" aria-label="JSJ INFOTECH home" className="inline-flex min-h-11 items-center gap-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/jsj-logo.svg" alt="" width={44} height={32} className="h-9 w-auto lg:h-11" />
-        </Link>
+        <Logo height={64} />
 
         <nav aria-label="Primary" className="hidden xl:block">
           <ul className="flex items-center gap-1">
