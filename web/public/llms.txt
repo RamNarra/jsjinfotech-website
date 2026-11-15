@@ -11,4 +11,4 @@
 - /contact/
 
 ## Contact
-- Email: subhash@jsjinfotech.co.in
+- Email: support@jsjinfotech.co.in

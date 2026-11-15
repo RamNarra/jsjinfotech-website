@@ -41,7 +41,6 @@ export function Footer() {
             <p className="label-caps text-violet-hi">Contact</p>
             <address className="mt-4 space-y-2 text-[14px] leading-6 text-on-ink-muted not-italic">
               <p>{site.address.full}</p>
-              <p><a className="hover:text-white" href={`mailto:${site.email.enquiry}`}>{site.email.enquiry}</a></p>
               <p><a className="hover:text-white" href={`mailto:${site.email.support}`}>{site.email.support}</a></p>
             </address>
           </div>

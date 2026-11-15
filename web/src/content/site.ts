@@ -14,7 +14,7 @@ export const site = {
     full: 'Plot No.144, Rd Number 72, Jubilee Hills, Hyderabad, Telangana 500096',
   },
   phone: { display: '+91 89430 32965', tel: '+918943032965' },
-  email: { enquiry: 'subhash@jsjinfotech.co.in', support: 'support@jsjinfotech.co.in' },
+  email: { enquiry: 'support@jsjinfotech.co.in', support: 'support@jsjinfotech.co.in' },
   mapUrl: 'https://www.openstreetmap.org/search?query=Road%20Number%2072%20Jubilee%20Hills%20Hyderabad',
 } as const;
 
