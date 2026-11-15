@@ -126,3 +126,21 @@ export const clientGroups: { name: string; clients: Client[] }[] = [
     clients: [L('Relaxo'), L('Exide', 'exide.png'), L('ReNew Power', 'renew.svg'), L('Crompton Greaves', 'crompton.webp'), L('Valvoline', 'valvoline.svg'), L('CenturyPly', 'centuryply.png'), L('Nuvoco', 'nuvoco.png'), L('Luminous'), L('Shyam Steel', 'shyam-steel.jpg')],
   },
 ];
+
+// SAP products in plain words (text references; SAP product names are SAP trademarks).
+export const sapProducts = [
+  { key: 'cloud', name: 'GROW with SAP', what: 'Cloud ERP for growing companies, ready in weeks.' },
+  { key: 'server', name: 'RISE with SAP', what: 'Move your existing SAP to a managed private cloud.' },
+  { key: 'boxes', name: 'SAP S/4HANA', what: 'The ERP core for finance, supply chain and manufacturing.' },
+  { key: 'cart', name: 'SAP Ariba', what: 'Buying, supplier management and spend control.' },
+  { key: 'users', name: 'SAP SuccessFactors', what: 'HR, payroll, hiring and talent in one place.' },
+  { key: 'flow', name: 'SAP BTP', what: 'Connect SAP to your other systems and add AI.' },
+] as const;
+
+// Starting points we meet clients at, and what the partnership does for each.
+export const sapScenarios = [
+  { from: 'No ERP yet, or outgrowing spreadsheets', to: 'Implement GROW with SAP (public cloud) with standard best practices.' },
+  { from: 'Running SAP ECC or S/4HANA on-premise', to: 'Plan and migrate to RISE with SAP (private cloud) with minimal disruption.' },
+  { from: 'Already live on SAP', to: 'Post go-live support, roll-outs to new plants or companies, integration and AI add-ons.' },
+  { from: 'Need SAP cloud licences', to: 'Buy through SAP PartnerEdge Cloud Choice with SGN supporting you for the whole contract.' },
+];

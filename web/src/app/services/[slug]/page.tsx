@@ -5,7 +5,8 @@ import { ServiceTemplate } from '@/components/services/ServiceTemplate';
 import { pageMeta } from '@/lib/seo';
 
 export const dynamicParams = false;
-export const generateStaticParams = () => verticals.map((v) => ({ slug: v.slug }));
+// /services/sap has its own page (app/services/sap).
+export const generateStaticParams = () => verticals.filter((v) => v.slug !== 'sap').map((v) => ({ slug: v.slug }));
 
 type Props = { params: Promise<{ slug: string }> };
 

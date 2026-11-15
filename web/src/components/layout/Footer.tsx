@@ -6,7 +6,7 @@ import { PartnershipLockup } from '@/components/brand/SapBadge';
 const groups = [
   { title: 'Company', links: [['About', '/about'], ['Partnership', '/partnership'], ['Careers', '/careers'], ['Insights', '/insights']] },
   { title: 'Services', links: verticals.map((v) => [v.name, `/services/${v.slug}`]) },
-  { title: 'Solutions', links: [['SAP', '/services/sap'], ['Industries', '/industries'], ['Roadmap', '/roadmap']] },
+  { title: 'Solutions', links: [['SAP', '/services/sap'], ['Industries', '/industries']] },
 ] as const;
 
 const legal = [['Privacy', '/privacy'], ['Terms', '/terms'], ['Cookie policy', '/cookies'], ['Accessibility', '/accessibility']] as const;

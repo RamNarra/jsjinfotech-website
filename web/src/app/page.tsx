@@ -74,10 +74,10 @@ export default function Home() {
               </p>
             </div>
             <div className="rounded-[32px] bg-white p-8 shadow-[0_30px_80px_-40px_rgba(11,21,48,0.4)] ring-1 ring-line md:p-10">
-              <div className="flex items-center justify-between gap-6">
-                <LogoLockup height={120} />
-                <span aria-hidden className="font-display text-5xl font-light text-muted">×</span>
-                <SgnLogo height={60} />
+              <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 px-2 sm:justify-around">
+                <LogoLockup height={104} />
+                <span aria-hidden className="font-display text-4xl font-light text-muted">×</span>
+                <SgnLogo height={48} className="max-w-full" />
               </div>
               <div className="mt-8 flex flex-col items-center gap-3 border-t border-line pt-8 text-center">
                 <SapBadge size="lg" className="items-center" />

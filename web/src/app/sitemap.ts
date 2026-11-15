@@ -4,7 +4,7 @@ import { verticals } from '@/content/verticals';
 
 export const dynamic = 'force-static';
 
-const routes = ['', '/about', '/partnership', '/services', '/industries', '/roadmap', '/insights', '/careers', '/contact', '/privacy', '/terms', '/cookies', '/accessibility'];
+const routes = ['', '/about', '/partnership', '/services', '/industries', '/insights', '/careers', '/contact', '/privacy', '/terms', '/cookies', '/accessibility'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const all = [...routes, ...verticals.map((v) => `/services/${v.slug}`)];
