@@ -2,7 +2,7 @@ import type { Slide } from '@/content/hero';
 
 // Inline SVG visuals per slide (no raster assets yet; §11.2 prefers SVG diagrams).
 export function HeroVisual({ kind }: { kind: Slide['visual'] }) {
-  const stroke = 'rgba(169,155,224,0.55)';
+  const stroke = 'rgba(185,171,240,0.6)';
   const green = 'rgba(110,190,68,0.6)';
   if (kind === 'seven') {
     const pts = Array.from({ length: 7 }, (_, i) => {
@@ -15,7 +15,7 @@ export function HeroVisual({ kind }: { kind: Slide['visual'] }) {
         {pts.map(([x, y], i) => (
           <g key={i}>
             <line x1={x} y1={y} x2="250" y2="250" stroke={i % 2 ? green : stroke} strokeWidth="1" className="data-path" />
-            <circle cx={x} cy={y} r="14" fill="#1f1b37" stroke={stroke} />
+            <circle cx={x} cy={y} r="14" fill="#121e3f" stroke={stroke} />
             <text x={x} y={y + 4} textAnchor="middle" fontSize="11" fill="#edebf5" fontFamily="monospace">{`0${i + 1}`}</text>
           </g>
         ))}
@@ -27,7 +27,7 @@ export function HeroVisual({ kind }: { kind: Slide['visual'] }) {
     return (
       <svg viewBox="0 0 500 500" className="h-full w-full" aria-hidden>
         {[0, 1, 2, 3].map((i) => (
-          <rect key={i} x={90 + i * 10} y={130 + i * 64} width={320 - i * 20} height="44" rx="10" fill="#1f1b37" stroke={stroke} />
+          <rect key={i} x={90 + i * 10} y={130 + i * 64} width={320 - i * 20} height="44" rx="10" fill="#121e3f" stroke={stroke} />
         ))}
         {['S/4HANA', 'BTP', 'Ariba', 'SuccessFactors'].map((t, i) => (
           <text key={t} x="250" y={157 + i * 64} textAnchor="middle" fontSize="13" fill="#edebf5" fontFamily="monospace">{t}</text>
@@ -61,7 +61,7 @@ export function HeroVisual({ kind }: { kind: Slide['visual'] }) {
   return (
     <svg viewBox="0 0 500 500" className="h-full w-full" aria-hidden>
       {[[90, 380, 60, 90], [170, 330, 50, 140], [240, 290, 70, 180], [330, 350, 50, 120], [395, 310, 45, 160]].map(([x, y, w, h], i) => (
-        <rect key={i} x={x} y={y - h + 90} width={w} height={h} fill="#1f1b37" stroke={stroke} />
+        <rect key={i} x={x} y={y - h + 90} width={w} height={h} fill="#121e3f" stroke={stroke} />
       ))}
       <path d="M115 210 C 180 120, 300 120, 360 170 S 430 220, 420 150" fill="none" stroke={green} className="data-path" />
       <path d="M195 190 C 240 80, 330 90, 360 170" fill="none" stroke={stroke} className="data-path" />

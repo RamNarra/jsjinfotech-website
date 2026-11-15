@@ -5,6 +5,8 @@ export type Vertical = {
   name: string;
   title: string;
   promise: string;
+  /** Card line, exact from master prompt §6 "Seven integrated verticals". */
+  card: string;
   capabilities: string[];
   sectors: string[];
   research?: boolean;
@@ -19,6 +21,7 @@ export const verticals: Vertical[] = [
     title: 'Future-ready infrastructure',
     promise:
       'Digital foundations that adapt as technology evolves, rather than infrastructure that needs replacing every few years.',
+    card: 'Enterprise IT project delivery, cloud and hybrid infrastructure, cybersecurity architecture, government digitisation consulting and AIOps.',
     capabilities: [
       'End-to-end IT project delivery with a built-in upgrade path for emerging technology',
       'Cloud-native and hybrid infrastructure designed for AI workloads',
@@ -26,7 +29,7 @@ export const verticals: Vertical[] = [
       'Government digitisation consulting toward connected, data-driven operations',
       'Automated IT operations (AIOps) for self-healing infrastructure',
     ],
-    sectors: ['Government', 'Banking', 'Manufacturing', 'High Tech'],
+    sectors: ['Banking', 'Manufacturing', 'High Tech', 'Professional Services'],
   },
   {
     slug: 'sap',
@@ -35,6 +38,7 @@ export const verticals: Vertical[] = [
     title: 'SAP delivery with SGN Software, SAP Gold Partner',
     promise:
       'Enterprise SAP delivery through JSJ INFOTECH’s joint venture with SGN Software — from licensing and implementation to migration, support and SAP Business AI.',
+    card: 'SAP licensing and advisory, GROW with SAP, RISE with SAP, SAP S/4HANA, migration, SAP BTP, Business Data Cloud, Signavio, Ariba, SuccessFactors, integration and support.',
     capabilities: [
       'SAP licence resale, including SAP PartnerEdge Cloud Choice',
       'SAP Business Suite implementation: GROW with SAP (public cloud) and RISE with SAP (private cloud)',
@@ -53,6 +57,7 @@ export const verticals: Vertical[] = [
     title: 'The intelligence layer',
     promise:
       'AI connects every JSJ vertical — turning data from drones, HVAC sensors and enterprise systems into predictive decisions.',
+    card: 'Generative AI applications, predictive maintenance, computer vision, AI copilots, digital twins, MLOps and AI extensions over SAP.',
     capabilities: [
       'Generative AI applications for enterprise and government workflows',
       'Predictive maintenance models spanning HVAC, infrastructure and equipment',
@@ -62,7 +67,7 @@ export const verticals: Vertical[] = [
       'MLOps pipelines for continuous model deployment',
       'AI over SAP S/4HANA with SGN — invoice and document processing, AI-assisted ABAP QA',
     ],
-    sectors: ['Government', 'Manufacturing', 'Power & Utilities', 'Retail'],
+    sectors: ['Manufacturing', 'Power & Utilities', 'Retail', 'Pharmaceuticals'],
   },
   {
     slug: 'drones',
@@ -70,6 +75,7 @@ export const verticals: Vertical[] = [
     name: 'Drone Technology',
     title: 'Aerial data capture',
     promise: 'From one-off drone surveys toward AI-analysed aerial intelligence as a continuous service.',
+    card: 'Aerial survey and mapping, 3D modelling, infrastructure inspection, AI image/video analytics, agricultural monitoring and asset-monitoring programmes.',
     capabilities: [
       'High-precision aerial survey, mapping and 3D modelling',
       'Drone inspection of infrastructure, buildings and HVAC installations',
@@ -78,7 +84,7 @@ export const verticals: Vertical[] = [
       'Government asset-monitoring drone programmes',
       'Research track: autonomous fleets and swarm data collection (roadmap, not a current service)',
     ],
-    sectors: ['Government', 'Agriculture', 'Renewable Energy', 'Steel & Cement'],
+    sectors: ['Renewable Energy', 'Steel & Cement', 'EC&O', 'Power & Utilities'],
   },
   {
     slug: 'software',
@@ -86,6 +92,7 @@ export const verticals: Vertical[] = [
     name: 'Software Development',
     title: 'Built for what’s next',
     promise: 'Modular software architecture designed to absorb new AI capabilities without rebuilds.',
+    card: 'Custom web, mobile and enterprise applications, API-first architecture, SAP integration, legacy modernization, DevOps and embedded AI.',
     capabilities: [
       'Custom web, mobile and enterprise application development',
       'API-first architecture and system integration, including SAP integration with SGN',
@@ -101,6 +108,7 @@ export const verticals: Vertical[] = [
     name: 'HVAC Government Projects',
     title: 'Smart maintenance and upgradation',
     promise: 'HVAC maintenance moved from reactive, manual work to connected, predictive operation.',
+    card: 'AMC-based HVAC maintenance, IoT sensor retrofits, predictive maintenance, energy-efficiency upgrades, remote diagnostics and facility dashboards.',
     capabilities: [
       'AMC-based maintenance of HVAC systems in government facilities',
       'IoT-sensor retrofits for real-time HVAC performance monitoring',
@@ -109,7 +117,7 @@ export const verticals: Vertical[] = [
       'Remote diagnostics and automated fault detection',
       'HVAC data integration into central facility dashboards',
     ],
-    sectors: ['Government', 'Power & Utilities', 'Pharmaceuticals'],
+    sectors: ['Power & Utilities', 'Pharmaceuticals', 'EC&O'],
   },
   {
     slug: 'rnd',
@@ -117,6 +125,7 @@ export const verticals: Vertical[] = [
     name: 'New Technology R&D',
     title: 'Research frontier',
     promise: 'A dedicated research track exploring JSJ’s next generation of services. Research, not current service.',
+    card: 'Cross-vertical AI platforms, smart building / smart city pilots, IoT + AI convergence, proof-of-concept development, robotics and edge-AI exploration.',
     capabilities: [
       'Cross-vertical AI platforms combining drone, SAP and HVAC/IoT data',
       'Smart building and smart city pilot programmes',
@@ -124,7 +133,7 @@ export const verticals: Vertical[] = [
       'Proof-of-concept development for government innovation initiatives',
       'Exploration of robotics and edge-AI for field operations',
     ],
-    sectors: ['Government', 'High Tech'],
+    sectors: ['High Tech', 'EC&O'],
     research: true,
   },
 ];

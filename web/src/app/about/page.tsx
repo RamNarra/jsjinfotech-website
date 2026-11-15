@@ -39,7 +39,7 @@ export default function Page() {
           <Eyebrow>Delivery approach</Eyebrow>
           <ol className="grid gap-4 md:grid-cols-4">
             {engagementSteps.map((s) => (
-              <li key={s.n} className="rounded-2xl border border-line bg-white/[0.025] spotlight p-6">
+              <li key={s.n} className="rounded-2xl card spotlight p-6">
                 <p className="font-mono text-sm text-violet">{s.n}</p>
                 <h3 className="mt-4 font-display text-xl font-semibold">{s.name}</h3>
                 <p className="mt-2 text-[15px] leading-6 text-muted">{s.body}</p>

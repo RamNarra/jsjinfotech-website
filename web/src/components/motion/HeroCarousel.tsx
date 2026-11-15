@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { slides } from '@/content/hero';
 import { Button } from '@/components/ui';
-import { SapBadge } from '@/components/brand/SapBadge';
+import { PartnershipLockup } from '@/components/brand/SapBadge';
 import { HeroVisual } from './HeroVisual';
 import { Aurora } from './Aurora';
 import { NeuralField } from './NeuralField';
@@ -38,7 +38,7 @@ export function HeroCarousel() {
       ref={root}
       aria-roledescription="carousel"
       aria-label="JSJ INFOTECH highlights"
-      className="on-ink relative flex min-h-[640px] items-center overflow-hidden bg-ink text-white lg:h-[min(100svh,920px)]"
+      className="relative flex min-h-[680px] items-center overflow-hidden bg-mist text-text lg:h-[min(100svh,940px)]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setFocused(true)}
@@ -50,10 +50,11 @@ export function HeroCarousel() {
         if (e.key === 'ArrowLeft') go(-1);
       }}
     >
-      <Aurora intensity={0.8} />
+      <Aurora intensity={1} className="opacity-100" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(245,247,251,0)_0%,rgba(245,247,251,0.25)_55%,#f5f7fb_100%)]" />
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
-      <NeuralField className="pointer-events-none absolute inset-0 h-full w-full opacity-80" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-paper" />
+      <NeuralField className="pointer-events-none absolute inset-0 h-full w-full opacity-60" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
       <div className="container-x relative grid items-center gap-10 pt-32 pb-28 lg:grid-cols-[1.15fr_1fr] lg:pt-24 lg:pb-24">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -66,9 +67,9 @@ export function HeroCarousel() {
             exit={reduce ? undefined : { opacity: 0, y: -8 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 label-caps text-violet-hi">
-              <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-green shadow-[0_0_10px_2px_rgba(134,224,90,0.8)]" />
-              {String(i + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')} · JSJ INFOTECH × SGN Software
+            <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 label-caps text-violet">
+              <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-green shadow-[0_0_8px_2px_rgba(110,190,68,0.6)]" />
+              {String(i + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}<span className="hidden sm:inline"> · JSJ INFOTECH × SGN Software</span>
             </p>
             {(() => {
               const cut = s.headline.indexOf('. ') + 1;
@@ -79,16 +80,17 @@ export function HeroCarousel() {
                 </Tag>
               );
             })()}
-            <p className="mt-6 max-w-[60ch] text-lg leading-8 text-on-ink-muted">{s.body}</p>
-            {s.visual === 'sap' && <SapBadge dark showId className="mt-6" />}
+            <p className="mt-6 max-w-[60ch] text-lg leading-8 text-muted">{s.body}</p>
+            {s.visual === 'sap' && <PartnershipLockup className="mt-6" />}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href={s.primary.href} variant="light">{s.primary.label}</Button>
-              <Button href={s.secondary.href} variant="ghost-dark">{s.secondary.label}</Button>
+              <Button href={s.primary.href} variant="primary">{s.primary.label}</Button>
+              <Button href={s.secondary.href} variant="outline">{s.secondary.label}</Button>
             </div>
           </motion.div>
         </AnimatePresence>
-        <div className="glass relative mx-auto hidden aspect-square w-full max-w-[520px] rounded-[36px] p-6 md:block">
-          <div aria-hidden className="absolute -inset-px -z-10 rounded-[36px] bg-[conic-gradient(from_180deg,rgba(123,92,255,0.6),rgba(196,92,219,0.3),rgba(134,224,90,0.4),rgba(123,92,255,0.6))] opacity-60 blur-2xl" />
+        <div className="on-ink relative mx-auto hidden aspect-square w-full max-w-[520px] rounded-[36px] bg-ink p-6 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.7)] ring-1 ring-ink/10 md:block">
+          <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 rounded-[36px]" />
+          <div aria-hidden className="absolute -inset-px -z-10 rounded-[36px] bg-[conic-gradient(from_180deg,rgba(123,92,255,0.6),rgba(196,92,219,0.3),rgba(134,224,90,0.4),rgba(123,92,255,0.6))] opacity-50 blur-3xl" />
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={s.visual}
@@ -109,17 +111,17 @@ export function HeroCarousel() {
 
       <div className="absolute inset-x-0 bottom-6">
         <div className="container-x flex items-center gap-2">
-          <button type="button" aria-label="Previous slide" onClick={() => go(-1)} className="inline-flex size-11 items-center justify-center glass rounded-full hover:border-white/30">
+          <button type="button" aria-label="Previous slide" onClick={() => go(-1)} className="inline-flex size-11 items-center justify-center glass rounded-full hover:border-violet/40">
             <ChevronLeft aria-hidden className="size-5" />
           </button>
-          <button type="button" aria-label="Next slide" onClick={() => go(1)} className="inline-flex size-11 items-center justify-center glass rounded-full hover:border-white/30">
+          <button type="button" aria-label="Next slide" onClick={() => go(1)} className="inline-flex size-11 items-center justify-center glass rounded-full hover:border-violet/40">
             <ChevronRight aria-hidden className="size-5" />
           </button>
           <button
             type="button"
             aria-label={playing ? 'Pause slideshow' : 'Play slideshow'}
             onClick={() => setPlaying((p) => !p)}
-            className="inline-flex size-11 items-center justify-center glass rounded-full hover:border-white/30"
+            className="inline-flex size-11 items-center justify-center glass rounded-full hover:border-violet/40"
           >
             {playing ? <Pause aria-hidden className="size-4" /> : <Play aria-hidden className="size-4" />}
           </button>
@@ -133,7 +135,7 @@ export function HeroCarousel() {
                 onClick={() => setI(k)}
                 className="inline-flex size-11 items-center justify-center"
               >
-                <span className={cn('block h-1 rounded-full transition-all duration-300', k === i ? 'w-10 bg-gradient-to-r from-violet-hi to-green' : 'w-4 bg-white/25')} />
+                <span className={cn('block h-1 rounded-full transition-all duration-300', k === i ? 'w-10 bg-gradient-to-r from-teal via-violet to-magenta' : 'w-4 bg-ink/20')} />
               </button>
             ))}
           </div>

@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 // Interactive constellation: nodes drift, link when close, bend toward pointer.
 // 2D canvas (no WebGL dependency), DPR-capped, paused off-screen and under reduced motion.
-export function NeuralField({ className }: { className?: string }) {
+export function NeuralField({ className, dark = false }: { className?: string; dark?: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export function NeuralField({ className }: { className?: string }) {
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < max) {
             const alpha = (1 - d / max) * 0.35;
-            ctx.strokeStyle = a.g || b.g ? `rgba(134,224,90,${alpha})` : `rgba(164,140,255,${alpha})`;
+            ctx.strokeStyle = a.g || b.g ? `rgba(11,127,145,${alpha})` : dark ? `rgba(185,171,240,${alpha})` : `rgba(96,75,159,${alpha * 0.8})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -74,7 +74,7 @@ export function NeuralField({ className }: { className?: string }) {
         }
       }
       for (const p of pts) {
-        ctx.fillStyle = p.g ? '#86e05a' : '#c8baff';
+        ctx.fillStyle = p.g ? '#0b7f91' : dark ? '#b9abf0' : '#604b9f';
         ctx.globalAlpha = p.g ? 0.9 : 0.7;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.g ? 1.8 : 1.3, 0, Math.PI * 2);
@@ -112,7 +112,7 @@ export function NeuralField({ className }: { className?: string }) {
       canvas.parentElement?.removeEventListener('pointermove', onMove);
       canvas.parentElement?.removeEventListener('pointerleave', onLeave);
     };
-  }, []);
+  }, [dark]);
 
   return <canvas ref={ref} aria-hidden className={className} />;
 }

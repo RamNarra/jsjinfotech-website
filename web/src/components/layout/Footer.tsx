@@ -13,10 +13,11 @@ const legal = [['Privacy', '/privacy'], ['Terms', '/terms'], ['Cookie policy', '
 
 export function Footer() {
   return (
-    <footer className="on-ink bg-ink text-on-ink">
+    <footer className="on-ink relative overflow-hidden bg-ink text-on-ink">
+      <div className="spectrum-line" />
       <div className="container-x py-16 lg:py-20">
         <div className="flex flex-col gap-10 border-b border-white/10 pb-12 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-md">
+          <div>
             <PartnershipLockup dark />
             <p className="mt-6 text-sm leading-6 text-on-ink-muted">{site.tagline}</p>
           </div>

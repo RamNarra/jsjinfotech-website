@@ -3,14 +3,15 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { Aurora } from '@/components/motion/Aurora';
 
-type BtnProps = { href: string; children: React.ReactNode; variant?: 'primary' | 'secondary' | 'ghost-dark' | 'light'; className?: string };
+type BtnProps = { href: string; children: React.ReactNode; variant?: 'primary' | 'secondary' | 'ghost-dark' | 'light' | 'outline'; className?: string };
 
 export function Button({ href, children, variant = 'primary', className }: BtnProps) {
   const styles = {
     primary: 'btn-glow text-white',
-    secondary: 'glass text-text hover:border-white/25',
+    secondary: 'glass text-text hover:border-violet/40',
     'ghost-dark': 'glass text-white hover:border-white/30',
-    light: 'bg-white text-ink hover:bg-violet-deep shadow-[0_10px_40px_-12px_rgba(200,186,255,0.6)]',
+    outline: 'border border-ink/15 bg-white/60 text-text backdrop-blur hover:border-violet hover:text-violet',
+    light: 'bg-white text-ink hover:bg-mist',
   }[variant];
   const isExternal = href.startsWith('tel:') || href.startsWith('mailto:');
   const cls = cn(
@@ -38,7 +39,7 @@ export function ArrowLink({ href, children, className }: { href: string; childre
 export function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
     <p className={cn('label-caps mb-5 inline-flex items-center gap-2', dark ? 'text-violet-hi' : 'text-violet')}>
-      <span aria-hidden className="size-1.5 rounded-full bg-green shadow-[0_0_10px_2px_rgba(134,224,90,0.7)]" />
+      <span aria-hidden className="h-px w-6 bg-gradient-to-r from-teal to-magenta" />
       {children}
     </p>
   );
@@ -50,13 +51,13 @@ export function H2({ children, className }: { children: React.ReactNode; classNa
 
 export function PageHero({ eyebrow, title, lead, children }: { eyebrow: string; title: string; lead?: string; children?: React.ReactNode }) {
   return (
-    <section className="on-ink relative overflow-hidden border-b border-line bg-ink pt-40 pb-20 text-on-ink md:pt-48 md:pb-28">
+    <section className="relative overflow-hidden border-b border-line bg-mist pt-40 pb-20 md:pt-48 md:pb-28">
       <Aurora intensity={0.55} />
       <div aria-hidden className="bg-lines pointer-events-none absolute inset-0" />
       <div className="container-x relative">
-        <Eyebrow dark>{eyebrow}</Eyebrow>
-        <h1 className="max-w-4xl font-display text-[40px] leading-[44px] font-semibold tracking-[-0.03em] text-balance text-white md:text-[68px] md:leading-[72px]">{title}</h1>
-        {lead && <p className="mt-6 max-w-[68ch] text-lg leading-8 text-on-ink-muted md:text-xl md:leading-[30px]">{lead}</p>}
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h1 className="max-w-4xl font-display text-[40px] leading-[44px] font-semibold tracking-[-0.03em] text-balance text-text md:text-[68px] md:leading-[72px]">{title}</h1>
+        {lead && <p className="mt-6 max-w-[68ch] text-lg leading-8 text-muted md:text-xl md:leading-[30px]">{lead}</p>}
         {children}
       </div>
     </section>

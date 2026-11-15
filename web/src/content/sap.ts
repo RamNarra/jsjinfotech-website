@@ -93,11 +93,12 @@ export const whoBringsWhat: PartnershipRow[] = [
   },
 ];
 
+// Exact wording from master prompt §6 "How we engage".
 export const engagementSteps = [
-  { n: '01', name: 'Engage', body: 'JSJ INFOTECH leads client engagement, discovery and requirement mapping.' },
-  { n: '02', name: 'Design', body: 'Joint solution architecture: the SAP core by SGN, the AI and automation layer by JSJ.' },
-  { n: '03', name: 'Deliver', body: 'SGN’s certified SAP consultants and JSJ engineers deliver as one team under shared governance.' },
-  { n: '04', name: 'Run & Evolve', body: 'Post go-live support, roll-outs and AI-driven enhancements that keep systems improving.' },
+  { n: '01', name: 'Engage', body: 'JSJ leads client engagement, discovery and requirements mapping.', who: 'Led by JSJ INFOTECH' },
+  { n: '02', name: 'Design', body: 'Joint solution architecture: SAP core by SGN; AI / automation layer by JSJ as applicable.', who: 'JSJ + SGN' },
+  { n: '03', name: 'Deliver', body: 'SGN SAP consultants and JSJ engineers deliver under agreed shared governance.', who: 'One team, shared governance' },
+  { n: '04', name: 'Run & Evolve', body: 'Post-go-live support, roll-outs, integration and AI-enabled enhancements, subject to scope.', who: 'Continuous improvement' },
 ];
 
 // SAP clients served by SGN Software. Source: corporate profile page 5. Owner approved display (OD-04).

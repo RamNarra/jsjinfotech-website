@@ -3,7 +3,7 @@ import { whoBringsWhat } from '@/content/sap';
 // FR-08: single data source for home spotlight and /partnership. No motion (§7.4).
 export function PartnershipTable() {
   return (
-    <div className="overflow-x-auto rounded-2xl border border-line bg-white/[0.02]">
+    <div className="overflow-x-auto rounded-2xl card">
       <table className="w-full min-w-[720px] border-collapse text-left text-[15px] leading-6">
         <caption className="sr-only">Who brings what: JSJ INFOTECH, SGN Software and the combined outcome</caption>
         <thead>

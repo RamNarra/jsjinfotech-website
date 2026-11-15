@@ -1,30 +1,39 @@
 @import 'tailwindcss';
 
 /*
-  "Electric violet" dark-first system (v2 revamp).
-  Signature hue: JSJ violet, brightened from logo #604B9F / #8751A0 / #A353A0 for screen glow.
-  Secondary signal: logo green #6EBE44 (brightened), used sparingly.
-  All text/background pairs checked >= 4.5:1 (body) on --color-paper.
+  v3 "Logo spectrum" system.
+  - Canvas: white / cool grey (master prompt: white, cool grey).
+  - Ink: midnight navy (master prompt) for depth sections, never pure black.
+  - Voltage: JSJ logo violet #604B9F, the single filled-CTA colour.
+  - Spectrum: logo stops blue #4379BD -> violet #7761AA -> magenta #A353A0, with logo mint #73C276,
+    green #6EBE44, amber #FDC70C, orange #F3903F only inside the mesh and as small signals.
+  - Teal: profile roadmap phase-1 colour, restrained data accent (master prompt cyan/teal).
+  Why light-first: the JSJ logo's "INFOTECH" wordmark is dark brown (#3C2415) and disappears on dark surfaces.
 */
 @theme {
-  --color-ink: #05040b;        /* deepest: hero, footer */
-  --color-ink-2: #0f0d1c;      /* card on ink */
-  --color-ink-3: #1d1934;      /* borders on ink */
-  --color-paper: #08070f;      /* page background */
-  --color-mist: #0d0b19;       /* alternate section */
-  --color-line: rgb(255 255 255 / 0.09);
-  --color-text: #f3f1fb;
-  --color-muted: #a8a3c4;      /* 8.1:1 on paper */
-  --color-on-ink: #f3f1fb;
-  --color-on-ink-muted: #a8a3c4;
-  --color-violet: #a48cff;     /* text/icon accent, 7.4:1 on paper */
-  --color-violet-hi: #c8baff;
-  --color-violet-deep: #d9cfff; /* emphasis text on dark */
-  --color-electric: #7b5cff;   /* fills, glows */
-  --color-magenta: #c45cdb;    /* from logo #A353A0, brightened */
-  --color-green: #86e05a;
+  --color-ink: #0b1530;
+  --color-ink-2: #121e3f;
+  --color-ink-3: #22305a;
+  --color-paper: #ffffff;
+  --color-mist: #f5f7fb;
+  --color-line: #e3e7f0;
+  --color-text: #0b1530;
+  --color-muted: #4a5573;        /* 7.6:1 on white */
+  --color-on-ink: #eef1f8;
+  --color-on-ink-muted: #aab3cc; /* 8.2:1 on ink */
+  --color-violet: #604b9f;       /* logo violet, 7.0:1 on white */
+  --color-violet-hi: #b9abf0;    /* violet on ink, 7.9:1 */
+  --color-violet-deep: #47367f;
+  --color-blue: #4379bd;         /* logo blue */
+  --color-electric: #7761aa;     /* logo violet 2 */
+  --color-magenta: #a353a0;      /* logo magenta */
+  --color-teal: #0b7f91;         /* 4.9:1 on white */
+  --color-teal-hi: #5fd0dd;
+  --color-mint: #73c276;
+  --color-green: #6ebe44;
   --color-amber: #fdc70c;
-  --color-danger: #ff6b62;
+  --color-orange: #f3903f;
+  --color-danger: #b3261e;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jbmono), ui-monospace, monospace;
@@ -33,11 +42,9 @@
 }
 
 :root {
-  color-scheme: dark;
-  --motion-fast: 180ms;
-  --motion-base: 360ms;
-  --motion-slow: 700ms;
-  --grad-brand: linear-gradient(110deg, #c8baff 0%, #a48cff 35%, #c45cdb 70%, #86e05a 100%);
+  color-scheme: light;
+  --grad-brand: linear-gradient(100deg, #0b7f91 0%, #4379bd 28%, #604b9f 58%, #a353a0 100%);
+  --grad-brand-dark: linear-gradient(100deg, #5fd0dd 0%, #8fb7ec 30%, #b9abf0 62%, #e19bd9 100%);
 }
 
 html { -webkit-text-size-adjust: 100%; background: var(--color-paper); }
@@ -48,23 +55,13 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-::selection { background: rgb(123 92 255 / 0.45); color: #fff; }
-
-/* Film grain over everything (very low opacity, pointer-transparent). */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+::selection { background: rgb(96 75 159 / 0.2); }
 
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 
-:focus-visible { outline: 2px solid var(--color-violet-hi); outline-offset: 2px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--color-violet); outline-offset: 2px; border-radius: 6px; }
+.on-ink :focus-visible { outline-color: var(--color-violet-hi); }
 
 .container-x { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 16px; }
 @media (min-width: 768px) { .container-x { padding-inline: 24px; } }
@@ -76,77 +73,102 @@ html.lenis, html.lenis body { height: auto; }
 
 .label-caps { font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
 
-/* Gradient headline text */
+/* Logo-spectrum headline text */
 .text-gradient {
   background: var(--grad-brand);
-  background-size: 200% 100%;
+  background-size: 180% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: grad-pan 10s ease-in-out infinite alternate;
+  animation: grad-pan 12s ease-in-out infinite alternate;
 }
+.on-ink .text-gradient { background-image: var(--grad-brand-dark); }
 @keyframes grad-pan { to { background-position: 100% 0; } }
 
-/* Dot grid backdrop, masked to fade at edges */
+/* Thin logo-spectrum rule */
+.spectrum-line { height: 2px; background: linear-gradient(90deg, #0b7f91, #4379bd, #7761aa, #a353a0, #f3903f, #fdc70c, #6ebe44); }
+
+/* Grids */
 .bg-grid {
-  background-image: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(rgb(11 21 48 / 0.10) 1px, transparent 1px);
+  background-size: 26px 26px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
 }
+.on-ink .bg-grid, .bg-grid-dark { background-image: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px); }
 .bg-lines {
   background-image:
-    linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    linear-gradient(rgb(11 21 48 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(11 21 48 / 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 70%);
 }
+.on-ink .bg-lines {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+}
 
-/* Aurora blobs */
+/* Mesh: logo-coloured blobs (light canvas => normal blend; ink => screen) */
 .aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.aurora > span { position: absolute; border-radius: 9999px; filter: blur(90px); opacity: 0.5; mix-blend-mode: screen; animation: drift 22s ease-in-out infinite alternate; }
+.aurora > span { position: absolute; border-radius: 9999px; filter: blur(80px); animation: drift 24s ease-in-out infinite alternate; will-change: transform; }
+.on-ink .aurora > span { mix-blend-mode: screen; }
 @keyframes drift {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(6%, -4%, 0) scale(1.12); }
-  100% { transform: translate3d(-5%, 5%, 0) scale(0.95); }
+  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate3d(5%, -4%, 0) scale(1.1) rotate(8deg); }
+  100% { transform: translate3d(-4%, 5%, 0) scale(0.95) rotate(-6deg); }
 }
 
-/* Glass surface (chrome and short-label cards only) */
+/* Glass: light by default, dark inside .on-ink */
 .glass {
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.02));
-  border: 1px solid rgb(255 255 255 / 0.1);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 20px 60px -30px rgb(0 0 0 / 0.8);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  background: rgb(255 255 255 / 0.72);
+  border: 1px solid rgb(11 21 48 / 0.08);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.9), 0 12px 40px -18px rgb(11 21 48 / 0.25);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+.on-ink .glass {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.08), rgb(255 255 255 / 0.03));
+  border-color: rgb(255 255 255 / 0.12);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 20px 60px -30px rgb(0 0 0 / 0.7);
 }
 
-/* Spotlight card: radial glow follows --mx/--my set by JS */
+/* Card: white surface with soft depth */
+.card {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 1px 2px rgb(11 21 48 / 0.04), 0 8px 24px -16px rgb(11 21 48 / 0.18);
+}
+.on-ink .card { background: rgb(255 255 255 / 0.04); border-color: rgb(255 255 255 / 0.1); box-shadow: none; }
+
+/* Spotlight: glow + gradient border follow pointer (--mx/--my set in SmoothScroll) */
 .spotlight { position: relative; isolation: isolate; }
 .spotlight::before {
   content: '';
   position: absolute; inset: 0; border-radius: inherit; z-index: -1;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(123 92 255 / 0.18), transparent 45%);
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgb(119 97 170 / 0.10), transparent 50%);
   opacity: 0; transition: opacity 300ms;
 }
 .spotlight::after {
   content: '';
-  position: absolute; inset: -1px; border-radius: inherit; z-index: -2; padding: 1px;
-  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 0%), rgb(200 186 255 / 0.7), transparent 50%);
+  position: absolute; inset: -1px; border-radius: inherit; z-index: 1; padding: 1px; pointer-events: none;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), #7761aa, #4379bd 35%, transparent 60%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
   opacity: 0; transition: opacity 300ms;
 }
+.on-ink .spotlight::before { background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgb(185 171 240 / 0.14), transparent 50%); }
 .spotlight:hover::before, .spotlight:hover::after, .spotlight:focus-visible::before, .spotlight:focus-visible::after { opacity: 1; }
 
-/* Primary glow button */
+/* Primary CTA: logo violet, subtle spectrum glow */
 .btn-glow {
-  background: linear-gradient(135deg, #6a4bff, #8d4fe0);
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12) inset, 0 10px 40px -10px rgb(123 92 255 / 0.8);
+  background: linear-gradient(135deg, #604b9f, #7761aa);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12) inset, 0 10px 30px -10px rgb(96 75 159 / 0.65);
 }
-.btn-glow:hover { box-shadow: 0 0 0 1px rgb(255 255 255 / 0.2) inset, 0 14px 50px -8px rgb(123 92 255 / 1); }
+.btn-glow:hover { background: linear-gradient(135deg, #47367f, #604b9f); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.2) inset, 0 14px 36px -8px rgb(96 75 159 / 0.8); }
 
 /* Marquee */
 .marquee { mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-.marquee-track { display: flex; width: max-content; animation: marquee 50s linear infinite; }
+.marquee-track { display: flex; width: max-content; animation: marquee 55s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
@@ -160,5 +182,4 @@ html.lenis, html.lenis body { height: auto; }
 
 @media print {
   header, footer, .no-print { display: none !important; }
-  body::after { display: none; }
 }

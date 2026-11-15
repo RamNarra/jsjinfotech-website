@@ -13,7 +13,7 @@ type Status = { kind: 'idle' } | { kind: 'ok'; ref: string } | { kind: 'error'; 
 
 const TURNSTILE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '';
 
-const field = 'mt-2 block w-full min-h-12 rounded-xl border border-line bg-white/[0.03] px-4 text-[16px] text-text outline-none transition-colors focus:border-violet focus:bg-white/[0.05] [&>option]:bg-ink aria-[invalid=true]:border-danger';
+const field = 'mt-2 block w-full min-h-12 rounded-xl border border-line bg-white px-4 text-[16px] text-text outline-none transition-colors focus:border-violet aria-[invalid=true]:border-danger';
 
 export function EnquiryForm() {
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
@@ -89,7 +89,7 @@ export function EnquiryForm() {
         </label>
         {err('consent')}
       </div>
-      {TURNSTILE_KEY && <div className="sm:col-span-2"><Turnstile siteKey={TURNSTILE_KEY} onSuccess={setToken} options={{ theme: 'dark' }} /></div>}
+      {TURNSTILE_KEY && <div className="sm:col-span-2"><Turnstile siteKey={TURNSTILE_KEY} onSuccess={setToken} options={{ theme: 'light' }} /></div>}
       {status.kind === 'error' && (
         <div role="alert" className="rounded-xl border border-danger/40 bg-danger/[0.08] p-4 text-[15px] sm:col-span-2">
           <p className="font-medium text-danger">Could not send your enquiry.</p>

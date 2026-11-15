@@ -31,7 +31,7 @@ export function ServiceTemplate({ v }: { v: Vertical }) {
           <H2>{v.title}</H2>
           <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {v.capabilities.map((c) => (
-              <li key={c} className="flex gap-3 rounded-2xl border border-line bg-white/[0.025] spotlight p-5 leading-7">
+              <li key={c} className="flex gap-3 rounded-2xl card spotlight p-5 leading-7">
                 <Check aria-hidden className="mt-1 size-5 shrink-0 text-violet" strokeWidth={1.75} />
                 <span>{c}</span>
               </li>
@@ -46,7 +46,7 @@ export function ServiceTemplate({ v }: { v: Vertical }) {
           <H2>Engage · Design · Deliver · Run &amp; Evolve</H2>
           <ol className="mt-10 grid gap-4 md:grid-cols-4">
             {engagementSteps.map((s) => (
-              <li key={s.n} className="rounded-2xl border border-line bg-white/[0.025] spotlight p-6">
+              <li key={s.n} className="rounded-2xl card spotlight p-6">
                 <p className="font-mono text-sm text-violet">{s.n}</p>
                 <h3 className="mt-4 font-display text-xl font-semibold">{s.name}</h3>
                 <p className="mt-2 text-[15px] leading-6 text-muted">{s.body}</p>
@@ -86,7 +86,7 @@ export function ServiceTemplate({ v }: { v: Vertical }) {
               </p>
               <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {authorizations.map((a) => (
-                  <li key={a.name} className="rounded-xl border border-line bg-white/[0.025] spotlight p-4">
+                  <li key={a.name} className="rounded-xl card spotlight p-4">
                     <p className="font-medium">{a.name}</p>
                     <p className="mt-1 text-sm text-muted">{a.note}</p>
                   </li>
@@ -110,7 +110,7 @@ export function ServiceTemplate({ v }: { v: Vertical }) {
           <ul className="grid gap-4 md:grid-cols-2">
             {related.map((r) => (
               <li key={r.slug}>
-                <Link href={`/services/${r.slug}`} className="block rounded-2xl border border-line bg-white/[0.025] spotlight p-6 transition-colors hover:border-violet">
+                <Link href={`/services/${r.slug}`} className="block rounded-2xl card spotlight p-6 transition-colors hover:border-violet">
                   <span className="font-mono text-sm text-violet">{r.number}</span>
                   <h3 className="mt-3 font-display text-xl font-semibold">{r.name}</h3>
                   <p className="mt-2 text-[15px] text-muted">{r.promise}</p>

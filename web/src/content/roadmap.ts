@@ -2,10 +2,12 @@
 export const roadmapDisclaimer =
   'Strategic development ambition. Not a statement that every capability is deployed today.';
 
+// Four-phase journey graphic from the corporate profile §06 (Today -> 2030).
 export const phases = [
-  { n: 'Phase I', name: 'Foundation', body: 'Cloud-native infrastructure, SAP cores, use-case pilots, survey missions, custom builds and AMC maintenance.' },
-  { n: 'Phase II', name: 'Integration', body: 'AIOps, SAP BTP and Business Data Cloud, cross-system AI, AI-analysed inspection and IoT-enabled monitoring.' },
-  { n: 'Phase III', name: 'Autonomy', body: 'Autonomous IT operations, self-optimising ERP, enterprise decision layers and smart infrastructure at scale.' },
+  { n: 'Phase 1', name: 'Foundation', tag: 'Establish core capability', items: ['IT delivery', 'SAP cores', 'AMC programs'], color: '#0b7f91', today: true },
+  { n: 'Phase 2', name: 'Integration', tag: 'Connect every system', items: ['IoT retrofits', 'API-first platforms', 'Data pipelines'], color: '#4379bd' },
+  { n: 'Phase 3', name: 'Intelligence', tag: 'Augment with AI', items: ['Predictive maintenance', 'Copilots', 'Computer vision'], color: '#7761aa' },
+  { n: 'Phase 4', name: 'Autonomy', tag: 'Self-managing by 2030', items: ['AIOps', 'Autonomous drone fleets', 'Smart cities'], color: '#a353a0' },
 ];
 
 export const milestones = [
