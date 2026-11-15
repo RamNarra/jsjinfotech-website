@@ -54,7 +54,7 @@ const icon: Record<string, LucideIcon> = {
 
 /* eslint-disable @next/next/no-img-element */
 // Industries with a generated photo (in /public/images/industries) show it; others show the icon tile.
-const hasPhoto = new Set<string>([]);
+const hasPhoto = new Set<string>(Object.keys(file));
 
 // Photo tiles: one generated image per industry with the name (and use case on the detailed page).
 export function IndustryGrid({ detailed = false }: { detailed?: boolean }) {

@@ -12,11 +12,6 @@ import {
 } from "lucide-react";
 import { verticals, type Vertical } from "@/content/verticals";
 import { cn } from "@/lib/cn";
-import {
-  CodeScreen,
-  CopilotScreen,
-  DroneMapScreen,
-} from "@/components/visuals/Screens";
 
 const icons: Record<string, LucideIcon> = {
   "it-consulting": Server,
@@ -43,38 +38,13 @@ const photo: Record<string, string> = {
   rnd: "Engineer adjusting a robot arm in a lab with a drone and sensor boards",
 };
 
-// Verticals whose generated photo is in /public/images/v; others show their product screen until generated.
-const hasPhoto = new Set(["it-consulting", "sap", "hvac-government"]);
-
-export function VerticalMedia({
-  v,
-  tall = false,
-}: {
-  v: Vertical;
-  tall?: boolean;
-}) {
-  if (!hasPhoto.has(v.slug)) {
-    if (v.slug === "ai") return <CopilotScreen className="w-full" />;
-    if (v.slug === "drones") return <DroneMapScreen className="w-full" />;
-    if (v.slug === "software") return <CodeScreen className="w-full" />;
-    return (
-      <img
-        src="/images/gen/rnd-lab-sm.webp"
-        alt={photo.rnd}
-        loading="lazy"
-        className="h-60 w-full rounded-2xl object-cover"
-      />
-    );
-  }
+export function VerticalMedia({ v, tall = false }: { v: Vertical; tall?: boolean }) {
   return (
     <img
       src={`/images/v/${v.slug}.webp`}
       alt={photo[v.slug] ?? v.name}
       loading="lazy"
-      className={cn(
-        "w-full rounded-2xl object-cover",
-        tall || v.slug === "sap" ? "h-80" : "h-60",
-      )}
+      className={cn("aspect-[4/3] w-full rounded-2xl object-cover", tall || v.slug === "sap" ? "sm:aspect-[16/10]" : "")}
     />
   );
 }
