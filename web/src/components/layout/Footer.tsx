@@ -50,8 +50,8 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-[13px] text-on-ink-muted lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-1">
-            <p>© {new Date().getFullYear()} {site.legal.name}. SAP delivery with SGN Software Pvt. Ltd., SAP Gold Partner.</p>
-            <p>LLPIN {site.legal.llpin}. GSTIN {site.legal.gstin}. Registered office: {site.legal.registeredOffice}.</p>
+            <p>© {new Date().getFullYear()} JSJ INFOTECH. SAP delivery with SGN Software Pvt. Ltd., SAP Gold Partner.</p>
+            <p>Registered office: {site.address.full}.</p>
           </div>
           <nav aria-label="Legal">
             <ul className="flex flex-wrap gap-x-5">
