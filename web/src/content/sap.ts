@@ -1,3 +1,4 @@
+import aspects from './logo-aspects.json';
 // SGN Software facts. Sources: "SGN Gold Partnership.pdf" (SAP certificate, issued Nov 02, 2026)
 // and corporate profile pages 3–5, 8. Every figure is SGN Software's, never JSJ's.
 export const sgn = {
@@ -111,19 +112,19 @@ const L = (name: string, file?: string): Client => (file ? { name, logo: `/clien
 export const clientGroups: { name: string; clients: Client[] }[] = [
   {
     name: 'SAP Public Cloud',
-    clients: [L('The Man Company', 'the-man-company.png'), L('IndianOil LNG', 'indianoil-lng.svg'), L('Utkarsh', 'utkarsh.webp'), L('Webel Solar'), L('Genus', 'genus.png'), L('Kiri Industries', 'kiri-industries.svg'), L('Virgo Group'), L('IPL Biologicals', 'ipl-biologicals.png'), L('Museum of the Future')],
+    clients: [L('The Man Company', 'the-man-company.png'), L('IndianOil LNG', 'indianoil-lng.svg'), L('Utkarsh', 'utkarsh.webp'), L('Webel Solar', 'websol.svg'), L('Genus', 'genus.png'), L('Kiri Industries', 'kiri-industries.svg'), L('Virgo Group'), L('IPL Biologicals', 'ipl-biologicals.png'), L('Museum of the Future', 'museum-of-the-future.svg')],
   },
   {
     name: 'RISE with SAP',
-    clients: [L('DCM Shriram', 'dcm-shriram.png'), L('Mamaearth', 'mamaearth.png'), L('IOL Chemicals & Pharma', 'iol-chemicals.webp'), L('Sportking India'), L('Safex', 'safex.png'), L('Sunsure', 'sunsure.png'), L('Briar Chemicals', 'briar-chemicals.svg'), L('GLS', 'gls.png'), L('Tulip Compression')],
+    clients: [L('DCM Shriram', 'dcm-shriram.png'), L('Mamaearth', 'mamaearth.png'), L('IOL Chemicals & Pharma', 'iol-chemicals.webp'), L('Sportking India'), L('Safex', 'safex.png'), L('Sunsure', 'sunsure.png'), L('Briar Chemicals', 'briar-chemicals.svg'), L('GLS', 'gls.png'), L('Tulip Compression', 'tulip-compression.png')],
   },
   {
     name: 'SAP S/4HANA',
-    clients: [L('Shakambhari Group', 'shakambhari.svg'), L('Tarsons', 'tarsons.png'), L('Edible Group', 'edible-group.png'), L('LINC', 'linc.webp'), L('Black Tiger Cement', 'black-tiger-cement.png'), L('Aludecor', 'aludecor.png'), L('Dollar'), L('Ripley Stevedoring'), L('Bathwal Corporation')],
+    clients: [L('Shakambhari Group', 'shakambhari.svg'), L('Tarsons', 'tarsons.png'), L('Edible Group', 'edible-group.png'), L('LINC', 'linc.webp'), L('Black Tiger Cement', 'black-tiger-cement.png'), L('Aludecor', 'aludecor.png'), L('Dollar', 'dollar.png'), L('Ripley Stevedoring', 'ripley.png'), L('Bathwal Corporation', 'bathwal.png')],
   },
   {
     name: 'Finance & Spend (SAP Ariba)',
-    clients: [L('Relaxo'), L('Exide', 'exide.png'), L('ReNew Power', 'renew.svg'), L('Crompton Greaves', 'crompton.webp'), L('Valvoline', 'valvoline.svg'), L('CenturyPly', 'centuryply.png'), L('Nuvoco', 'nuvoco.png'), L('Luminous'), L('Shyam Steel', 'shyam-steel.jpg')],
+    clients: [L('Relaxo', 'relaxo.png'), L('Exide', 'exide.png'), L('ReNew Power', 'renew.svg'), L('Crompton Greaves', 'crompton.webp'), L('Valvoline', 'valvoline.svg'), L('CenturyPly', 'centuryply.png'), L('Nuvoco', 'nuvoco.png'), L('Luminous', 'luminous.png'), L('Shyam Steel', 'shyam-steel.jpg')],
   },
 ];
 
@@ -144,3 +145,10 @@ export const sapScenarios = [
   { from: 'Already live on SAP', to: 'Post go-live support, roll-outs to new plants or companies, integration and AI add-ons.' },
   { from: 'Need SAP cloud licences', to: 'Buy through SAP PartnerEdge Cloud Choice with SGN supporting you for the whole contract.' },
 ];
+
+// Optical sizing: every logo gets about the same visual area, whatever its shape.
+export function logoBox(logo: string, k: number, maxH: number): { width: number; height: number } {
+  const a = (aspects as Record<string, number>)[logo.split('/').pop() ?? ''] ?? 3;
+  const height = Math.min(maxH, Math.round(k / Math.sqrt(a)));
+  return { width: Math.round(height * a), height };
+}

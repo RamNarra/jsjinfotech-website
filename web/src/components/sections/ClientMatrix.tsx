@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { clientGroups } from '@/content/sap';
+import { clientGroups, logoBox } from '@/content/sap';
 
 const about: Record<string, string> = {
   'SAP Public Cloud': 'GROW with SAP: cloud ERP rolled out fast.',
@@ -22,7 +22,7 @@ export function ClientMatrix() {
     >
       {c.logo ? (
         <>
-          <img src={c.logo} alt={`${c.name} logo`} loading="lazy" className="max-h-12 max-w-[85%] object-contain sm:max-h-14" />
+          <img src={c.logo} alt={`${c.name} logo`} loading="lazy" {...logoBox(c.logo, 64, 56)} className="max-w-[85%] object-contain" />
           <span className="text-center text-[12px] font-medium text-muted sm:text-[13px]">{c.name}</span>
         </>
       ) : (
