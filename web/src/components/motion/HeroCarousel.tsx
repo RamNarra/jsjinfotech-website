@@ -83,7 +83,7 @@ export function HeroCarousel() {
             </div>
           </motion.div>
         </AnimatePresence>
-        <div className="relative mx-auto aspect-square w-full max-w-[420px] md:max-w-[640px] rounded-[36px] border border-white/70 bg-white/75 p-3 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.45)] backdrop-blur-xl ">
+        <div className={cn("relative mx-auto w-full max-w-[420px] md:aspect-square md:max-w-[640px] rounded-[36px] border border-white/70 bg-white/75 p-3 shadow-[0_40px_100px_-40px_rgba(11,21,48,0.45)] backdrop-blur-xl", s.visual === "sap" ? "aspect-[3/4] sm:aspect-square" : "aspect-square")}>
           <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 rounded-[40px] opacity-60" />
           <div aria-hidden className="absolute -inset-px -z-10 rounded-[36px] bg-[conic-gradient(from_180deg,rgba(123,92,255,0.6),rgba(196,92,219,0.3),rgba(134,224,90,0.4),rgba(123,92,255,0.6))] opacity-50 blur-3xl" />
           <AnimatePresence mode="wait" initial={false}>
