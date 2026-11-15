@@ -45,7 +45,7 @@ export default function Home() {
 
       {/* About: copy left, real photos right */}
       <section className="section-y" aria-labelledby="about-h">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <div>
             <Eyebrow>About JSJ INFOTECH</Eyebrow>
             <H2><span id="about-h">Technology and engineering for modern enterprise.</span></H2>
@@ -55,7 +55,7 @@ export default function Home() {
             <ArrowLink href="/about" className="mt-6">More about JSJ</ArrowLink>
           </div>
           <div className="relative">
-            <img src="/images/gen/company-overview.webp" alt="JSJ INFOTECH headquarters concept: a glass building shaped like the JSJ logo at dusk" loading="lazy" className="aspect-[16/10] w-full rounded-[28px] object-cover shadow-lg" />
+            <img src="/images/gen/company-overview.webp" alt="JSJ INFOTECH headquarters concept: a glass building shaped like the JSJ logo at dusk" loading="lazy" className="w-full rounded-[28px] shadow-lg" />
           </div>
         </div>
       </section>
