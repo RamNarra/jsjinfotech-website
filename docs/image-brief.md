@@ -87,3 +87,10 @@ exact thing in its caption, so a viewer understands the message from the image a
     trend charts. An analyst (from behind) points at one highlighted box.
 
 Reply only with the list of saved file paths.
+
+## Round 3 plan (owner feedback 2026-11-15, run after Antigravity quota reset ~01:35 IST)
+Keep: hero layout (light, panel on the right), slide 2 partnership panel, slide 4 ecosystem.
+Generate (same global rules as above):
+- hero-drone-twin.png for slide 3 panel (square 1:1): drone above a factory roof, blue scan grid on the roof, two spots ringed orange, tablet in the corner showing the same building as a 3D wireframe with the same two spots.
+- v-it.png, v-sap.png, v-drones.png, v-software.png, v-hvac.png, v-ai.png: as items 6-11 above (4:3 crop safe).
+- Industries (4:3, one per sector, no logos/text): retail store floor with handheld scanners; chemical plant control room; mining/metals plant with molten steel; power substation; consulting office team; solar + wind farm; bank branch operations; automated factory line; semiconductor/electronics lab; pharma clean room; FMCG warehouse; cement kiln/steel rolling mill; construction site with cranes; textile mill looms.

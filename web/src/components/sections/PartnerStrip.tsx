@@ -6,11 +6,11 @@ import { ClientMarquee } from './ClientMarquee';
 export function PartnerStrip() {
   return (
     <section aria-labelledby="partner-strip-h" className="relative border-y border-line bg-white">
-      <div className="container-x grid items-center gap-8 py-10 lg:grid-cols-[1fr_auto] lg:gap-16">
-        <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
-          <SgnLogo height={52} />
-          <SapBadge size="lg" />
+      <div className="container-x grid items-center gap-8 py-10 xl:grid-cols-[auto_1fr] xl:gap-16">
+        <div className="flex flex-wrap items-center gap-x-10 gap-y-6 xl:flex-nowrap">
+          <SgnLogo height={48} />
           <SapLogo height={52} />
+          <SapBadge size="lg" />
         </div>
         <div className="max-w-md">
           <h2 id="partner-strip-h" className="font-display text-xl font-semibold tracking-tight">SAP projects delivered with SGN Software</h2>

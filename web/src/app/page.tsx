@@ -10,9 +10,7 @@ import { PartnershipTable } from '@/components/sections/PartnershipTable';
 import { VerticalCards } from '@/components/sections/VerticalCards';
 import { ClientMatrix } from '@/components/sections/ClientMatrix';
 import { AiDiagram } from '@/components/sections/AiDiagram';
-import { RoadmapTimeline } from '@/components/sections/RoadmapTimeline';
 import { IndustryGrid } from '@/components/sections/IndustryGrid';
-import { EngagementSteps } from '@/components/sections/EngagementSteps';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 import { SapBadge, SapLogo, SgnLogo } from '@/components/brand/SapBadge';
 import { LogoLockup } from '@/components/brand/Logo';
@@ -77,12 +75,12 @@ export default function Home() {
             </div>
             <div className="rounded-[32px] bg-white p-8 shadow-[0_30px_80px_-40px_rgba(11,21,48,0.4)] ring-1 ring-line md:p-10">
               <div className="flex items-center justify-between gap-6">
-                <LogoLockup height={96} />
-                <span aria-hidden className="font-display text-4xl font-light text-muted">×</span>
-                <SgnLogo height={44} />
+                <LogoLockup height={120} />
+                <span aria-hidden className="font-display text-5xl font-light text-muted">×</span>
+                <SgnLogo height={60} />
               </div>
-              <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
-                <SapBadge size="lg" />
+              <div className="mt-8 flex flex-col items-center gap-3 border-t border-line pt-8 text-center">
+                <SapBadge size="lg" className="items-center" />
                 <p className="text-sm text-muted">SAP Partner ID <span className="font-semibold text-text">{sgn.partnerId}</span></p>
               </div>
             </div>
@@ -151,24 +149,6 @@ export default function Home() {
             <ArrowLink href="/industries">View industries</ArrowLink>
           </div>
           <div className="mt-10"><IndustryGrid /></div>
-        </div>
-      </section>
-
-      {/* Engagement, compact */}
-      <section className="section-y bg-mist" aria-labelledby="eng-h">
-        <div className="container-x">
-          <Eyebrow>How we engage</Eyebrow>
-          <H2 className="mb-12"><span id="eng-h">Four steps from first meeting to running system.</span></H2>
-          <EngagementSteps />
-        </div>
-      </section>
-
-      {/* Roadmap */}
-      <section className="section-y" aria-labelledby="road-h">
-        <div className="container-x">
-          <Eyebrow>Future direction</Eyebrow>
-          <H2 className="mb-12"><span id="road-h">JSJ INFOTECH 2030</span></H2>
-          <RoadmapTimeline />
         </div>
       </section>
 

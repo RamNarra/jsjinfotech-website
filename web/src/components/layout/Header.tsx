@@ -42,7 +42,7 @@ export function Header() {
       <div
         className={cn(
           'mx-auto flex h-[72px] w-[calc(100%-24px)] max-w-[1240px] items-center justify-between rounded-full pr-2 pl-5 transition-all duration-300 lg:h-[80px] lg:pl-7',
-          solid ? 'glass' : 'border border-transparent',
+          solid ? 'bg-white shadow-[0_10px_30px_-15px_rgba(11,21,48,0.35)] ring-1 ring-line' : 'bg-white/90 shadow-[0_10px_30px_-18px_rgba(11,21,48,0.3)] ring-1 ring-white backdrop-blur-xl',
         )}
       >
         <Logo height={64} />
