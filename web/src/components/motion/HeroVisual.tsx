@@ -9,10 +9,10 @@ const C = { teal: '#0b7f91', blue: '#4379bd', violet: '#604b9f', magenta: '#a353
 function Node({ icon: Icon, label, color, className, style }: { icon: LucideIcon; label: string; color: string; className?: string; style?: React.CSSProperties }) {
   return (
     <div className={`absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 ${className ?? ''}`} style={style}>
-      <span className="inline-flex size-11 items-center justify-center rounded-[14px] text-white sm:size-16 sm:rounded-[20px]" style={{ background: `linear-gradient(140deg, ${color}, ${color}cc)`, boxShadow: `0 14px 28px -12px ${color}, inset 0 1px 0 rgba(255,255,255,0.35)` }}>
-        <Icon aria-hidden className="size-5 sm:size-7" strokeWidth={1.7} />
+      <span className="inline-flex size-9 items-center justify-center rounded-[12px] text-white sm:size-16 sm:rounded-[20px]" style={{ background: `linear-gradient(140deg, ${color}, ${color}cc)`, boxShadow: `0 14px 28px -12px ${color}, inset 0 1px 0 rgba(255,255,255,0.35)` }}>
+        <Icon aria-hidden className="size-4 sm:size-7" strokeWidth={1.7} />
       </span>
-      <span className="rounded-full bg-white px-2 py-1 text-center text-[11px] leading-4 font-semibold sm:px-3.5 sm:py-1.5 sm:text-[14px] whitespace-nowrap text-text shadow-md ring-1 ring-line">{label}</span>
+      <span className="rounded-full bg-white px-1.5 py-0.5 text-center text-[10px] leading-3 font-semibold sm:px-3.5 sm:py-1.5 sm:text-[14px] whitespace-nowrap text-text shadow-md ring-1 ring-line">{label}</span>
     </div>
   );
 }
@@ -45,11 +45,11 @@ function Ecosystem() {
           return <line key={`r${i}`} x1={x} y1={y} x2={nx} y2={ny} stroke="rgba(11,21,48,0.08)" strokeWidth="0.3" />;
         })}
       </svg>
-      <span aria-hidden className="absolute top-1/2 left-1/2 size-36 sm:size-48 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-[radial-gradient(circle,rgba(119,97,170,0.18),transparent_70%)] motion-reduce:animate-none" />
-      <div className="absolute top-1/2 left-1/2 flex size-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-line bg-white sm:size-40 text-center shadow-[0_24px_60px_-20px_rgba(96,75,159,0.7)]">
+      <span aria-hidden className="absolute top-1/2 left-1/2 size-28 sm:size-48 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-[radial-gradient(circle,rgba(119,97,170,0.18),transparent_70%)] motion-reduce:animate-none" />
+      <div className="absolute top-1/2 left-1/2 flex size-24 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-line bg-white sm:size-40 text-center shadow-[0_24px_60px_-20px_rgba(96,75,159,0.7)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/jsj-mark.svg" alt="" width={100} height={62} className="w-16 sm:w-[100px]" />
-        <span className="mt-1.5 font-display text-[13px] font-semibold tracking-wide text-text">JSJ INFOTECH</span>
+        <img src="/brand/jsj-mark.svg" alt="" width={100} height={62} className="w-12 sm:w-[100px]" />
+        <span className="mt-1 font-display text-[10px] font-semibold tracking-wide sm:mt-1.5 sm:text-[13px] text-text">JSJ INFOTECH</span>
       </div>
       {items.map(([icon, label, color], i) => (
         <Node key={label} icon={icon} label={label} color={color} style={{ left: `${pts[i][0]}%`, top: `${pts[i][1]}%` }} />
