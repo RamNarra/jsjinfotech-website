@@ -13,7 +13,7 @@ type Status = { kind: 'idle' } | { kind: 'ok'; ref: string } | { kind: 'error'; 
 
 const TURNSTILE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '';
 
-const field = 'mt-2 block w-full min-h-12 rounded-xl border border-line bg-paper px-4 text-[16px] outline-none transition-colors focus:border-violet aria-[invalid=true]:border-danger';
+const field = 'mt-2 block w-full min-h-12 rounded-xl border border-line bg-white/[0.03] px-4 text-[16px] text-text outline-none transition-colors focus:border-violet focus:bg-white/[0.05] [&>option]:bg-ink aria-[invalid=true]:border-danger';
 
 export function EnquiryForm() {
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
@@ -46,7 +46,7 @@ export function EnquiryForm() {
 
   if (status.kind === 'ok') {
     return (
-      <div role="status" className="rounded-2xl border border-green/50 bg-[#f1f9ec] p-8">
+      <div role="status" className="rounded-2xl border border-green/40 bg-green/[0.06] p-8">
         <h2 className="font-display text-2xl font-semibold">Thank you. Your enquiry is sent.</h2>
         <p className="mt-3 text-muted">Reference: <span className="font-mono text-text">{status.ref}</span>. We reply from {site.email.enquiry}.</p>
         <button type="button" className="mt-6 min-h-11 font-medium text-violet underline" onClick={() => setStatus({ kind: 'idle' })}>Send another enquiry</button>
@@ -82,22 +82,22 @@ export function EnquiryForm() {
       <div aria-hidden className="absolute -left-[9999px]"><label htmlFor="website">Website</label><input id="website" tabIndex={-1} autoComplete="off" {...register('website')} /></div>
       <div className="sm:col-span-2">
         <label className="flex items-start gap-3 text-[15px] leading-6">
-          <input type="checkbox" className="mt-1 size-5 accent-violet" {...a('consent')} {...register('consent')} />
+          <input type="checkbox" className="mt-1 size-5 accent-[#7b5cff]" {...a('consent')} {...register('consent')} />
           <span>
             I am 18 or older or enquiring for business use, and I consent to JSJ INFOTECH processing these details to respond to this enquiry, as described in the <Link href="/privacy" className="text-violet underline">privacy policy</Link>. *
           </span>
         </label>
         {err('consent')}
       </div>
-      {TURNSTILE_KEY && <div className="sm:col-span-2"><Turnstile siteKey={TURNSTILE_KEY} onSuccess={setToken} options={{ theme: 'light' }} /></div>}
+      {TURNSTILE_KEY && <div className="sm:col-span-2"><Turnstile siteKey={TURNSTILE_KEY} onSuccess={setToken} options={{ theme: 'dark' }} /></div>}
       {status.kind === 'error' && (
-        <div role="alert" className="rounded-xl border border-danger/40 bg-[#fdf0ef] p-4 text-[15px] sm:col-span-2">
+        <div role="alert" className="rounded-xl border border-danger/40 bg-danger/[0.08] p-4 text-[15px] sm:col-span-2">
           <p className="font-medium text-danger">Could not send your enquiry.</p>
           <p className="mt-1">Your details are kept below. Email us at <a className="underline" href={`mailto:${site.email.enquiry}?subject=Website%20enquiry&body=${encodeURIComponent(getValues('message') ?? '')}`}>{site.email.enquiry}</a>.</p>
         </div>
       )}
       <div className="sm:col-span-2">
-        <button type="submit" disabled={isSubmitting} className="inline-flex min-h-12 items-center rounded-full bg-violet px-7 font-medium text-white transition-colors hover:bg-violet-deep disabled:opacity-60">
+        <button type="submit" disabled={isSubmitting} className="inline-flex min-h-12 items-center rounded-full btn-glow px-7 font-medium text-white transition-all disabled:opacity-60">
           {isSubmitting ? 'Sending…' : 'Send enquiry'}
         </button>
       </div>

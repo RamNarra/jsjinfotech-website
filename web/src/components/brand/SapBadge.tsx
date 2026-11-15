@@ -9,11 +9,11 @@ export function SapBadge({ className, dark = false, showId = false }: { classNam
     <span
       className={cn(
         'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[13px] font-medium',
-        dark ? 'border-amber/40 bg-amber/10 text-on-ink' : 'border-[#c9a400]/40 bg-[#fff8dc] text-text',
+        'border-amber/35 bg-amber/[0.08] text-on-ink shadow-[0_0_24px_-8px_rgba(253,199,12,0.5)]',
         className,
       )}
     >
-      <BadgeCheck aria-hidden className={cn('size-4', dark ? 'text-amber' : 'text-[#8a6d00]')} strokeWidth={1.75} />
+      <BadgeCheck aria-hidden className={cn('size-4', 'text-amber')} strokeWidth={1.75} />
       <span>
         SGN Software — {sgn.level}
         {showId && <span className="font-mono text-[12px] opacity-80"> · Partner ID {sgn.partnerId}</span>}

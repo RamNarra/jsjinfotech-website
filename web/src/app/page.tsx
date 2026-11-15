@@ -15,7 +15,9 @@ import { ClosingCta } from '@/components/sections/ClosingCta';
 import { PinnedSteps } from '@/components/motion/PinnedSteps';
 import { Reveal } from '@/components/motion/Reveal';
 import { PartnershipLockup, SapBadge } from '@/components/brand/SapBadge';
-import { ArrowLink, Eyebrow, H2, JsonLd } from '@/components/ui';
+import { ArrowLink, Eyebrow, GradientText, H2, JsonLd } from '@/components/ui';
+import { ClientMarquee } from '@/components/sections/ClientMarquee';
+import { Aurora } from '@/components/motion/Aurora';
 import { organizationLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -46,7 +48,7 @@ export default function Home() {
         <div className="container-x grid gap-12 lg:grid-cols-[1.2fr_1fr]">
           <Reveal>
             <Eyebrow>About JSJ INFOTECH</Eyebrow>
-            <H2><span id="about-h">Engineering the Connection Between Physical and Digital Operations.</span></H2>
+            <H2><span id="about-h">Engineering the Connection Between <GradientText>Physical and Digital</GradientText> Operations.</span></H2>
             <p className="mt-6 max-w-[68ch] text-lg leading-8 text-muted">
               JSJ INFOTECH is a diversified technology and engineering company. It works across enterprise IT, SAP systems, artificial intelligence, drones, custom software and government HVAC maintenance — as one partner that maintains today’s systems and keeps upgrading them with AI, automation and connected intelligence.
             </p>
@@ -56,8 +58,8 @@ export default function Home() {
           <ul className="grid gap-4">
             {pillars.map((p, i) => (
               <li key={p.title}>
-                <Reveal delay={i * 0.08} className="flex gap-4 rounded-2xl border border-line p-5">
-                  <p.icon aria-hidden className="mt-0.5 size-6 shrink-0 text-violet" strokeWidth={1.5} />
+                <Reveal delay={i * 0.08} className="flex gap-4 rounded-2xl border border-line bg-white/[0.025] spotlight p-5">
+                  <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-violet-hi shadow-[0_0_24px_-6px_rgba(123,92,255,0.8)]"><p.icon aria-hidden className="size-5" strokeWidth={1.5} /></span>
                   <div>
                     <h3 className="font-display text-lg font-semibold">{p.title}</h3>
                     <p className="mt-1 text-[15px] leading-6 text-muted">{p.body}</p>
@@ -73,7 +75,7 @@ export default function Home() {
       <section className="section-y bg-mist" aria-labelledby="partner-h">
         <div className="container-x">
           <PartnershipLockup />
-          <H2 className="mt-10 max-w-4xl"><span id="partner-h">Two Companies. Complementary Strengths. One Coordinated Delivery Partnership.</span></H2>
+          <H2 className="mt-10 max-w-4xl"><span id="partner-h">Two Companies. Complementary Strengths. <GradientText>One Coordinated Delivery Partnership.</GradientText></span></H2>
           <p className="mt-6 max-w-[68ch] text-lg leading-8 text-muted">
             SGN Software Pvt. Ltd. is JSJ INFOTECH’s joint venture partner for SAP projects and a strategic partner across the wider portfolio. Clients engage one team.
           </p>
@@ -87,7 +89,7 @@ export default function Home() {
         <div className="container-x">
           <Eyebrow>Services</Eyebrow>
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <H2 className="max-w-3xl"><span id="vert-h">Seven integrated verticals. One converged ecosystem.</span></H2>
+            <H2 className="max-w-3xl"><span id="vert-h">Seven integrated verticals. <GradientText>One converged ecosystem.</GradientText></span></H2>
             <ArrowLink href="/services">All services</ArrowLink>
           </div>
           <div className="mt-12"><VerticalCards /></div>
@@ -95,12 +97,14 @@ export default function Home() {
       </section>
 
       {/* 07 SAP practice & licensing */}
-      <section className="on-ink section-y bg-ink text-on-ink" aria-labelledby="sap-h">
-        <div className="container-x">
+      <section className="on-ink section-y relative overflow-hidden bg-ink text-on-ink" aria-labelledby="sap-h">
+        <Aurora intensity={0.35} />
+        <div aria-hidden className="bg-lines pointer-events-none absolute inset-0" />
+        <div className="container-x relative">
           <Eyebrow dark>Joint SAP practice</Eyebrow>
-          <H2 className="max-w-4xl text-white"><span id="sap-h">Enterprise SAP Delivery &amp; Licensing, Backed by an SAP Gold Partner.</span></H2>
+          <H2 className="max-w-4xl text-white"><span id="sap-h">Enterprise SAP Delivery &amp; Licensing, <GradientText>Backed by an SAP Gold Partner.</GradientText></span></H2>
           <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_1.4fr]">
-            <div className="rounded-2xl border border-white/10 bg-ink-2 p-6">
+            <div className="glass rounded-3xl p-6 lg:p-8">
               <SapBadge dark />
               <dl className="mt-6 space-y-4 text-[15px]">
                 <div><dt className="text-on-ink-muted">Partner</dt><dd className="font-medium text-white">{sgn.legalName}, {sgn.city}</dd></div>
@@ -112,17 +116,17 @@ export default function Home() {
             <div>
               <p className="label-caps text-violet-hi">Service lines</p>
               <ul className="mt-4 flex flex-wrap gap-2">
-                {serviceLines.map((s) => <li key={s} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white">{s}</li>)}
+                {serviceLines.map((s) => <li key={s} className="glass rounded-full px-4 py-2 text-sm text-white">{s}</li>)}
               </ul>
               <p className="mt-8 label-caps text-violet-hi">Authorized to sell (SGN Software)</p>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {authorizations.map((a) => (
-                  <li key={a.name} className="rounded-xl border border-white/10 p-4">
+                  <li key={a.name} className="spotlight rounded-2xl border border-white/10 bg-white/[0.025] p-4">
                     <p className="font-medium text-white">{a.name}</p>
                     <p className="mt-1 text-sm text-on-ink-muted">{a.note}</p>
                   </li>
                 ))}
-                <li className="rounded-xl border border-white/10 p-4">
+                <li className="spotlight rounded-2xl border border-white/10 bg-white/[0.025] p-4">
                   <p className="font-medium text-white">CastingSoft</p>
                   <p className="mt-1 text-sm text-on-ink-muted">SAP-qualified partner-packaged solution for metals and mining</p>
                 </li>
@@ -140,7 +144,7 @@ export default function Home() {
       <section className="on-ink section-y border-t border-white/10 bg-ink text-on-ink" aria-labelledby="ai-h">
         <div className="container-x">
           <Eyebrow dark>AI and connected intelligence</Eyebrow>
-          <H2 className="max-w-3xl text-white"><span id="ai-h">From Enterprise Intelligence to Smart Infrastructure.</span></H2>
+          <H2 className="max-w-3xl text-white"><span id="ai-h">From Enterprise Intelligence to <GradientText>Smart Infrastructure.</GradientText></span></H2>
           <div className="mt-12"><AiDiagram /></div>
         </div>
       </section>
@@ -150,11 +154,11 @@ export default function Home() {
         <div className="container-x">
           <Eyebrow>Industries</Eyebrow>
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <H2><span id="ind-h">Fourteen sectors. One delivery model.</span></H2>
+            <H2><span id="ind-h">Fourteen sectors. <GradientText>One delivery model.</GradientText></span></H2>
             <ArrowLink href="/industries">View industries</ArrowLink>
           </div>
           <ul className="mt-10 flex flex-wrap gap-2">
-            {industries.map((x) => <li key={x.name} className="rounded-full border border-line px-4 py-2 text-[15px]">{x.name}</li>)}
+            {industries.map((x) => <li key={x.name} className="rounded-full border border-line bg-white/[0.03] px-4 py-2 text-[15px] transition-colors hover:border-violet/50 hover:text-white">{x.name}</li>)}
           </ul>
         </div>
       </section>
@@ -163,10 +167,10 @@ export default function Home() {
       <section className="section-y bg-mist" aria-labelledby="eco-h">
         <div className="container-x">
           <Eyebrow>Partner solutions</Eyebrow>
-          <H2 className="max-w-3xl"><span id="eco-h">Engineered with partner solutions.</span></H2>
+          <H2 className="max-w-3xl"><span id="eco-h">Engineered with <GradientText>partner solutions.</GradientText></span></H2>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {partners.map((p) => (
-              <li key={p.name} className="rounded-2xl border border-line bg-paper p-6">
+              <li key={p.name} className="rounded-2xl border border-line bg-white/[0.025] spotlight p-6">
                 <p className="label-caps text-muted">{p.category}</p>
                 <h3 className="mt-3 font-display text-xl font-semibold">{p.name}</h3>
                 <p className="mt-2 text-[15px] leading-6 text-muted">{p.body}</p>
@@ -189,7 +193,7 @@ export default function Home() {
       <section className="section-y border-t border-line" aria-labelledby="road-h">
         <div className="container-x">
           <Eyebrow>Roadmap</Eyebrow>
-          <H2 className="mb-12"><span id="road-h">JSJ INFOTECH 2030</span></H2>
+          <H2 className="mb-12"><span id="road-h">JSJ INFOTECH <GradientText>2030</GradientText></span></H2>
           <RoadmapTimeline />
           <ArrowLink href="/roadmap" className="mt-6">Milestones by vertical</ArrowLink>
         </div>
@@ -199,9 +203,10 @@ export default function Home() {
       <section className="section-y bg-mist" aria-labelledby="proof-h">
         <div className="container-x">
           <Eyebrow>Client proof</Eyebrow>
-          <H2 className="mb-12 max-w-3xl"><span id="proof-h">Proven Across Leading Enterprises.</span></H2>
+          <H2 className="mb-12 max-w-3xl"><span id="proof-h">Proven Across <GradientText>Leading Enterprises.</GradientText></span></H2>
           <ClientMatrix />
         </div>
+        <div className="mt-16"><ClientMarquee /></div>
       </section>
 
       {/* 14 Insights */}

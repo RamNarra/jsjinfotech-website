@@ -10,7 +10,7 @@ export function AiDiagram() {
     <figure>
       <div className="grid gap-4 md:grid-cols-4">
         {cols.map((c, i) => (
-          <div key={c.title} className="relative rounded-2xl border border-white/10 bg-ink-2 p-5">
+          <div key={c.title} className="relative rounded-2xl border border-white/10 bg-white/[0.03] spotlight p-5">
             <p className="font-mono text-xs text-violet-hi">{String(i + 1).padStart(2, '0')}</p>
             <p className="mt-3 font-display text-lg font-semibold text-white">{c.title}</p>
             <ul className="mt-3 space-y-1.5 text-sm text-on-ink-muted">

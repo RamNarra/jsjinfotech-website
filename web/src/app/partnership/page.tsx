@@ -26,7 +26,7 @@ export default function Page() {
           <p className="mt-4 max-w-[68ch] text-muted">
             Partner ID <span className="font-mono">{sgn.partnerId}</span> · {sgn.city} · {sgn.engagementModel}. SAP certificate issued {sgn.certificateIssued}.
           </p>
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-line bg-paper">
+          <div className="mt-10 overflow-x-auto rounded-2xl border border-line bg-white/[0.02]">
             <table className="w-full min-w-[640px] text-left text-[15px]">
               <caption className="sr-only">SAP-certified competencies of SGN Software</caption>
               <thead><tr className="border-b border-line bg-mist"><th scope="col" className="p-4">Competency</th><th scope="col" className="p-4">Specialization</th><th scope="col" className="p-4">Tier</th></tr></thead>

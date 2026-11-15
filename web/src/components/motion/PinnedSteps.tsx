@@ -47,8 +47,8 @@ export function PinnedSteps({ steps }: { steps: Step[] }) {
             key={s.n}
             className={cn(
               'relative rounded-2xl border p-6 transition-all duration-500 ease-reveal',
-              on ? 'border-violet/40 bg-paper shadow-[0_1px_0_rgba(22,19,42,0.04)]' : 'border-line bg-mist/60 opacity-50',
-              pinned && i === active && 'border-violet ring-1 ring-violet/30',
+              on ? 'border-white/15 bg-white/[0.04]' : 'border-line bg-transparent opacity-40',
+              pinned && i === active && 'border-violet/60 shadow-[0_0_60px_-20px_rgba(123,92,255,0.9)]',
             )}
           >
             <p className="font-mono text-sm text-violet">{s.n}</p>

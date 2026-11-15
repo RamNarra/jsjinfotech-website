@@ -35,11 +35,15 @@ export function Header() {
   return (
     <header
       className={cn(
-        'on-ink sticky top-0 z-40 -mb-16 text-white transition-colors duration-200 lg:-mb-[72px]',
-        solid ? 'bg-ink/95 backdrop-blur supports-[backdrop-filter]:bg-ink/80 border-b border-white/10' : 'bg-transparent',
+        'on-ink sticky top-0 z-40 -mb-20 pt-3 text-white lg:-mb-[88px] lg:pt-4',
       )}
     >
-      <div className="container-x flex h-16 items-center justify-between lg:h-[72px]">
+      <div
+        className={cn(
+          'mx-auto flex h-16 w-[calc(100%-24px)] max-w-[1240px] items-center justify-between rounded-full pr-2 pl-4 transition-all duration-300 lg:h-[68px] lg:pl-5',
+          solid ? 'glass bg-ink/60' : 'border border-transparent',
+        )}
+      >
         <Link href="/" aria-label="JSJ INFOTECH home" className="inline-flex min-h-11 items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/jsj-logo.svg" alt="" width={44} height={32} className="h-8 w-auto lg:h-10" />
@@ -55,7 +59,7 @@ export function Header() {
                   <Link
                     href={n.href}
                     aria-current={active ? 'page' : undefined}
-                    className={cn('inline-flex min-h-11 items-center rounded-full px-3 text-[14px] transition-colors hover:text-white', active ? 'text-white' : 'text-on-ink-muted')}
+                    className={cn('inline-flex min-h-11 items-center rounded-full px-3 text-[14px] transition-colors hover:bg-white/[0.06] hover:text-white', active ? 'bg-white/[0.08] text-white' : 'text-on-ink-muted')}
                   >
                     {n.label}
                   </Link>
@@ -66,7 +70,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href="/contact" className="hidden min-h-11 items-center whitespace-nowrap rounded-full bg-white px-5 text-[14px] font-medium text-ink transition-colors hover:bg-mist sm:inline-flex">
+          <Link href="/contact" className="hidden min-h-11 items-center whitespace-nowrap rounded-full btn-glow px-5 text-[14px] font-medium text-white transition-all sm:inline-flex">
             Discuss a Project
           </Link>
           <button
@@ -83,7 +87,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 overflow-y-auto bg-ink xl:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 top-0 bottom-0 -z-10 overflow-y-auto bg-ink/95 pt-24 backdrop-blur-xl xl:hidden">
           <nav aria-label="Mobile" className="container-x py-6">
             <ul className="divide-y divide-white/10">
               {[...primaryNav, { label: 'Contact', href: '/contact' }].map((n) => (
@@ -94,7 +98,7 @@ export function Header() {
                 </li>
               ))}
             </ul>
-            <Link href="/contact" onClick={() => setOpen(false)} className="mt-8 flex min-h-12 items-center justify-center rounded-full bg-white font-medium text-ink">
+            <Link href="/contact" onClick={() => setOpen(false)} className="mt-8 flex min-h-12 items-center justify-center rounded-full btn-glow font-medium text-white">
               Discuss a Project
             </Link>
             <p className="mt-6 text-on-ink-muted">

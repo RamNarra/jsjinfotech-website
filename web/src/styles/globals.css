@@ -1,37 +1,46 @@
 @import 'tailwindcss';
 
-/* Tokens per SRS §4.1 (logo-serious palette) and §7.2 (motion). */
+/*
+  "Electric violet" dark-first system (v2 revamp).
+  Signature hue: JSJ violet, brightened from logo #604B9F / #8751A0 / #A353A0 for screen glow.
+  Secondary signal: logo green #6EBE44 (brightened), used sparingly.
+  All text/background pairs checked >= 4.5:1 (body) on --color-paper.
+*/
 @theme {
-  --color-ink: #16132a;
-  --color-ink-2: #1f1b37;
-  --color-ink-3: #2b2648;
-  --color-paper: #ffffff;
-  --color-mist: #f4f3f8;
-  --color-line: #dad8e6;
-  --color-text: #16132a;
-  --color-muted: #5a5673;
-  --color-on-ink: #edebf5;
-  --color-on-ink-muted: #b4afcc;
-  --color-violet: #604b9f;
-  --color-violet-hi: #a99be0;
-  --color-violet-deep: #3f2f78;
-  --color-green: #6ebe44;
+  --color-ink: #05040b;        /* deepest: hero, footer */
+  --color-ink-2: #0f0d1c;      /* card on ink */
+  --color-ink-3: #1d1934;      /* borders on ink */
+  --color-paper: #08070f;      /* page background */
+  --color-mist: #0d0b19;       /* alternate section */
+  --color-line: rgb(255 255 255 / 0.09);
+  --color-text: #f3f1fb;
+  --color-muted: #a8a3c4;      /* 8.1:1 on paper */
+  --color-on-ink: #f3f1fb;
+  --color-on-ink-muted: #a8a3c4;
+  --color-violet: #a48cff;     /* text/icon accent, 7.4:1 on paper */
+  --color-violet-hi: #c8baff;
+  --color-violet-deep: #d9cfff; /* emphasis text on dark */
+  --color-electric: #7b5cff;   /* fills, glows */
+  --color-magenta: #c45cdb;    /* from logo #A353A0, brightened */
+  --color-green: #86e05a;
   --color-amber: #fdc70c;
-  --color-danger: #b3261e;
+  --color-danger: #ff6b62;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --motion-fast: 180ms;
   --motion-base: 360ms;
   --motion-slow: 700ms;
+  --grad-brand: linear-gradient(110deg, #c8baff 0%, #a48cff 35%, #c45cdb 70%, #86e05a 100%);
 }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; background: var(--color-paper); }
 body {
   background: var(--color-paper);
   color: var(--color-text);
@@ -39,30 +48,117 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+::selection { background: rgb(123 92 255 / 0.45); color: #fff; }
+
+/* Film grain over everything (very low opacity, pointer-transparent). */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 
-:focus-visible { outline: 2px solid var(--color-violet-deep); outline-offset: 2px; border-radius: 4px; }
-.on-ink :focus-visible, .on-ink:focus-visible { outline-color: var(--color-violet-hi); }
+:focus-visible { outline: 2px solid var(--color-violet-hi); outline-offset: 2px; border-radius: 6px; }
 
 .container-x { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 16px; }
 @media (min-width: 768px) { .container-x { padding-inline: 24px; } }
 @media (min-width: 1280px) { .container-x { padding-inline: 32px; } }
 
-.section-y { padding-block: 64px; }
-@media (min-width: 768px) { .section-y { padding-block: 80px; } }
-@media (min-width: 1024px) { .section-y { padding-block: 120px; } }
+.section-y { padding-block: 72px; }
+@media (min-width: 768px) { .section-y { padding-block: 96px; } }
+@media (min-width: 1024px) { .section-y { padding-block: 128px; } }
 
-.label-caps { font-size: 12px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.label-caps { font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+
+/* Gradient headline text */
+.text-gradient {
+  background: var(--grad-brand);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: grad-pan 10s ease-in-out infinite alternate;
+}
+@keyframes grad-pan { to { background-position: 100% 0; } }
+
+/* Dot grid backdrop, masked to fade at edges */
+.bg-grid {
+  background-image: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+.bg-lines {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 70%);
+}
+
+/* Aurora blobs */
+.aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.aurora > span { position: absolute; border-radius: 9999px; filter: blur(90px); opacity: 0.5; mix-blend-mode: screen; animation: drift 22s ease-in-out infinite alternate; }
+@keyframes drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6%, -4%, 0) scale(1.12); }
+  100% { transform: translate3d(-5%, 5%, 0) scale(0.95); }
+}
+
+/* Glass surface (chrome and short-label cards only) */
+.glass {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.02));
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 20px 60px -30px rgb(0 0 0 / 0.8);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* Spotlight card: radial glow follows --mx/--my set by JS */
+.spotlight { position: relative; isolation: isolate; }
+.spotlight::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit; z-index: -1;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(123 92 255 / 0.18), transparent 45%);
+  opacity: 0; transition: opacity 300ms;
+}
+.spotlight::after {
+  content: '';
+  position: absolute; inset: -1px; border-radius: inherit; z-index: -2; padding: 1px;
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 0%), rgb(200 186 255 / 0.7), transparent 50%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 300ms;
+}
+.spotlight:hover::before, .spotlight:hover::after, .spotlight:focus-visible::before, .spotlight:focus-visible::after { opacity: 1; }
+
+/* Primary glow button */
+.btn-glow {
+  background: linear-gradient(135deg, #6a4bff, #8d4fe0);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12) inset, 0 10px 40px -10px rgb(123 92 255 / 0.8);
+}
+.btn-glow:hover { box-shadow: 0 0 0 1px rgb(255 255 255 / 0.2) inset, 0 14px 50px -8px rgb(123 92 255 / 1); }
+
+/* Marquee */
+.marquee { mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marquee 50s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
 .data-path { stroke-dasharray: 6 10; animation: dash 6s linear infinite; }
 @keyframes dash { to { stroke-dashoffset: -160; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .marquee-track { flex-wrap: wrap; width: auto; }
 }
 
 @media print {
   header, footer, .no-print { display: none !important; }
+  body::after { display: none; }
 }
