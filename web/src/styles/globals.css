@@ -171,10 +171,13 @@ html.lenis, html.lenis body { height: auto; }
 .btn-glow:hover { background: linear-gradient(135deg, #47367f, #604b9f); box-shadow: 0 14px 36px -10px rgb(96 75 159 / 0.75); }
 
 /* Marquee */
-.marquee { mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.marquee { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .marquee-track { display: flex; width: max-content; animation: marquee 55s linear infinite; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track-reverse { display: flex; width: max-content; animation: marquee-rev 55s linear infinite; }
+.marquee:hover .marquee-track,
+.marquee:hover .marquee-track-reverse { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 .data-path { stroke-dasharray: 6 10; animation: dash 6s linear infinite; }
 @keyframes dash { to { stroke-dashoffset: -160; } }
