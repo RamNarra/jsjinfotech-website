@@ -11,5 +11,4 @@
 - /contact/
 
 ## Contact
-- Phone: +91 89430 32965
 - Email: subhash@jsjinfotech.co.in

@@ -9,7 +9,7 @@ export const metadata = pageMeta('About', 'JSJ INFOTECH is a technology and engi
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="About JSJ INFOTECH" title="Engineering the connection between physical and digital operations." lead="A future-focused technology and engineering company building the intelligent systems that run enterprises, cities and government infrastructure." />
+      <PageHero eyebrow="About JSJ INFOTECH" title="Technology and engineering for modern enterprise." lead="A future-focused technology and engineering company building the intelligent systems that run enterprises, cities and government infrastructure." />
       <section className="section-y">
         <div className="container-x grid gap-12 lg:grid-cols-2">
           <div>

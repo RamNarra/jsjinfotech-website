@@ -41,10 +41,8 @@ export function Footer() {
             <p className="label-caps text-violet-hi">Contact</p>
             <address className="mt-4 space-y-2 text-[14px] leading-6 text-on-ink-muted not-italic">
               <p>{site.address.full}</p>
-              <p><a className="hover:text-white" href={`tel:${site.phone.tel}`}>{site.phone.display}</a></p>
               <p><a className="hover:text-white" href={`mailto:${site.email.enquiry}`}>{site.email.enquiry}</a></p>
               <p><a className="hover:text-white" href={`mailto:${site.email.support}`}>{site.email.support}</a></p>
-              <p>www.jsjinfotech.co.in</p>
             </address>
           </div>
         </div>
@@ -61,9 +59,6 @@ export function Footer() {
             </ul>
           </nav>
         </div>
-        <p className="mt-6 max-w-4xl text-[12px] leading-5 text-on-ink-muted/80">
-          SAP, SAP S/4HANA, RISE with SAP, GROW with SAP, SAP Ariba, SAP SuccessFactors, SAP Business AI, SAP BTP, SAP PartnerEdge and SAP Gold Partner are trademarks or registered trademarks of SAP SE in Germany and other countries. This site is not affiliated with SAP SE or an SAP affiliate company. All other names are trademarks of their owners.
-        </p>
       </div>
     </footer>
   );

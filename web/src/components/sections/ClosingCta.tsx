@@ -13,7 +13,6 @@ export function ClosingCta() {
           Whether you are planning an SAP transformation, exploring enterprise AI, modernizing software or improving infrastructure operations, start a conversation with JSJ INFOTECH and its delivery partners.</p>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <Button href="/contact" variant="primary">Start a Project Discussion</Button>
-          <Button href={`tel:${site.phone.tel}`} variant="ghost-dark">Call {site.phone.display}</Button>
           <Button href={`mailto:${site.email.enquiry}`} variant="ghost-dark">Email us</Button>
         </div>
       </div>

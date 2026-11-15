@@ -99,8 +99,7 @@ export function Header() {
               Discuss a Project
             </Link>
             <p className="mt-6 text-muted">
-              <a className="block min-h-11 py-2" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
-              <a className="block min-h-11 py-2" href={`mailto:${site.email.enquiry}`}>{site.email.enquiry}</a>
+              <a className="block min-h-11 py-2 text-violet font-medium hover:underline" href={`mailto:${site.email.enquiry}`}>{site.email.enquiry}</a>
             </p>
           </nav>
         </div>

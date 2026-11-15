@@ -40,7 +40,6 @@ export function ClientMatrix() {
           </div>
         ))}
       </div>
-      <p className="mt-10 text-sm text-muted">Logos belong to their owners and are shown as SAP client references of SGN Software.</p>
     </div>
   );
 }

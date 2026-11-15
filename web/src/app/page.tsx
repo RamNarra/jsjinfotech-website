@@ -14,7 +14,6 @@ import { IndustryGrid } from '@/components/sections/IndustryGrid';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 import { SapBadge, SapLogo, SgnLogo } from '@/components/brand/SapBadge';
 import { LogoLockup } from '@/components/brand/Logo';
-import { HvacScreen } from '@/components/visuals/Screens';
 import { ArrowLink, Eyebrow, H2, JsonLd } from '@/components/ui';
 import { organizationLd } from '@/lib/seo';
 
@@ -49,15 +48,14 @@ export default function Home() {
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <Eyebrow>About JSJ INFOTECH</Eyebrow>
-            <H2><span id="about-h">Engineering the connection between physical and digital operations.</span></H2>
+            <H2><span id="about-h">Technology and engineering for modern enterprise.</span></H2>
             <p className="mt-6 max-w-[62ch] text-lg leading-8 text-muted">
               JSJ INFOTECH is a technology and engineering company working across enterprise IT, SAP systems, artificial intelligence, autonomous drones, custom software and government infrastructure maintenance. We connect these into one ecosystem that supports daily operations and opens the way to automation and modernisation.
             </p>
             <ArrowLink href="/about" className="mt-6">More about JSJ</ArrowLink>
           </div>
           <div className="relative">
-            <img src="/images/gen/rnd-lab-sm.webp" alt="Engineering lab with a robotic arm, a drone and IoT sensor boards" loading="lazy" className="h-[420px] w-full rounded-[28px] object-cover" />
-            <HvacScreen className="absolute -bottom-8 -left-4 w-[70%] sm:-left-8" />
+            <img src="/images/gen/company-overview.webp" alt="JSJ INFOTECH technology and engineering team" loading="lazy" className="h-[420px] w-full rounded-[28px] object-cover shadow-lg" />
           </div>
         </div>
       </section>
