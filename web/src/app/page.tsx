@@ -55,7 +55,10 @@ export default function Home() {
             <ArrowLink href="/about" className="mt-6">More about JSJ</ArrowLink>
           </div>
           <div className="relative">
-            <img src="/images/gen/company-overview.webp" alt="JSJ INFOTECH technology and engineering team" loading="lazy" className="h-[420px] w-full rounded-[28px] object-cover shadow-lg" />
+            <img src="/images/gen/company-overview.webp" alt="JSJ INFOTECH at the centre of one connected ecosystem: drones, ERP, smart cities, AI, cloud, software and industrial facilities" loading="lazy" className="aspect-[16/10] w-full rounded-[28px] object-cover shadow-lg" />
+            <span aria-hidden className="absolute top-[52.5%] left-[52.6%] flex w-[22%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 px-[3%] py-[2.5%] shadow-[0_0_40px_rgba(196,92,219,0.7)] backdrop-blur">
+              <img src="/brand/jsj-logo.svg" alt="" className="w-full" />
+            </span>
           </div>
         </div>
       </section>

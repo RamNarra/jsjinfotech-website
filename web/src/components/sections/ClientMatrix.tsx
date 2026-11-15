@@ -28,7 +28,7 @@ export function ClientMatrix() {
       ) : (
         <span className="text-center font-display text-lg leading-tight font-bold tracking-tight text-text/80">{c.name}</span>
       )}
-      <span className="rounded-full bg-mist px-2 py-0.5 text-[10px] font-semibold text-violet uppercase tracking-wider">{c.group.replace('Finance & Spend (SAP Ariba)', 'SAP Ariba')}</span>
+      <span className="rounded-full bg-mist px-2 py-0.5 text-[10px] font-semibold text-violet">{c.group.replace('Finance & Spend (SAP Ariba)', 'SAP Ariba')}</span>
     </li>
   );
 
